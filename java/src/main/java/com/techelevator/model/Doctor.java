@@ -4,6 +4,7 @@ public class Doctor {
 
     private long doctorId;
     private long officeId;
+    private String userType;
     private String firstName;
     private String lastName;
     // ** calendar availability **
@@ -37,5 +38,12 @@ public class Doctor {
     }
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

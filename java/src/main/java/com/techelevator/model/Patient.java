@@ -3,6 +3,7 @@ package com.techelevator.model;
 public class Patient {
 
     private long patientId;
+    private String userType;
     private String firstName;
     private String lastName;
     private String birthDate;
@@ -35,5 +36,12 @@ public class Patient {
     }
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }
