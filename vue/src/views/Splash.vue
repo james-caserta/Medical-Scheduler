@@ -10,25 +10,15 @@
 
 <style>
 
-    .form-control {
-
-        margin: 3px;
-    }
-
-    .btn {
-        margin: 3px;
-    }
-
     .splash {
 
-      display: flex;
-      flex-direction: column;
-      justify-content: right;
-      align-items: center;
+      
+    
     }
     
     #registration {
 
+    
       
       
     }

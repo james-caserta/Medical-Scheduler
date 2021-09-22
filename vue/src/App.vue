@@ -19,16 +19,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-   
-  }
-
-  #view {
-
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    margin-right: 3rem;
-    margin-left: 3rem;
+    
   }
 
 
