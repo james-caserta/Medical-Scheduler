@@ -1,11 +1,12 @@
 <template>
-  <div id="register" class="text-center">
-    <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+
+    <div id="register" class="text-center">
+<form class="form-register" @submit.prevent="register">
+      <h1 class="h3 mb-3 font-weight-normal">New User Registration</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">Username</label><br>
       <input
         type="text"
         id="username"
@@ -14,8 +15,8 @@
         v-model="user.username"
         required
         autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
+      /><br>
+      <label for="password" class="sr-only">Password</label><br>
       <input
         type="password"
         id="password"
@@ -23,7 +24,7 @@
         placeholder="Password"
         v-model="user.password"
         required
-      />
+      /><br>
       <input
         type="password"
         id="confirmPassword"
@@ -31,22 +32,42 @@
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
-      />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      /><br>
+      
+      <input type="checkbox" id="doctor-box" class="form-control" v-model="isDoctor"> <label for="doctor-box" class="sr-only">Are you a doctor?</label><br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
-      </button>
-    </form>
-  </div>
+      </button><br><br>
+
+      <router-link :to="{ name: 'login' }">Already registered?</router-link>
+</form>
+     </div>
+  
 </template>
+
+<style>
+
+    .form-control {
+
+        margin: 3px;
+    }
+
+    .btn {
+        margin: 3px;
+    }
+
+    
+
+</style>
 
 <script>
 import authService from '../services/AuthService';
 
 export default {
-  name: 'register',
-  data() {
+  name: "registration",
+data() {
     return {
+    isDoctor: false,
       user: {
         username: '',
         password: '',
@@ -62,7 +83,30 @@ export default {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
-      } else {
+      } 
+      
+      else if(this.isDoctor === true) {
+          this.user.role = "doctor";
+        authService
+          .register(this.user)
+          .then((response) => {
+            if (response.status == 201) {
+              this.$router.push({
+                path: '/login',
+                query: { registration: 'success' },
+              });
+            }
+          })
+          .catch((error) => {
+            const response = error.response;
+            this.registrationErrors = true;
+            if (response.status === 400) {
+              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+            }
+          });
+      }
+      
+      else {
         authService
           .register(this.user)
           .then((response) => {
@@ -89,7 +133,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-</style>

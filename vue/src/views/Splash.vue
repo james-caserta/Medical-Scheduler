@@ -1,30 +1,14 @@
 <template>
   <div class="splash">
-    <h1>DrSched</h1>
-    <h2>We make booking with your doctor easy.</h2>
-    <p>Find your doctor and book today.</p>
-
-    
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        New Patient Registration
-      </button><br><br>
-
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        New Doctor Registration
-      </button>
-
+    <!-- <h1 style="color:#07329E" id="title1">DrSched</h1>
+    <h2 style="color:#07329E" id="title2">We make booking with your doctor easy.</h2>
+    <p style="color:#07329E" id="title3">Find your doctor and book today.</p> -->
+    <registration id="registration"></registration>
   </div>
 
-  
-  
 </template>
 
 <style>
-
-    .splash {
-
-        background-image: "src\assets\SplashBackground.png";
-    }
 
     .form-control {
 
@@ -35,54 +19,31 @@
         margin: 3px;
     }
 
+    .splash {
+
+      display: flex;
+      flex-direction: column;
+      justify-content: right;
+      align-items: center;
+    }
+    
+    #registration {
+
+      
+      
+    }
+
+
 </style>
 
 <script>
-import authService from '../services/AuthService';
+import registration from '../components/Registration.vue';
 
 export default {
   name: "splash",
-data() {
-    return {
-      user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: 'user',
-      },
-      registrationErrors: false,
-      registrationErrorMsg: 'There were problems registering this user.',
-    };
+  components: {
+    registration,
   },
-  methods: {
-    register() {
-      if (this.user.password != this.user.confirmPassword) {
-        this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
-      } else {
-        authService
-          .register(this.user)
-          .then((response) => {
-            if (response.status == 201) {
-              this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
-              });
-            }
-          })
-          .catch((error) => {
-            const response = error.response;
-            this.registrationErrors = true;
-            if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
-            }
-          });
-      }
-    },
-    clearErrors() {
-      this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
-    },
-  },
-};
+}
+
 </script>
