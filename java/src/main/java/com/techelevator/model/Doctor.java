@@ -3,7 +3,16 @@ package com.techelevator.model;
 public class Doctor {
 
     private long doctorId;
-    private long officeId;
+    private String officeName;
+
+    public String getOfficeName() {
+        return officeName;
+    }
+
+    public void setOfficeName(String officeName) {
+        this.officeName = officeName;
+    }
+
     private String userType;
     private String firstName;
     private String lastName;
@@ -19,12 +28,6 @@ public class Doctor {
         this.doctorId = doctorId;
     }
 
-    public long getOfficeId() {
-        return officeId;
-    }
-    public void setOfficeId(long officeId) {
-        this.officeId = officeId;
-    }
 
     public String getFirstName() {
         return firstName;
