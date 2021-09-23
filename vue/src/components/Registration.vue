@@ -1,7 +1,8 @@
 <template>
-  <div id="register" class="text-center">
-    <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Test</h1>
+
+    <div id="register">
+<form class="form-register" @submit.prevent="register">
+      <button class="btn btn-lg btn-primary btn-block" id="registerbtn">Register</button>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -32,21 +33,71 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      
+      <div class="doctor-box"><input type="checkbox" id="doctor-box" class="form-control" v-model="isDoctor"> <label for="doctor-box">Are you a doctor?</label></div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
+        Submit
       </button>
-    </form>
-  </div>
+
+      <!-- <router-link :to="{ name: 'login' }">Already registered?</router-link> -->
+</form>
+     </div>
+  
 </template>
+
+<style>
+
+    .form-register {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+        
+    }
+
+    .btn {
+  margin: 3px;
+  background: black;
+	border-radius: 15px;
+	font-family: 'Open Sans', sans-serif;
+	cursor: pointer;
+  font-size: 1.25em;
+  color: white;
+  width: 140px;
+  height: 35px;
+  font-weight: 600;
+  padding-left: 5px;
+  }
+
+  #registerbtn {
+
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .sr-only {
+
+    font-weight: 600;
+    margin-right: 5.5rem;
+    align-items: left;
+  }
+
+  .doctor-box {
+
+    margin-right: 1rem;
+  }
+
+    
+
+</style>
 
 <script>
 import authService from '../services/AuthService';
 
 export default {
-  name: 'register',
-  data() {
+  name: "registration",
+data() {
     return {
+    isDoctor: false,
       user: {
         username: '',
         password: '',
@@ -61,8 +112,31 @@ export default {
     register() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
-        this.registrationErrorMsg = 'Passwords do not match.';
-      } else {
+        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
+      } 
+      
+      else if(this.isDoctor === true) {
+          this.user.role = "doctor";
+        authService
+          .register(this.user)
+          .then((response) => {
+            if (response.status == 201) {
+              this.$router.push({
+                path: '/login',
+                query: { registration: 'success' },
+              });
+            }
+          })
+          .catch((error) => {
+            const response = error.response;
+            this.registrationErrors = true;
+            if (response.status === 400) {
+              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+            }
+          });
+      }
+      
+      else {
         authService
           .register(this.user)
           .then((response) => {
@@ -89,7 +163,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-</style>

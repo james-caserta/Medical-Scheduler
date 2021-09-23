@@ -1,88 +1,107 @@
 <template>
   <div class="splash">
-    <h1>DrSched</h1>
-    <h2>We make booking with your doctor easy.</h2>
-    <p>Find your doctor and book today.</p>
-
+    <div class="nav"><span id="logo">DrSched</span>
+      
+    <span id="header2">We make booking with your doctor easy.</span>
+    <span id="header3">Find your doctor and book today.</span>
+      <!-- <router-link v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''">Home</router-link>&nbsp; &nbsp; -->
+      
+    </div>
     
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        New Patient Registration
-      </button><br><br>
-
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        New Doctor Registration
-      </button>
+    <registration id="registration"></registration>
+    <!-- <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token = ''">Login</router-link>
+    <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
 
   </div>
 
-  
-  
 </template>
 
 <style>
 
+    .nav {
+
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      height: 90%;
+      justify-content: flex-start;
+      align-items: left;
+      gap: 3rem;
+    }
+
     .splash {
 
-        background-image: "src\assets\SplashBackground.png";
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../assets/SplashBackground.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    
+    }
+    
+    #registration {
+
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 12rem;
+    width: 100%;
+    
+      
     }
 
-    .form-control {
+    #header2 {
 
-        margin: 3px;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 20%;
+      font-weight: 800;
+      font-size: 3em;
+      color:#07329E;
+
     }
 
-    .btn {
-        margin: 3px;
+    #header3 {
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 5%;
+      font-weight: 800;
+      font-size: 1.5em;
+      color:#07329E;
+
     }
+
+    #logo {
+
+    color:#07329E;
+    font-size: 4em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    margin-bottom: 5rem;
+  }
+
 
 </style>
 
 <script>
-import authService from '../services/AuthService';
+import registration from '../components/Registration.vue';
+// import splashslogan from '../components/SplashSlogan.vue';
 
 export default {
   name: "splash",
-data() {
-    return {
-      user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: 'user',
-      },
-      registrationErrors: false,
-      registrationErrorMsg: 'There were problems registering this user.',
-    };
+  components: {
+    registration,
+    // splashslogan,
   },
-  methods: {
-    register() {
-      if (this.user.password != this.user.confirmPassword) {
-        this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
-      } else {
-        authService
-          .register(this.user)
-          .then((response) => {
-            if (response.status == 201) {
-              this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
-              });
-            }
-          })
-          .catch((error) => {
-            const response = error.response;
-            this.registrationErrors = true;
-            if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
-            }
-          });
-      }
-    },
-    clearErrors() {
-      this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
-    },
-  },
-};
+}
+
 </script>
