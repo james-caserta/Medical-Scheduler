@@ -35,7 +35,7 @@ CREATE TABLE doctor (
     summary varchar(500)  NOT NULL,
     practicing_from date  NOT NULL,
     account_id int  NOT NULL,
-    is_doctor Boolean(1)  NOT NULL,
+    is_doctor Boolean NOT NULL,
     CONSTRAINT doctor_pk PRIMARY KEY (doctor_id)
 );
 
