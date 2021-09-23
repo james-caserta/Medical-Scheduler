@@ -1,8 +1,8 @@
 <template>
 
-    <div id="register" class="text-center">
+    <div id="register">
 <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">New User Registration</h1>
+      <button class="btn btn-lg btn-primary btn-block" id="registerbtn">Register</button><br>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -36,10 +36,10 @@
       
       <input type="checkbox" id="doctor-box" class="form-control" v-model="isDoctor"> <label for="doctor-box" class="sr-only">Are you a doctor?</label><br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
+        Submit
       </button><br><br>
 
-      <router-link :to="{ name: 'login' }">Already registered?</router-link>
+      <!-- <router-link :to="{ name: 'login' }">Already registered?</router-link> -->
 </form>
      </div>
   
@@ -53,8 +53,21 @@
     }
 
     .btn {
-        margin: 3px;
-    }
+  margin: 3px;
+  background: black;
+	border-radius: 15px;
+	font-family: 'Open Sans', sans-serif;
+	cursor: pointer;
+  font-size: 1.25em;
+  color: white;
+  width: 140px;
+  height: 35px;
+  }
+
+  #registerbtn {
+
+    cursor: default;
+  }
 
     
 

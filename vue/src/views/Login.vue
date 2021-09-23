@@ -1,7 +1,7 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="loginview">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <button class="btn btn-lg btn-primary btn-block" id="registerbtn">Login</button><br>
       <div
         class="alert alert-danger"
         role="alert"
@@ -12,7 +12,7 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">Username</label><br>
       <input
         type="text"
         id="username"
@@ -21,8 +21,8 @@
         v-model="user.username"
         required
         autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
+      /><br>
+      <label for="password" class="sr-only">Password</label><br>
       <input
         type="password"
         id="password"
@@ -30,9 +30,11 @@
         placeholder="Password"
         v-model="user.password"
         required
-      />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      /><br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        Sign in
+      </button><br><br>
+      <!-- <router-link :to="{ name: 'register' }">Need an account?</router-link> -->
     </form>
   </div>
 </template>
@@ -74,3 +76,21 @@ export default {
   }
 };
 </script>
+<style>
+
+.loginview {
+
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../assets/Loginbackground.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 3rem;
+
+}
+
+</style>

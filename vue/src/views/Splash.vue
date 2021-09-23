@@ -1,9 +1,14 @@
 <template>
   <div class="splash">
-    <!-- <h1 style="color:#07329E" id="title1">DrSched</h1>
-    <h2 style="color:#07329E" id="title2">We make booking with your doctor easy.</h2>
-    <p style="color:#07329E" id="title3">Find your doctor and book today.</p> -->
+    <div id="nav"><span id="logo">DrSched</span>
+      
+      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token = ''">Login</router-link>
+      <!-- <router-link v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''">Home</router-link>&nbsp; &nbsp; -->
+      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+    </div>
+    <!-- <splashslogan id="splashslogan"></splashslogan> -->
     <registration id="registration"></registration>
+
   </div>
 
 </template>
@@ -12,27 +17,53 @@
 
     .splash {
 
-      
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../assets/SplashBackground.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
     
     }
     
     #registration {
 
-    
-      
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 5rem;
       
     }
+
+    #splashslogan {
+
+      display: flex;
+      justify-content: left;
+      align-items: top;
+
+    }
+
+    #logo {
+
+    color:#07329E;
+    font-size: 3em;
+    font-family: 'Open Sans', sans-serif;
+  }
 
 
 </style>
 
 <script>
 import registration from '../components/Registration.vue';
+// import splashslogan from '../components/SplashSlogan.vue';
 
 export default {
   name: "splash",
   components: {
     registration,
+    // splashslogan,
   },
 }
 
