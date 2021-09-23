@@ -70,6 +70,11 @@
     cursor: default;
   }
 
+  .sr-only {
+
+    font-weight: 600;
+  }
+
     
 
 </style>

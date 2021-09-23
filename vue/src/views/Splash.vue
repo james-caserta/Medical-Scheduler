@@ -50,6 +50,7 @@
     color:#07329E;
     font-size: 3em;
     font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
   }
 
 
