@@ -62,6 +62,7 @@
   color: white;
   width: 140px;
   height: 35px;
+  font-weight: 600;
   }
 
   #registerbtn {
