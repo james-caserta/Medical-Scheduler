@@ -3,10 +3,8 @@ import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
-import RegisterPatient from '../views/RegisterPatient.vue'
 import store from '../store/index'
 import Splash from '../views/Splash.vue'
-import RegisterDoctor from '../views/RegisterDoctor.vue'
 
 Vue.use(Router)
 
@@ -48,28 +46,12 @@ const router = new Router({
       }
     },
     {
-      path: "/register-patient",
-      name: "registerPatient",
-      component: RegisterPatient,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
       path: "/",
     name: "splash",
     component: Splash,
     meta: {
       requiresAuth: false
     }
-    },
-    {
-      path: "/register-doctor",
-      name: "registerDoctor",
-      component: RegisterDoctor,
-      meta: {
-        requiresAuth: false
-      }
     },
   ]
 })
