@@ -4,18 +4,13 @@ public class Doctor {
 
     private long doctorId;
     private String officeName;
-
-    public String getOfficeName() {
-        return officeName;
-    }
-
-    public void setOfficeName(String officeName) {
-        this.officeName = officeName;
-    }
-
-    private String userType;
     private String firstName;
     private String lastName;
+    private boolean isDoctor;
+    private String summary;
+    private String practicingFrom;
+    private int accountId;
+
     // ** calendar availability **
     // private String availability;
 
@@ -28,6 +23,12 @@ public class Doctor {
         this.doctorId = doctorId;
     }
 
+    public String getOfficeName() {
+        return officeName;
+    }
+    public void setOfficeName(String officeName) {
+        this.officeName = officeName;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -43,10 +44,32 @@ public class Doctor {
         this.lastName = lastName;
     }
 
-    public String getUserType() {
-        return userType;
+    public boolean isDoctor() {
+        return isDoctor;
     }
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setIsDoctor(boolean doctor) {
+        isDoctor = doctor;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getPracticingFrom() {
+        return practicingFrom;
+    }
+    public void setPracticingFrom(String practicingFrom) {
+        this.practicingFrom = practicingFrom;
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 }
+

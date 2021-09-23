@@ -11,11 +11,11 @@ public interface DoctorDao {
 
     Doctor getOfficeName(String OfficeName); // Office ID that the doctor is linked
 
-    Doctor getUserType(String userType); // user type being doctor
+    Doctor getIsDoctor(boolean isDoctor); // user is/isn't doctor
 
-    Doctor getfirstName(String firstName); // get firstName
+    Doctor getFirstName(String firstName); // get firstName
 
-    Doctor getlastName(String lastName); // get Last name
+    Doctor getLastName(String lastName); // get Last name
 
     boolean create(String firstName, String lastName, String officeName);
 
