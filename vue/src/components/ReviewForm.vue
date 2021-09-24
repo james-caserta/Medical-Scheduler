@@ -49,7 +49,8 @@ data(){
 </script>
 
 <style>
-    form{
+
+    form.reviewForm{
         max-width: 420px;
         margin: 30 px auto;
         background: white;
@@ -57,6 +58,7 @@ data(){
         padding: 40px;
         border-radius: 10px ;
     }
+
 
     label{
         color: #aaa;
@@ -79,8 +81,13 @@ data(){
     }
 
     .submitButton{
-       margin: 80px;
-       widows: 100px;
+       margin-left: 80px;
+     
+       background-color: #0019a8; 
+       border: none;
+       color: white;
+       padding: 5px 50px;
+
     }
 
 </style>
