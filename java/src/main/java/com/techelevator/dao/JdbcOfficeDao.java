@@ -8,11 +8,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class JdbcOfficeDao implements OfficeDao{
     private JdbcTemplate jdbcTemplate;
-
     public JdbcOfficeDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
+    @Override
+    public Office getOfficeInfoByOfficeId(long officeId) {
+        Office office = null;
+        String sql = "SELECT street_address, city, state, county, zip, consultation_fee FROM office WHERE office_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, officeId);
+        if (result.next()) {
+            office = mapRowToOffice(result);
+        }
+        return office;
+    }
 
     @Override
     public void updateInfoByOfficeId(Office office) {

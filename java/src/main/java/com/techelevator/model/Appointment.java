@@ -1,5 +1,6 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Appointment {
@@ -10,7 +11,7 @@ public class Appointment {
     private String startTime;
     private String endTime;
     private long appointmentStatusId;
-    private Date appointmentDate;
+    private LocalDate appointmentDate;
 
 //Getter and Setter
 
@@ -56,10 +57,10 @@ public class Appointment {
         this.appointmentStatusId = appointmentStatusId;
     }
 
-    public Date getAppointmentDate() {
+    public LocalDate getAppointmentDate() {
         return appointmentDate;
     }
-    public void setAppointmentDate(Date appointmentDate) {
+    public void setAppointmentDate(LocalDate appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
 }

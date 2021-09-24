@@ -5,14 +5,14 @@ import java.time.LocalDate;
 public class Doctor {
 
     private long doctorId;
-//    private String officeName;
     private String firstName;
     private String lastName;
     private String userType;
     private String summary;
     private LocalDate practicingFrom;
-//    private int accountId;
     private String accountUserType;
+    //    private String officeName;
+    //    private int accountId;
 
 
 
