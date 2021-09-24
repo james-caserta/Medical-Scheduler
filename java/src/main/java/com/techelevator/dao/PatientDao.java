@@ -9,9 +9,11 @@ public interface PatientDao {
 
     Patient getUserType(String userType); // user type being patient
 
-    Patient getFirstName(String firstName); // get firstName
+    Patient getPatient(long patientId);
 
-    Patient getLastName(String lastName); // get Last name
+    Patient createPatient(Patient patient);
+    void updatePatient(Patient patient);
+    void deletePatient(long patientId);
 
 
 

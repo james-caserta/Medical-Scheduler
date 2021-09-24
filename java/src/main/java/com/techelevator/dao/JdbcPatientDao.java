@@ -15,7 +15,6 @@ public class JdbcPatientDao implements PatientDao{
     }
 
 
-
     @Override
     public Patient getPatientById(long patientId) {
         String sql = "SELECT * FROM patient WHERE patient_id = ?";
@@ -28,22 +27,48 @@ public class JdbcPatientDao implements PatientDao{
     }
 
     @Override
+    public Patient getPatient(long patientId) {
+        Patient patient = null;
+        String sql = "SELECT patient_id, first_name, last_name, contact_number, email, accounts_id " +
+                "FROM patient " +
+                "WHERE patient_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
+        if (results.next()) {
+            patient = mapRowToPatient(results);
+        }
+        return patient;
+    }
+
+    @Override
+    public Patient createPatient(Patient patient) {
+        String sql = "INSERT INTO patient (first_name, last_name, contact_number, email) " +
+                "VALUES (?, ?, ?, ?) RETURNING park_id;";
+        Long newId = jdbcTemplate.queryForObject(sql, Long.class,
+                patient.getFirstName(), patient.getLastName(), patient.getContactNumber(), patient.getEmail());
+
+        return getPatient(newId);
+    }
+
+    @Override
+    public void updatePatient(Patient patient) {
+        String sql = "UPDATE patient " +
+                "SET first_name = ?, last_name = ?, contact_number = ?, email = ? " +
+                "WHERE patient_id = ?;";
+        jdbcTemplate.update(sql, patient.getFirstName(), patient.getLastName(), patient.getContactNumber(), patient.getEmail());
+    }
+
+    @Override
+    public void deletePatient(long patientId) {
+        String sql = "DELETE FROM patient WHERE patient_id = ?;";
+        jdbcTemplate.update(sql, patientId);
+    }
+
+
+    @Override
     public Patient getUserType(String userType) {
-
         return null;
     }
 
-    @Override
-    public Patient getFirstName(String firstName) {
-
-        return null;
-    }
-
-    @Override
-    public Patient getLastName(String lastName) {
-
-        return null;
-    }
 
     @Override
     public boolean create(String firstName, String lastName) {
@@ -60,6 +85,7 @@ public class JdbcPatientDao implements PatientDao{
         patient.setContactNumber(results.getString("contact_number"));
         patient.setEmail(results.getString("email"));
         patient.setUserType(results.getString("user_type"));
+        patient.setAccountId(results.getLong("accounts_id"));
         return patient;
     }
 }
