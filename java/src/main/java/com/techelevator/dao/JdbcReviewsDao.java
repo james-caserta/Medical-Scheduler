@@ -12,7 +12,6 @@ import java.util.List;
 public class JdbcReviewsDao implements ReviewsDao{
 
     private JdbcTemplate jdbcTemplate;
-
     public JdbcReviewsDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -20,7 +19,7 @@ public class JdbcReviewsDao implements ReviewsDao{
     @Override
     public List<Reviews> findAllReviews() {
         List<Reviews> reviews = new ArrayList<>();
-        String sql = "SELECT * FROM patient_review";
+        String sql = "SELECT overall_rating, review, review_date FROM patient_review ";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
@@ -32,7 +31,7 @@ public class JdbcReviewsDao implements ReviewsDao{
 
     @Override
     public Reviews getReviewByPatientId(long patientId) {
-        String sql = "SELECT * FROM reviews WHERE patient_id = ?";
+        String sql = "SELECT overall_rating, review, review_date FROM patient_review WHERE patient_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
         if(results.next()) {
             return mapRowToReviews(results);
@@ -43,14 +42,13 @@ public class JdbcReviewsDao implements ReviewsDao{
 
     @Override
     public Reviews getReviewByOfficeId(long officeId) {
-        String sql = "SELECT * FROM reviews WHERE office_id = ?";
+        String sql = "SELECT overall_rating, review, review_date FROM patient_review WHERE office_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
         if(results.next()) {
             return mapRowToReviews(results);
         } else {
             throw new RuntimeException("officeId "+officeId+" was not found.");
         }
-
     }
 
     @Override
@@ -66,7 +64,6 @@ public class JdbcReviewsDao implements ReviewsDao{
         return reviews;
     }
 
-
     @Override
     public Reviews createReview(Reviews reviews) {
         String sql = "INSERT INTO patient_review (patient_review_id, patient_id, overall_rating, review, review_date, office_id) " +
@@ -77,27 +74,12 @@ public class JdbcReviewsDao implements ReviewsDao{
         return getReviews(newId);
     }
 
-//    @Override
-//    public void updateReview(Reviews reviews) {
-//        String sql = "UPDATE patient_review " +
-//                "SET overall_rating = ?, review = ?, review_date = ? " +
-//                "WHERE patient_review_id = ?;";
-//        jdbcTemplate.update(sql, reviews.getReviewRating(), reviews.getReview(), reviews.getReviewDate());
-//    }
-//
-//    @Override
-//    public void deleteReview(long patientReviewId) {
-//        String sql = "DELETE FROM patient_review WHERE patient_review_id = ?;";
-//        jdbcTemplate.update(sql, patientReviewId);
-//    }
 
     @Override
     public Reviews getReviewByPatientName(String firstName, String lastName) {
 
         return null;
     }
-
-
 
 
     // *** MAP ***
@@ -114,4 +96,19 @@ public class JdbcReviewsDao implements ReviewsDao{
 
         return reviews;
     }
+
+
+    //    @Override
+//    public void updateReview(Reviews reviews) {
+//        String sql = "UPDATE patient_review " +
+//                "SET overall_rating = ?, review = ?, review_date = ? " +
+//                "WHERE patient_review_id = ?;";
+//        jdbcTemplate.update(sql, reviews.getReviewRating(), reviews.getReview(), reviews.getReviewDate());
+//    }
+//
+//    @Override
+//    public void deleteReview(long patientReviewId) {
+//        String sql = "DELETE FROM patient_review WHERE patient_review_id = ?;";
+//        jdbcTemplate.update(sql, patientReviewId);
+//    }
 }

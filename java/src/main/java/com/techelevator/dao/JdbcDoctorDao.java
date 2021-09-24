@@ -37,22 +37,12 @@ public class JdbcDoctorDao implements DoctorDao{
     }
 
     @Override
-    public Doctor getOfficeName(String OfficeName) {
-        return null;
-    }
-
-    @Override
     public Doctor getUserType(String userType) {
         return null;
     }
 
     @Override
-    public Doctor getFirstName(String firstName) {
-        return null;
-    }
-
-    @Override
-    public Doctor getLastName(String lastName) {
+    public Doctor getSummary(String summary) {
         return null;
     }
 
@@ -66,12 +56,27 @@ public class JdbcDoctorDao implements DoctorDao{
         doctor.setDoctorId(results.getLong("doctor_id"));
         doctor.setFirstName(results.getString("first_name"));
         doctor.setLastName(results.getString("last_name"));
-        doctor.setOfficeName(results.getString("office_id"));
         doctor.setUserType(results.getString("user_type"));
         doctor.setSummary(results.getString("summary"));
         doctor.setPracticingFrom(results.getDate("practicing_from").toLocalDate());
-        doctor.setAccountId(results.getInt("account_id"));
+        doctor.setAccountUserType(results.getString("account_user_type"));
+//        doctor.setOfficeName(results.getString("office_id"));
         return doctor;
     }
+
+    //    @Override
+//    public Doctor getOfficeName(String OfficeName) {
+//        return null;
+//    }
+
+    //    @Override
+//    public Doctor getFirstName(String firstName) {
+//        return null;
+//    }
+//
+//    @Override
+//    public Doctor getLastName(String lastName) {
+//        return null;
+//    }
 
 }
