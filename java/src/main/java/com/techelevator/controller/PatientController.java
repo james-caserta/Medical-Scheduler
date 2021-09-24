@@ -1,22 +1,54 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.PatientDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.Patient;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @PreAuthorize("isAuthenticated()")
-@RequestMapping("patient")
+//@RequestMapping("patient")
 @RestController
 public class PatientController {
 
-    //private PatientDao patientDao;
+    private PatientDao patientDao;
     private UserDao userDao;
 
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
-    public long getPatient(){
-        return 0;
+    // get all patients
+//    @RequestMapping(path = "/patient", method = RequestMethod.GET)
+//    public List<Patient> findALlPatients(){
+//        return patientDao.findAllPatients();
+//    }
+
+    //get patient
+    @RequestMapping(path = "/patient/{id}", method = RequestMethod.GET)
+    public Patient getPatient(@PathVariable long patientId) {
+        return patientDao.getPatient(patientId);
     }
+
+
+    // create patient
+    @RequestMapping( path = "/patient/{id}", method = RequestMethod.POST)
+    public Patient addPatient(@RequestBody Patient patient, @PathVariable("id") long patientId) {
+        return patientDao.createPatient(patient);
+    }
+
+    // update patient
+    @RequestMapping(path = "/patient/{id}", method = RequestMethod.PUT)
+    public Patient updatePatient(@Valid @RequestBody Patient patient, @PathVariable long patientId) {
+           return patientDao.updatePatient(patient, patientId);
+    }
+
+    //delete patient
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/patient/{id}", method = RequestMethod.DELETE)
+    public void deletePatient(@PathVariable long patientId) {
+        patientDao.deletePatient(patientId);
+    }
+
 }

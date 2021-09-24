@@ -4,10 +4,12 @@ public class Office {
 
     private long officeId;
     private long doctorId;
-    private String address;
-    private String phoneNumber;
-    private String officeHours;
-    private String costPerHour;
+    private String streetAddress;
+    private String city;
+    private String state;
+    private String county;
+    private String zip;
+    private int consultationFee;
 
 
 // Getter and Setter
@@ -25,31 +27,45 @@ public class Office {
         this.doctorId = doctorId;
     }
 
-    public String getAddress() {
-        return address;
+    public String getStreetAddress() {
+        return streetAddress;
     }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
     }
 
-    public String getOfficeHours() {
-        return officeHours;
+    public String getCity() {
+        return city;
     }
-    public void setOfficeHours(String officeHours) {
-        this.officeHours = officeHours;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getCostPerHour() {
-        return costPerHour;
+    public String getState() {
+        return state;
     }
-    public void setCostPerHour(String costPerHour) {
-        this.costPerHour = costPerHour;
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public int getConsultationFee() {
+        return consultationFee;
+    }
+    public void setConsultationFee(int consultationFee) {
+        this.consultationFee = consultationFee;
     }
 }

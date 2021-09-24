@@ -2,11 +2,11 @@
 
     <div id="register">
 <form class="form-register" @submit.prevent="register">
-      <button class="btn btn-lg btn-primary btn-block" id="registerbtn">Register</button><br>
+      <button class="btn btn-lg btn-primary btn-block" id="registerbtn">Register</button>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label><br>
+      <label for="username" class="sr-only">Username</label>
       <input
         type="text"
         id="username"
@@ -15,8 +15,8 @@
         v-model="user.username"
         required
         autofocus
-      /><br>
-      <label for="password" class="sr-only">Password</label><br>
+      />
+      <label for="password" class="sr-only">Password</label>
       <input
         type="password"
         id="password"
@@ -24,7 +24,7 @@
         placeholder="Password"
         v-model="user.password"
         required
-      /><br>
+      />
       <input
         type="password"
         id="confirmPassword"
@@ -32,12 +32,12 @@
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
-      /><br>
+      />
       
-      <input type="checkbox" id="doctor-box" class="form-control" v-model="isDoctor"> <label for="doctor-box" class="sr-only">Are you a doctor?</label><br>
+      <div class="doctor-box"><input type="checkbox" id="doctor-box" class="form-control" v-model="isDoctor"> <label for="doctor-box">Are you a doctor?</label></div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Submit
-      </button><br><br>
+      </button>
 
       <!-- <router-link :to="{ name: 'login' }">Already registered?</router-link> -->
 </form>
@@ -47,9 +47,12 @@
 
 <style>
 
-    .form-control {
-
-        margin: 3px;
+    .form-register {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+        
     }
 
     .btn {
@@ -63,16 +66,25 @@
   width: 140px;
   height: 35px;
   font-weight: 600;
+  padding-left: 5px;
   }
 
   #registerbtn {
 
     cursor: default;
+    pointer-events: none;
   }
 
   .sr-only {
 
     font-weight: 600;
+    margin-right: 5.5rem;
+    align-items: left;
+  }
+
+  .doctor-box {
+
+    margin-right: 1rem;
   }
 
     

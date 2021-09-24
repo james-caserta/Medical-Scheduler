@@ -1,19 +1,35 @@
 <template>
   <div class="splash">
-    <div id="nav"><span id="logo">DrSched</span>
+    <div class="nav"><span id="logo">DrSched</span>
       
-      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token = ''">Login</router-link>
+    <span id="header2">We make booking with your doctor easy.</span>
+    <span id="header3">Find your doctor and book today.</span>
       <!-- <router-link v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''">Home</router-link>&nbsp; &nbsp; -->
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      
     </div>
-    <!-- <splashslogan id="splashslogan"></splashslogan> -->
+    
     <registration id="registration"></registration>
+    <!-- <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token = ''">Login</router-link>
+    <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
 
   </div>
 
 </template>
 
 <style>
+
+    .nav {
+
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      height: 90%;
+      justify-content: flex-start;
+      align-items: left;
+      gap: 3rem;
+    }
 
     .splash {
 
@@ -33,24 +49,44 @@
     display: flex;
     align-items: center;
     justify-content: right;
-    margin-right: 5rem;
+    margin-right: 12rem;
+    width: 100%;
+    
       
     }
 
-    #splashslogan {
+    #header2 {
+
 
       display: flex;
-      justify-content: left;
-      align-items: top;
+      justify-content: flex-start;
+      align-items: center;
+      height: 20%;
+      font-weight: 800;
+      font-size: 3em;
+      color:#07329E;
+
+    }
+
+    #header3 {
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 5%;
+      font-weight: 800;
+      font-size: 1.5em;
+      color:#07329E;
 
     }
 
     #logo {
 
     color:#07329E;
-    font-size: 3em;
+    font-size: 4em;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
+    margin-bottom: 5rem;
   }
 
 

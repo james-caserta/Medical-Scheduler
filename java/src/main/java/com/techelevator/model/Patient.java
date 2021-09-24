@@ -3,10 +3,12 @@ package com.techelevator.model;
 public class Patient {
 
     private long patientId;
+    private long accountId;
     private String userType;
     private String firstName;
     private String lastName;
-    private String birthDate;
+    private String email;
+    private String contactNumber;
 
 
 // Getter and Setter
@@ -15,6 +17,13 @@ public class Patient {
     }
     public void setPatientId(long patientId) {
         this.patientId = patientId;
+    }
+
+    public long getAccountId() {
+        return accountId;
+    }
+    public void setAccountId(long accountId) {
+        this.accountId = accountId;
     }
 
     public String getFirstName() {
@@ -31,11 +40,18 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public String getBirthDate() {
-        return birthDate;
+    public String getEmail() {
+        return email;
     }
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     public String getUserType() {
