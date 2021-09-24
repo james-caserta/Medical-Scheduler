@@ -40,17 +40,17 @@ public class ReviewController {
     }
 
 // update review
-    @RequestMapping(path = "/review/{id}", method = RequestMethod.PUT)
-    public void update(@Valid @RequestBody Reviews reviews, @PathVariable long patientReviewId) {
-     //   return reviewsDao.updateReview(reviews, patientReviewId);
-    }
+//    @RequestMapping(path = "/review/{id}", method = RequestMethod.PUT)
+//    public void update(@Valid @RequestBody Reviews reviews, @PathVariable long patientReviewId) {
+//       return reviewsDao.updateReview(reviews, patientReviewId);
+//    }
 
 //delete review
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/review/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable long patientReviewId) {
-        reviewsDao.deleteReview(patientReviewId);
-    }
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    @RequestMapping(path = "/review/{id}", method = RequestMethod.DELETE)
+//    public void delete(@PathVariable long patientReviewId) {
+//        reviewsDao.deleteReview(patientReviewId);
+//    }
 
 
 

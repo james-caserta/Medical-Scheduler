@@ -77,19 +77,19 @@ public class JdbcReviewsDao implements ReviewsDao{
         return getReviews(newId);
     }
 
-    @Override
-    public void updateReview(Reviews reviews) {
-        String sql = "UPDATE patient_review " +
-                "SET overall_rating = ?, review = ?, review_date = ? " +
-                "WHERE patient_review_id = ?;";
-        jdbcTemplate.update(sql, reviews.getReviewRating(), reviews.getReview(), reviews.getReviewDate());
-    }
-
-    @Override
-    public void deleteReview(long patientReviewId) {
-        String sql = "DELETE FROM patient_review WHERE patient_review_id = ?;";
-        jdbcTemplate.update(sql, patientReviewId);
-    }
+//    @Override
+//    public void updateReview(Reviews reviews) {
+//        String sql = "UPDATE patient_review " +
+//                "SET overall_rating = ?, review = ?, review_date = ? " +
+//                "WHERE patient_review_id = ?;";
+//        jdbcTemplate.update(sql, reviews.getReviewRating(), reviews.getReview(), reviews.getReviewDate());
+//    }
+//
+//    @Override
+//    public void deleteReview(long patientReviewId) {
+//        String sql = "DELETE FROM patient_review WHERE patient_review_id = ?;";
+//        jdbcTemplate.update(sql, patientReviewId);
+//    }
 
     @Override
     public Reviews getReviewByPatientName(String firstName, String lastName) {
@@ -107,10 +107,10 @@ public class JdbcReviewsDao implements ReviewsDao{
         reviews.setOfficeId(results.getLong("office_id"));
         reviews.setReviewRating(results.getInt("overall_rating"));
         reviews.setReviewDate(results.getDate("review_date").toLocalDate());
-//        reviews.setPatientFirstName(results.getString("first_name"));
-//        reviews.setPatientLastName(results.getString("last_name"));
         reviews.setPatientReviewId(results.getInt("patient_review_id"));
         reviews.setReview(results.getString("review"));
+//        reviews.setPatientFirstName(results.getString("first_name"));
+//        reviews.setPatientLastName(results.getString("last_name"));
 
         return reviews;
     }

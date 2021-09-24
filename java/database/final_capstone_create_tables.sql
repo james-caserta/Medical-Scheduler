@@ -46,7 +46,6 @@ CREATE TABLE doctor (
 -- Table: doctor_availability
 CREATE TABLE doctor_availability (
     doctor_availability_id int  NOT NULL DEFAULT nextval( 'seq_doctor_availability_id' :: regclass ),
-    doctor_availability_id int  NOT NULL,
     office_doctor_id int  NOT NULL,
     day_of_week varchar(10)  NOT NULL,
     start_time timestamp  NOT NULL,

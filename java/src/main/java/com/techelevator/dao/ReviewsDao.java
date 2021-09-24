@@ -15,7 +15,10 @@ public interface ReviewsDao {
     Reviews getReviewByOfficeId(long officeId);
 
     Reviews getReviews(long patientReviewId);
+
     Reviews createReview(Reviews reviews);
-    void updateReview(Reviews reviews);
-    void deleteReview(long patientReviewId);
+
+//    void updateReview(Reviews reviews);
+
+//    void deleteReview(long patientReviewId);
 }
