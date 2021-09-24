@@ -42,11 +42,6 @@ public class JdbcReviewsDao implements ReviewsDao{
     }
 
     @Override
-    public Reviews getReviewByPatientName(String firstName, String lastName) {
-        return null;
-    }
-
-    @Override
     public Reviews getReviewByOfficeId(long officeId) {
         String sql = "SELECT * FROM reviews WHERE office_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
@@ -58,8 +53,54 @@ public class JdbcReviewsDao implements ReviewsDao{
 
     }
 
+    @Override
+    public Reviews getReviews(long patientReviewId) {
+        Reviews reviews = null;
+        String sql = "SELECT patient_review_id, patient_id, overall_rating, review, review_date, office_id " +
+                "FROM patient_review " +
+                "WHERE patient_review_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientReviewId);
+        if (results.next()) {
+            reviews = mapRowToReviews(results);
+        }
+        return reviews;
+    }
 
-// *** MAP ***
+
+    @Override
+    public Reviews createReview(Reviews reviews) {
+        String sql = "INSERT INTO patient_review (patient_review_id, patient_id, overall_rating, review, review_date, office_id) " +
+                "VALUES (?, ?, ?, ?, ?, ?) RETURNING patient_review_id;";
+        Long newId = jdbcTemplate.queryForObject(sql, Long.class, reviews.getPatientReviewId(), reviews.getPatientId(), reviews.getReviewRating(),
+                reviews.getReview(), reviews.getReviewDate(), reviews.getOfficeId());
+
+        return getReviews(newId);
+    }
+
+    @Override
+    public void updateReview(Reviews reviews) {
+        String sql = "UPDATE patient_review " +
+                "SET overall_rating = ?, review = ?, review_date = ? " +
+                "WHERE patient_review_id = ?;";
+        jdbcTemplate.update(sql, reviews.getReviewRating(), reviews.getReview(), reviews.getReviewDate());
+    }
+
+    @Override
+    public void deleteReview(long patientReviewId) {
+        String sql = "DELETE FROM patient_review WHERE patient_review_id = ?;";
+        jdbcTemplate.update(sql, patientReviewId);
+    }
+
+    @Override
+    public Reviews getReviewByPatientName(String firstName, String lastName) {
+
+        return null;
+    }
+
+
+
+
+    // *** MAP ***
     private Reviews mapRowToReviews(SqlRowSet results){
         Reviews reviews = new Reviews();
         reviews.setPatientId(results.getLong("patient_id"));
@@ -68,8 +109,8 @@ public class JdbcReviewsDao implements ReviewsDao{
         reviews.setReviewDate(results.getDate("review_date").toLocalDate());
 //        reviews.setPatientFirstName(results.getString("first_name"));
 //        reviews.setPatientLastName(results.getString("last_name"));
-//        reviews.setPatientReviewId(results.getInt("patient_review_id"));
-//        reviews.setReview(results.getString("review"));
+        reviews.setPatientReviewId(results.getInt("patient_review_id"));
+        reviews.setReview(results.getString("review"));
 
         return reviews;
     }

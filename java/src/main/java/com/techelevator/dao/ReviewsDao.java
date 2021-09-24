@@ -13,4 +13,9 @@ public interface ReviewsDao {
     Reviews getReviewByPatientName(String firstName, String lastName);
 
     Reviews getReviewByOfficeId(long officeId);
+
+    Reviews getReviews(long patientReviewId);
+    Reviews createReview(Reviews reviews);
+    void updateReview(Reviews reviews);
+    void deleteReview(long patientReviewId);
 }

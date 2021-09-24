@@ -10,6 +10,8 @@ public class Reviews {
     private String patientLastName;
     private int reviewRating;
     private LocalDate reviewDate;
+    private long patientReviewId;
+    private String review;
 
     public long getPatientId() {
         return patientId;
@@ -51,5 +53,19 @@ public class Reviews {
     }
     public void setReviewDate(LocalDate reviewDate) {
         this.reviewDate = reviewDate;
+    }
+
+    public long getPatientReviewId() {
+        return patientReviewId;
+    }
+    public void setPatientReviewId(int patientReviewId) {
+        this.patientReviewId = patientReviewId;
+    }
+
+    public String getReview() {
+        return review;
+    }
+    public void setReview(String review) {
+        this.review = review;
     }
 }
