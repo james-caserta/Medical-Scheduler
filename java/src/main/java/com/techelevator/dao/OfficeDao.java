@@ -4,9 +4,9 @@ import com.techelevator.model.Office;
 
 public interface OfficeDao {
 
-    Office updateInfoByOfficeId(long officeId);
+    void updateInfoByOfficeId(Office office);
 
-    Office updateInfoByDoctorId(long doctorId);
+    void updateInfoByDoctorId(Office office);
 
 
 }

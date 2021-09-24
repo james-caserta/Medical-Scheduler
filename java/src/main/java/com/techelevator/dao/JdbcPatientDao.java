@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Doctor;
+
 import com.techelevator.model.Patient;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -17,8 +17,14 @@ public class JdbcPatientDao implements PatientDao{
 
 
     @Override
-    public Patient getPatientById(long patientID) {
-        return null;
+    public Patient getPatientById(long patientId) {
+        String sql = "SELECT * FROM patient WHERE patient_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
+        if(results.next()) {
+            return mapRowToPatient(results);
+        } else {
+            throw new RuntimeException("patientId "+patientId+" was not found.");
+        }
     }
 
     @Override
@@ -36,6 +42,8 @@ public class JdbcPatientDao implements PatientDao{
         return false;
     }
 
+
+// *** MAP ***
     private Patient mapRowToPatient(SqlRowSet results) {
         Patient patient = new Patient();
         patient.setPatientId(results.getLong("patient_id"));
