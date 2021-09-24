@@ -5,16 +5,15 @@ import java.time.LocalDate;
 public class Doctor {
 
     private long doctorId;
-    private String officeName;
+//    private String officeName;
     private String firstName;
     private String lastName;
     private String userType;
     private String summary;
     private LocalDate practicingFrom;
-    private int accountId;
+//    private int accountId;
+    private String accountUserType;
 
-    // ** calendar availability **
-    // private String availability;
 
 
 // Getter and Setter
@@ -23,13 +22,6 @@ public class Doctor {
     }
     public void setDoctorId(long doctorId) {
         this.doctorId = doctorId;
-    }
-
-    public String getOfficeName() {
-        return officeName;
-    }
-    public void setOfficeName(String officeName) {
-        this.officeName = officeName;
     }
 
     public String getFirstName() {
@@ -67,11 +59,28 @@ public class Doctor {
         this.practicingFrom = practicingFrom;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public String getAccountUserType() {
+        return accountUserType;
     }
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setAccountUserType(String accountUserType) {
+        this.accountUserType = accountUserType;
     }
+
+
+
+    //    public String getOfficeName() {
+//        return officeName;
+//    }
+//    public void setOfficeName(String officeName) {
+//        this.officeName = officeName;
+//    }
+
+
+//    public int getAccountId() {
+//        return accountId;
+//    }
+//    public void setAccountId(int accountId) {
+//        this.accountId = accountId;
+//    }
 }
 
