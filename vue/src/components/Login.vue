@@ -2,7 +2,7 @@
   <div id="login" class="loginview">
     
     <form class="form-signin" @submit.prevent="login">
-      <button class="btn btn-lg btn-primary btn-block" id="registerbtn">Login</button>
+      <span id="registerbtn">Login</span>
       <div
         class="alert alert-danger"
         role="alert"
@@ -77,14 +77,50 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 
 .form-signin {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background: #272b4a;
+    border-radius: 1rem;
+    padding: 2rem;
         
     }
+
+    .btn {
+  margin: 3px;
+  background: #6b89c6;
+	border-radius: 1rem;
+	font-family: 'Open Sans', sans-serif;
+	cursor: pointer;
+  font-size: 1.25em;
+  color: white;
+  width: 140px;
+  height: 35px;
+  font-weight: 600;
+  padding-left: 5px;
+  }
+
+  .sr-only {
+
+    font-weight: 600;
+    margin-right: 5.5rem;
+    align-items: left;
+    color: white;
+  }
+
+  #registerbtn {
+
+  font-size: 1.25em;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-bottom: 1rem;
+  }
 
 </style>
