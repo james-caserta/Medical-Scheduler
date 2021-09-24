@@ -10,7 +10,7 @@ Vue.use(Vuex)
  * exists you should set the header so that it will be attached to each request
  */
 const currentToken = localStorage.getItem('token')
-const currentUser = JSON.parse(localStorage.getItem('account'));
+const currentUser = JSON.parse(localStorage.getItem('user'));
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -27,15 +27,15 @@ export default new Vuex.Store({
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     },
-    SET_USER(state, account) {
-      state.user = account;
-      localStorage.setItem('account',JSON.stringify(account));
+    SET_USER(state, user) {
+      state.user = user;
+      localStorage.setItem('user',JSON.stringify(user));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       state.token = '';
-      state.account = {};
+      state.user = {};
       axios.defaults.headers.common = {};
     }
   }

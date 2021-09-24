@@ -19,7 +19,7 @@
         id="username"
         class="form-control"
         placeholder="Username"
-        v-model="account.user_name"
+        v-model="user.username"
         required
         autofocus
       />
@@ -29,7 +29,7 @@
         id="password"
         class="form-control"
         placeholder="Password"
-        v-model="account.password"
+        v-model="user.password"
         required
       />
       <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -48,11 +48,9 @@ export default {
   components: {},
   data() {
     return {
-      account: {
-        user_name: "",
-        password: "",
-        user_type: "",
-        email: "",
+      user: {
+        username: "",
+        password: ""
       },
       invalidCredentials: false
     };
@@ -60,7 +58,7 @@ export default {
   methods: {
     login() {
       authService
-        .login(this.account)
+        .login(this.user)
         .then(response => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);

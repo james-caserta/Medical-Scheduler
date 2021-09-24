@@ -12,7 +12,7 @@
         id="username"
         class="form-control"
         placeholder="Username"
-        v-model="account.username"
+        v-model="user.username"
         required
         autofocus
       />
@@ -22,7 +22,7 @@
         id="password"
         class="form-control"
         placeholder="Password"
-        v-model="account.password"
+        v-model="user.password"
         required
       />
       <input
@@ -30,7 +30,7 @@
         id="confirmPassword"
         class="form-control"
         placeholder="Confirm Password"
-        v-model="account.confirmPassword"
+        v-model="user.confirmPassword"
         required
       />
       
@@ -122,11 +122,11 @@ export default {
 data() {
     return {
     isDoctor: false,
-      account: {
-        user_name: '',
+      user: {
+        username: '',
         password: '',
         confirmPassword: '',
-        user_type: 'patient',
+        role: 'user',
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
@@ -140,9 +140,9 @@ data() {
       } 
       
       else if(this.isDoctor === true) {
-          this.account.user_type = "doctor";
+          this.user.role = "doctor";
         authService
-          .register(this.account)
+          .register(this.user)
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
@@ -162,7 +162,7 @@ data() {
       
       else {
         authService
-          .register(this.account)
+          .register(this.user)
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
