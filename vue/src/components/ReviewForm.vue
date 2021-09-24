@@ -48,15 +48,19 @@ data(){
 }
 </script>
 
-<style>
+<style scoped>
 
-    form.reviewForm{
+    *{
         max-width: 420px;
         margin: 30 px auto;
         background: white;
         text-align: left;
-        padding: 40px;
+       
         border-radius: 10px ;
+    }
+
+    #rating{
+
     }
 
 
