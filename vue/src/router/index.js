@@ -6,7 +6,7 @@ import Logout from '../views/Logout.vue'
 import RegisterPatient from '../views/RegisterPatient.vue'
 import store from '../store/index'
 import Splash from '../views/Splash.vue'
-import RegisterDoctor from '../views/RegisterDoctor.vue'
+import Review from '../views/Review.vue'
 
 Vue.use(Router)
 
@@ -64,9 +64,9 @@ const router = new Router({
     }
     },
     {
-      path: "/register-doctor",
-      name: "registerDoctor",
-      component: RegisterDoctor,
+      path: "/profile",
+      name: "profile",
+      component: Review,
       meta: {
         requiresAuth: false
       }

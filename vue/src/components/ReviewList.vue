@@ -15,7 +15,7 @@ export default {
 name: 'list-of-reviews',
     data(){
         return{
-            reviews:[{id: 1, review: 'review 1', rating: 3},{id: 2, review: 'review 2' , rating: 3},{id: 2, review: 'review 3', rating: 3}]
+            reviews:[]
 
         }
     },
