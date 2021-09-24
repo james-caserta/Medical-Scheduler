@@ -2,7 +2,7 @@
 
     <div id="register">
 <form class="form-register" @submit.prevent="register">
-      <button class="btn btn-lg btn-primary btn-block" id="registerbtn">Register</button>
+      <span id="registerbtn">Register</span>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -45,20 +45,23 @@
   
 </template>
 
-<style>
+<style scoped>
 
     .form-register {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 5px;
+      background: #272b4a;
+      border-radius: 1rem;
+      padding: 2rem;
         
     }
 
     .btn {
   margin: 3px;
-  background: black;
-	border-radius: 15px;
+  background: #6b89c6;
+	border-radius: 1rem;
 	font-family: 'Open Sans', sans-serif;
 	cursor: pointer;
   font-size: 1.25em;
@@ -71,8 +74,12 @@
 
   #registerbtn {
 
-    cursor: default;
-    pointer-events: none;
+  font-size: 1.25em;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-bottom: 1rem;
   }
 
   .sr-only {
@@ -80,13 +87,24 @@
     font-weight: 600;
     margin-right: 5.5rem;
     align-items: left;
+    color: white;
   }
 
   .doctor-box {
 
     margin-right: 1rem;
+    color: white;
   }
 
+  #register {
+
+    
+  }
+
+  .form-control {
+
+    
+  }
     
 
 </style>
