@@ -19,7 +19,7 @@ CREATE TABLE appointment (
     start_time timestamp  NOT NULL,
     end_time timestamp  NOT NULL,
     appointment_status_id int  NOT NULL,
-    appoinment_date date  NOT NULL,
+    appointment_date date  NOT NULL,
     CONSTRAINT appointment_pk PRIMARY KEY (appointment_id)
 );
 
@@ -45,13 +45,17 @@ CREATE TABLE doctor (
 
 -- Table: doctor_availability
 CREATE TABLE doctor_availability (
+<<<<<<< HEAD
     doctor_avalibility_id int  NOT NULL DEFAULT nextval( 'seq_doctor_availability_id' :: regclass ),
+=======
+    doctor_availability_id int  NOT NULL,
+>>>>>>> 484ae623cdb4aa747b06a6ad3aa438fa90db58a0
     office_doctor_id int  NOT NULL,
     day_of_week varchar(10)  NOT NULL,
     start_time timestamp  NOT NULL,
     end_time timestamp  NOT NULL,
     availability char(1)  NOT NULL,
-    CONSTRAINT doctor_availability_pk PRIMARY KEY (doctor_avalibility_id)
+    CONSTRAINT doctor_availability_pk PRIMARY KEY (doctor_availability_id)
 );
 
 -- Table: doctor_response
@@ -68,7 +72,7 @@ CREATE TABLE doctor_response (
 CREATE TABLE office (
     office_id int  NOT NULL DEFAULT nextval( 'seq_office_id' :: regclass ),
     doctor_id int  NOT NULL,
-    consulation_fee int  NOT NULL,
+    consultation_fee int  NOT NULL,
     street_address varchar(100)  NOT NULL,
     city varchar(100)  NOT NULL,
     state varchar(100)  NOT NULL,
