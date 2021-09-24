@@ -2,12 +2,12 @@ import axios from 'axios';
 
 export default {
 
-  login(user) {
-    return axios.post('/login', user)
+  login(account) {
+    return axios.post('/login', account)
   },
 
-  register(user) {
-    return axios.post('/register', user)
+  register(account) {
+    return axios.post('/register', account)
   }
 
 }
