@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import store from '../store/index'
 import Splash from '../views/Splash.vue'
+import Review from '../views/Review.vue'
 
 Vue.use(Router)
 
@@ -52,6 +53,14 @@ const router = new Router({
     meta: {
       requiresAuth: false
     }
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: Review,
+      meta: {
+        requiresAuth: false
+      }
     },
   ]
 })
