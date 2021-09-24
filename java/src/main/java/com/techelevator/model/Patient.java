@@ -3,8 +3,7 @@ package com.techelevator.model;
 public class Patient {
 
     private long patientId;
-//    private String userType;
-//    private isDoctor;
+    private String userType;
     private String firstName;
     private String lastName;
     private String email;
@@ -47,10 +46,10 @@ public class Patient {
         this.contactNumber = contactNumber;
     }
 
-    //    public String getUserType() {
-//        return userType;
-//    }
-//    public void setUserType(String userType) {
-//        this.userType = userType;
-//    }
+    public String getUserType() {
+        return userType;
+    }
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 }

@@ -11,7 +11,7 @@ public interface DoctorDao {
 
     Doctor getOfficeName(String OfficeName); // Office ID that the doctor is linked
 
-    Doctor getIsDoctor(boolean isDoctor); // user is/isn't doctor
+    Doctor getUserType(String userType); // user is doctor
 
     Doctor getFirstName(String firstName); // get firstName
 

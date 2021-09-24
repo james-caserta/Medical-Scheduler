@@ -13,7 +13,6 @@ import java.util.List;
 public class JdbcDoctorDao implements DoctorDao{
 
     private JdbcTemplate jdbcTemplate;
-
     public JdbcDoctorDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -29,7 +28,6 @@ public class JdbcDoctorDao implements DoctorDao{
             Doctor doctor = mapRowToDoctor(results);
             doctors.add(doctor);
         }
-
         return doctors;
     }
 
@@ -44,7 +42,7 @@ public class JdbcDoctorDao implements DoctorDao{
     }
 
     @Override
-    public Doctor getIsDoctor(boolean isDoctor) {
+    public Doctor getUserType(String userType) {
         return null;
     }
 
@@ -69,10 +67,10 @@ public class JdbcDoctorDao implements DoctorDao{
         doctor.setFirstName(results.getString("first_name"));
         doctor.setLastName(results.getString("last_name"));
         doctor.setOfficeName(results.getString("office_id"));
-        doctor.setIsDoctor(results.getBoolean("is_doctor"));
-//        doctor.setSummary(results.getString("summary"));
-//        doctor.setPracticingFrom(results.getDate("practicing_from"));
-//        doctor.setAccountId(results.getInt("account_id"));
+        doctor.setUserType(results.getString("user_type"));
+        doctor.setSummary(results.getString("summary"));
+        doctor.setPracticingFrom(results.getDate("practicing_from").toLocalDate());
+        doctor.setAccountId(results.getInt("account_id"));
         return doctor;
     }
 

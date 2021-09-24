@@ -28,12 +28,20 @@ public class JdbcPatientDao implements PatientDao{
     }
 
     @Override
+    public Patient getUserType(String userType) {
+
+        return null;
+    }
+
+    @Override
     public Patient getFirstName(String firstName) {
+
         return null;
     }
 
     @Override
     public Patient getLastName(String lastName) {
+
         return null;
     }
 
@@ -49,9 +57,9 @@ public class JdbcPatientDao implements PatientDao{
         patient.setPatientId(results.getLong("patient_id"));
         patient.setFirstName(results.getString("first_name"));
         patient.setLastName(results.getString("last_name"));
-        // patient.setContactNumber(results.getString("contact_number"));
-        // patient.setEmail(results.getString("email"))
-        // patient.setIsDoctor(results.getBoolean("is_doctor"));
+        patient.setContactNumber(results.getString("contact_number"));
+        patient.setEmail(results.getString("email"));
+        patient.setUserType(results.getString("user_type"));
         return patient;
     }
 }

@@ -1,14 +1,16 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
+
 public class Doctor {
 
     private long doctorId;
     private String officeName;
     private String firstName;
     private String lastName;
-    private boolean isDoctor;
+    private String userType;
     private String summary;
-    private String practicingFrom;
+    private LocalDate practicingFrom;
     private int accountId;
 
     // ** calendar availability **
@@ -44,11 +46,11 @@ public class Doctor {
         this.lastName = lastName;
     }
 
-    public boolean isDoctor() {
-        return isDoctor;
+    public String getUserType() {
+        return userType;
     }
-    public void setIsDoctor(boolean doctor) {
-        isDoctor = doctor;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     public String getSummary() {
@@ -58,10 +60,10 @@ public class Doctor {
         this.summary = summary;
     }
 
-    public String getPracticingFrom() {
+    public LocalDate getPracticingFrom() {
         return practicingFrom;
     }
-    public void setPracticingFrom(String practicingFrom) {
+    public void setPracticingFrom(LocalDate practicingFrom) {
         this.practicingFrom = practicingFrom;
     }
 
