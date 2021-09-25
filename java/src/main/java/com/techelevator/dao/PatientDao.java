@@ -12,10 +12,6 @@ public interface PatientDao {
     Patient getPatient(long patientId);
 
     Patient createPatient(Patient patient);
-    void updatePatient(Patient patient);
-    void deletePatient(long patientId);
-
-
 
     boolean create(String firstName, String lastName);
 }

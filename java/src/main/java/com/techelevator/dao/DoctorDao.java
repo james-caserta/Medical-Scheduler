@@ -17,7 +17,7 @@ public interface DoctorDao {
 
     Doctor getLastName(String lastName); // get Last name
 
-    Doctor getSummary(String summary)
+    Doctor getSummary(String summary);
 
     boolean create(String firstName, String lastName, String officeName);
 

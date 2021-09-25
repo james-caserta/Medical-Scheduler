@@ -42,27 +42,12 @@ public class JdbcPatientDao implements PatientDao{
     @Override
     public Patient createPatient(Patient patient) {
         String sql = "INSERT INTO patient (first_name, last_name, contact_number, email) " +
-                "VALUES (?, ?, ?, ?) RETURNING park_id;";
+                "VALUES (?, ?, ?, ?) RETURNING patient_id;";
         Long newId = jdbcTemplate.queryForObject(sql, Long.class,
                 patient.getFirstName(), patient.getLastName(), patient.getContactNumber(), patient.getEmail());
 
         return getPatient(newId);
     }
-
-    @Override
-    public void updatePatient(Patient patient) {
-        String sql = "UPDATE patient " +
-                "SET first_name = ?, last_name = ?, contact_number = ?, email = ? " +
-                "WHERE patient_id = ?;";
-        jdbcTemplate.update(sql, patient.getFirstName(), patient.getLastName(), patient.getContactNumber(), patient.getEmail());
-    }
-
-    @Override
-    public void deletePatient(long patientId) {
-        String sql = "DELETE FROM patient WHERE patient_id = ?;";
-        jdbcTemplate.update(sql, patientId);
-    }
-
 
     @Override
     public Patient getUserType(String userType) {
@@ -85,7 +70,6 @@ public class JdbcPatientDao implements PatientDao{
         patient.setContactNumber(results.getString("contact_number"));
         patient.setEmail(results.getString("email"));
         patient.setUserType(results.getString("user_type"));
-        patient.setAccountId(results.getLong("accounts_id"));
         return patient;
     }
 }

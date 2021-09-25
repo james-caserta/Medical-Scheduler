@@ -11,7 +11,6 @@ public class Doctor {
     private String userType;
     private String summary;
     private LocalDate practicingFrom;
-    private int accountId;
 
     // ** calendar availability **
     // private String availability;
@@ -65,13 +64,6 @@ public class Doctor {
     }
     public void setPracticingFrom(LocalDate practicingFrom) {
         this.practicingFrom = practicingFrom;
-    }
-
-    public int getAccountId() {
-        return accountId;
-    }
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
     }
 }
 

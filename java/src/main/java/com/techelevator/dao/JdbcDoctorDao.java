@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Doctor;
 import com.techelevator.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -57,6 +58,11 @@ public class JdbcDoctorDao implements DoctorDao{
     }
 
     @Override
+    public Doctor getSummary(String summary) {
+        return null;
+    }
+
+    @Override
     public boolean create(String firstName, String lastName, String officeName) {
         return false;
     }
@@ -70,7 +76,6 @@ public class JdbcDoctorDao implements DoctorDao{
         doctor.setUserType(results.getString("user_type"));
         doctor.setSummary(results.getString("summary"));
         doctor.setPracticingFrom(results.getDate("practicing_from").toLocalDate());
-        doctor.setAccountId(results.getInt("account_id"));
         return doctor;
     }
 
