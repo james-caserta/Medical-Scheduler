@@ -33,7 +33,11 @@ CREATE TABLE doctor (
 
 -- Table: doctor_availability
 CREATE TABLE doctor_availability (
+<<<<<<< HEAD
     doctor_availability_id int  NOT NULL,
+=======
+    doctor_availability_id int  NOT NULL DEFAULT nextval( 'seq_doctor_availability_id' :: regclass ),
+>>>>>>> f2fa5c13a3f669c3a9d7b526c121070f1d2078c4
     office_doctor_id int  NOT NULL,
     day_of_week varchar(10)  NOT NULL,
     start_time timestamp  NOT NULL,

@@ -39,8 +39,22 @@ public class PatientController {
     }
 
     // update patient
+<<<<<<< HEAD
 
     //delete patient
 
+=======
+//    @RequestMapping(path = "/patient/{id}", method = RequestMethod.PUT)
+//    public Patient updatePatient(@Valid @RequestBody Patient patient, @PathVariable long patientId) {
+//           return patientDao.updatePatient(patient, patientId);
+//    }
+
+    //delete patient
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    @RequestMapping(path = "/patient/{id}", method = RequestMethod.DELETE)
+//    public void deletePatient(@PathVariable long patientId) {
+//        patientDao.deletePatient(patientId);
+//    }
+>>>>>>> f2fa5c13a3f669c3a9d7b526c121070f1d2078c4
 
 }

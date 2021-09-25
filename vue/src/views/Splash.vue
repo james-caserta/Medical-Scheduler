@@ -16,7 +16,7 @@
 
 </template>
 
-<style>
+<style scoped>
 
     .nav {
 
@@ -48,9 +48,8 @@
 
     display: flex;
     align-items: center;
-    justify-content: right;
-    margin-right: 12rem;
-    width: 100%;
+    justify-content: center;
+    width: 40%;
     
       
     }
@@ -65,6 +64,7 @@
       font-weight: 800;
       font-size: 3em;
       color:#07329E;
+      width: 40%;
 
     }
 
@@ -77,6 +77,7 @@
       font-weight: 800;
       font-size: 1.5em;
       color:#07329E;
+      margin-top: 1rem;
 
     }
 

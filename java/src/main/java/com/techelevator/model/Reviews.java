@@ -6,12 +6,11 @@ public class Reviews {
 
     private long patientId;
     private long officeId;
-    private String patientFirstName;
-    private String patientLastName;
     private int reviewRating;
     private LocalDate reviewDate;
     private long patientReviewId;
     private String review;
+
 
     public long getPatientId() {
         return patientId;
@@ -25,20 +24,6 @@ public class Reviews {
     }
     public void setOfficeId(long officeId) {
         this.officeId = officeId;
-    }
-
-    public String getPatientFirstName() {
-        return patientFirstName;
-    }
-    public void setPatientFirstName(String patientFirstName) {
-        this.patientFirstName = patientFirstName;
-    }
-
-    public String getPatientLastName() {
-        return patientLastName;
-    }
-    public void setPatientLastName(String patientLastName) {
-        this.patientLastName = patientLastName;
     }
 
     public int getReviewRating() {
@@ -68,4 +53,5 @@ public class Reviews {
     public void setReview(String review) {
         this.review = review;
     }
+
 }
