@@ -3,11 +3,7 @@ package com.techelevator.model;
 public class Patient {
 
     private long patientId;
-<<<<<<< HEAD
     private String userType;
-=======
-    private String accountUserType;
->>>>>>> f2fa5c13a3f669c3a9d7b526c121070f1d2078c4
     private String firstName;
     private String lastName;
     private String city;
@@ -26,16 +22,13 @@ public class Patient {
         this.patientId = patientId;
     }
 
-<<<<<<< HEAD
-=======
-    public String getAccountUserType() {
-        return accountUserType;
+    public String getUserType() {
+        return userType;
     }
-    public void setAccountUserType(String accountUserType) {
-        this.accountUserType = accountUserType;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
->>>>>>> f2fa5c13a3f669c3a9d7b526c121070f1d2078c4
     public String getFirstName() {
         return firstName;
     }
