@@ -123,4 +123,9 @@ export default {
   margin-bottom: 1rem;
   }
 
+  .alert {
+
+      color: white;
+  }
+
 </style>

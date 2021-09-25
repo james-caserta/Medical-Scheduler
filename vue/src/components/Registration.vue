@@ -103,7 +103,12 @@
 
   .form-control {
 
-    
+
+  }
+
+  .alert {
+
+      color: white;
   }
     
 
