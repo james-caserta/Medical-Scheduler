@@ -6,7 +6,7 @@ public interface AppointmentDao {
 
     Appointment createAppointment(Appointment appointment);
 
-    Appointment getAppointment();
+    Appointment getAppointment(long appointmentId);
 
     Appointment getAppointmentById(long appointmentId);
 }

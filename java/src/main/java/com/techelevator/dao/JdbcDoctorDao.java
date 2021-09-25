@@ -1,7 +1,6 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Doctor;
-import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -32,8 +31,26 @@ public class JdbcDoctorDao implements DoctorDao{
     }
 
     @Override
-    public Doctor getDoctorById(long doctorID) {
-        return null;
+    public Doctor createDoctor(Doctor doctor) {
+            String sql = "INSERT INTO doctor (first_name, last_name, user_type, summary, practicing_from, account_user_type) " +
+                    "VALUES (?, ?, ?, ?, ?, ?) RETURNING doctor_id;";
+            Long newId = jdbcTemplate.queryForObject(sql, Long.class,
+                    doctor.getFirstName(), doctor.getLastName(), doctor.getUserType(), doctor.getSummary(), doctor.getPracticingFrom(), doctor.getAccountUserType());
+
+            return getDoctor(newId);
+    }
+
+    @Override
+    public Doctor getDoctor(long doctorId) {
+        Doctor doctor = null;
+        String sql = "SELECT doctor_id, first_name, last_name, user_type, summary, practicing_from, account_user_type " +
+                "FROM doctor " +
+                "WHERE doctor_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
+        if (results.next()) {
+            doctor = mapRowToDoctor(results);
+        }
+        return doctor;
     }
 
     @Override
@@ -43,7 +60,14 @@ public class JdbcDoctorDao implements DoctorDao{
 
     @Override
     public Doctor getSummary(String summary) {
-        return null;
+        Doctor doctor = null;
+        String sql = "SELECT summary " +
+                "FROM doctor ";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        if (results.next()) {
+            doctor = mapRowToDoctor(results);
+        }
+        return doctor;
     }
 
     @Override

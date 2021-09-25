@@ -1,13 +1,16 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Doctor;
+import com.techelevator.model.Patient;
 
 import java.util.List;
 
 public interface DoctorDao {
     List<Doctor> findAll();
 
-    Doctor getDoctorById(long doctorID); // get the Doctors Id
+    Doctor createDoctor(Doctor doctor);
+
+    Doctor getDoctor(long doctorId); // get the Doctors Id
 
     Doctor getUserType(String userType); // user is doctor
 

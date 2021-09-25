@@ -75,12 +75,6 @@ public class JdbcReviewsDao implements ReviewsDao{
     }
 
 
-    @Override
-    public Reviews getReviewByPatientName(String firstName, String lastName) {
-
-        return null;
-    }
-
 
     // *** MAP ***
     private Reviews mapRowToReviews(SqlRowSet results){

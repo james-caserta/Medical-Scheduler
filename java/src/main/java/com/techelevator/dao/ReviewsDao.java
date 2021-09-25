@@ -10,8 +10,6 @@ public interface ReviewsDao {
 
     Reviews getReviewByPatientId(long patientId);
 
-    Reviews getReviewByPatientName(String firstName, String lastName);
-
     Reviews getReviewByOfficeId(long officeId);
 
     Reviews getReviews(long patientReviewId);
