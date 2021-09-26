@@ -5,7 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import store from '../store/index'
 import Splash from '../views/Splash.vue'
-import Review from '../views/Review.vue'
+import Profile from '../views/Profile.vue'
 import Agenda from '../views/Agenda.vue'
 
 Vue.use(Router)
@@ -58,7 +58,7 @@ const router = new Router({
     {
       path: "/profile",
       name: "profile",
-      component: Review,
+      component: Profile,
       meta: {
         requiresAuth: false
       }
@@ -71,6 +71,7 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    
   ]
 })
 
