@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import store from '../store/index'
 import Splash from '../views/Splash.vue'
 import Review from '../views/Review.vue'
+import Agenda from '../views/Agenda.vue'
 
 Vue.use(Router)
 
@@ -58,6 +59,14 @@ const router = new Router({
       path: "/profile",
       name: "profile",
       component: Review,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/agenda",
+      name: "agenda",
+      component: Agenda,
       meta: {
         requiresAuth: false
       }
