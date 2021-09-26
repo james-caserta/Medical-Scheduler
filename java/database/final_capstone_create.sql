@@ -1,5 +1,4 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2021-09-26 07:41:02.528
+
 
 -- tables
 -- Table: account
