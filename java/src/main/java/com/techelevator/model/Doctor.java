@@ -10,12 +10,10 @@ public class Doctor {
     private String userType;
     private String summary;
     private LocalDate practicingFrom;
-<<<<<<< HEAD
-=======
     private String accountUserType;
     //    private String officeName;
     //    private int accountId;
->>>>>>> f2fa5c13a3f669c3a9d7b526c121070f1d2078c4
+
 
 
 
@@ -61,8 +59,6 @@ public class Doctor {
     public void setPracticingFrom(LocalDate practicingFrom) {
         this.practicingFrom = practicingFrom;
     }
-<<<<<<< HEAD
-=======
 
     public String getAccountUserType() {
         return accountUserType;
@@ -87,6 +83,5 @@ public class Doctor {
 //    public void setAccountId(int accountId) {
 //        this.accountId = accountId;
 //    }
->>>>>>> f2fa5c13a3f669c3a9d7b526c121070f1d2078c4
 }
 

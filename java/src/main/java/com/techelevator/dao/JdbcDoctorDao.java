@@ -1,11 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Doctor;
-<<<<<<< HEAD
-import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-=======
->>>>>>> f2fa5c13a3f669c3a9d7b526c121070f1d2078c4
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -64,6 +60,16 @@ public class JdbcDoctorDao implements DoctorDao{
     }
 
     @Override
+    public Doctor getFirstName(String firstName) {
+        return null;
+    }
+
+    @Override
+    public Doctor getLastName(String lastName) {
+        return null;
+    }
+
+    @Override
     public Doctor getSummary(String summary) {
         Doctor doctor = null;
         String sql = "SELECT summary " +
@@ -73,11 +79,6 @@ public class JdbcDoctorDao implements DoctorDao{
             doctor = mapRowToDoctor(results);
         }
         return doctor;
-    }
-
-    @Override
-    public Doctor getSummary(String summary) {
-        return null;
     }
 
     @Override
@@ -93,11 +94,8 @@ public class JdbcDoctorDao implements DoctorDao{
         doctor.setUserType(results.getString("user_type"));
         doctor.setSummary(results.getString("summary"));
         doctor.setPracticingFrom(results.getDate("practicing_from").toLocalDate());
-<<<<<<< HEAD
-=======
         doctor.setAccountUserType(results.getString("account_user_type"));
 //        doctor.setOfficeName(results.getString("office_id"));
->>>>>>> f2fa5c13a3f669c3a9d7b526c121070f1d2078c4
         return doctor;
     }
 

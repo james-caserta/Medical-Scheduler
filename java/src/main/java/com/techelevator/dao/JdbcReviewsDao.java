@@ -75,7 +75,6 @@ public class JdbcReviewsDao implements ReviewsDao{
     }
 
 
-
     // *** MAP ***
     private Reviews mapRowToReviews(SqlRowSet results){
         Reviews reviews = new Reviews();
