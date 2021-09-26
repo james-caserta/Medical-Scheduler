@@ -20,7 +20,7 @@ CREATE TABLE appointment (
     start_time timestamp  NOT NULL,
     end_time timestamp  NOT NULL,
     appointment_status_id int  NOT NULL,
-    appoinment_date date  NOT NULL,
+    appointment_date date  NOT NULL,
     CONSTRAINT appointment_pk PRIMARY KEY (appointment_id)
 );
 
@@ -43,7 +43,7 @@ CREATE TABLE doctor (
 
 -- Table: doctor_availability
 CREATE TABLE doctor_availability (
-    doctor_avalibility_id int  NOT NULL,
+    doctor_availability_id int  NOT NULL,
     office_doctor_id int  NOT NULL,
     day_of_week varchar(10)  NOT NULL,
     start_time timestamp  NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE doctor_response (
 CREATE TABLE office (
     office_id int  NOT NULL,
     doctor_id int  NOT NULL,
-    consulation_fee int  NOT NULL,
+    consultation_fee int  NOT NULL,
     street_address varchar(100)  NOT NULL,
     city varchar(100)  NOT NULL,
     state varchar(100)  NOT NULL,
@@ -134,8 +134,8 @@ ALTER TABLE appointment_status ADD CONSTRAINT appointment_status_appointment
 
 -- Reference: doctor_account (table: doctor)
 ALTER TABLE doctor ADD CONSTRAINT doctor_account
-    FOREIGN KEY ()
-    REFERENCES account ()  
+    FOREIGN KEY (doctor_id)
+    REFERENCES account (account_id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;

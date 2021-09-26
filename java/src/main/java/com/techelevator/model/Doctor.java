@@ -10,9 +10,8 @@ public class Doctor {
     private String userType;
     private String summary;
     private LocalDate practicingFrom;
-    private String accountUserType;
-    //    private String officeName;
-    //    private int accountId;
+//    private String accountUserType;
+    private int accountId;
 
 
 
@@ -23,6 +22,13 @@ public class Doctor {
     }
     public void setDoctorId(long doctorId) {
         this.doctorId = doctorId;
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public String getFirstName() {
@@ -60,28 +66,11 @@ public class Doctor {
         this.practicingFrom = practicingFrom;
     }
 
-    public String getAccountUserType() {
-        return accountUserType;
-    }
-    public void setAccountUserType(String accountUserType) {
-        this.accountUserType = accountUserType;
-    }
-
-
-
-    //    public String getOfficeName() {
-//        return officeName;
+//    public String getAccountUserType() {
+//        return accountUserType;
 //    }
-//    public void setOfficeName(String officeName) {
-//        this.officeName = officeName;
-//    }
-
-
-//    public int getAccountId() {
-//        return accountId;
-//    }
-//    public void setAccountId(int accountId) {
-//        this.accountId = accountId;
+//    public void setAccountUserType(String accountUserType) {
+//        this.accountUserType = accountUserType;
 //    }
 }
 

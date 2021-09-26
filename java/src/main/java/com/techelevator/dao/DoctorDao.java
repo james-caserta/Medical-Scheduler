@@ -13,9 +13,6 @@ public interface DoctorDao {
 
     Doctor getUserType(String userType); // user is doctor
 
-    Doctor getFirstName(String firstName); // get firstName
-
-    Doctor getLastName(String lastName); // get Last name
 
     Doctor getSummary(String summary);
 

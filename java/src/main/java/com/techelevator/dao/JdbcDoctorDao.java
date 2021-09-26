@@ -33,10 +33,10 @@ public class JdbcDoctorDao implements DoctorDao{
 
     @Override
     public Doctor createDoctor(Doctor doctor) {
-            String sql = "INSERT INTO doctor (first_name, last_name, user_type, summary, practicing_from, account_user_type) " +
-                    "VALUES (?, ?, ?, ?, ?, ?) RETURNING doctor_id;";
+            String sql = "INSERT INTO doctor (user_type, summary, practicing_from, user_type) " +
+                    "VALUES (?, ?, ?, ?) RETURNING doctor_id;";
             Long newId = jdbcTemplate.queryForObject(sql, Long.class,
-                    doctor.getFirstName(), doctor.getLastName(), doctor.getUserType(), doctor.getSummary(), doctor.getPracticingFrom(), doctor.getAccountUserType());
+                    doctor.getUserType(), doctor.getSummary(), doctor.getPracticingFrom());
 
             return getDoctor(newId);
     }
@@ -44,7 +44,7 @@ public class JdbcDoctorDao implements DoctorDao{
     @Override
     public Doctor getDoctor(long doctorId) {
         Doctor doctor = null;
-        String sql = "SELECT doctor_id, first_name, last_name, user_type, summary, practicing_from, account_user_type " +
+        String sql = "SELECT doctor_id, user_type, summary, practicing_from " +
                 "FROM doctor " +
                 "WHERE doctor_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
@@ -59,15 +59,6 @@ public class JdbcDoctorDao implements DoctorDao{
         return null;
     }
 
-    @Override
-    public Doctor getFirstName(String firstName) {
-        return null;
-    }
-
-    @Override
-    public Doctor getLastName(String lastName) {
-        return null;
-    }
 
     @Override
     public Doctor getSummary(String summary) {
@@ -89,29 +80,13 @@ public class JdbcDoctorDao implements DoctorDao{
     private Doctor mapRowToDoctor(SqlRowSet results) {
         Doctor doctor = new Doctor();
         doctor.setDoctorId(results.getLong("doctor_id"));
-        doctor.setFirstName(results.getString("first_name"));
-        doctor.setLastName(results.getString("last_name"));
         doctor.setUserType(results.getString("user_type"));
         doctor.setSummary(results.getString("summary"));
         doctor.setPracticingFrom(results.getDate("practicing_from").toLocalDate());
-        doctor.setAccountUserType(results.getString("account_user_type"));
+//        doctor.setAccountUserType(results.getString("account_user_type"));
 //        doctor.setOfficeName(results.getString("office_id"));
+//        doctor.setFirstName(results.getString("first_name"));
+//        doctor.setLastName(results.getString("last_name"));
         return doctor;
     }
-
-    //    @Override
-//    public Doctor getOfficeName(String OfficeName) {
-//        return null;
-//    }
-
-    //    @Override
-//    public Doctor getFirstName(String firstName) {
-//        return null;
-//    }
-//
-//    @Override
-//    public Doctor getLastName(String lastName) {
-//        return null;
-//    }
-
 }
