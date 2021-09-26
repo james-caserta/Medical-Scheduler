@@ -16,6 +16,7 @@ public class Doctor {
 
 
 
+
 // Getter and Setter
     public long getDoctorId() {
         return doctorId;

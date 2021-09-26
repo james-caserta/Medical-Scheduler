@@ -18,6 +18,10 @@ public class PatientController {
     private PatientDao patientDao;
     private UserDao userDao;
 
+    public PatientController(PatientDao patientDao, UserDao userDao) {
+        this.patientDao = patientDao;
+        this.userDao = userDao;
+    }
 
     // get all patients
 //    @RequestMapping(path = "/patient", method = RequestMethod.GET)
@@ -38,13 +42,13 @@ public class PatientController {
         return patientDao.createPatient(patient);
     }
 
-    // update patient
+// Update Patient
 //    @RequestMapping(path = "/patient/{id}", method = RequestMethod.PUT)
 //    public Patient updatePatient(@Valid @RequestBody Patient patient, @PathVariable long patientId) {
 //           return patientDao.updatePatient(patient, patientId);
 //    }
 
-    //delete patient
+// Delete patient
 //    @ResponseStatus(HttpStatus.NO_CONTENT)
 //    @RequestMapping(path = "/patient/{id}", method = RequestMethod.DELETE)
 //    public void deletePatient(@PathVariable long patientId) {

@@ -1,13 +1,13 @@
 package com.techelevator.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class DoctorResponse {
 
     private long doctorResponseId;
     private long patientReviewId;
     private String response;
-    private Date responseDate;
+    private LocalDate responseDate;
     private long doctorOfficeId;
 
 // Getter and Setter
@@ -33,10 +33,10 @@ public class DoctorResponse {
         this.response = response;
     }
 
-    public Date getResponseDate() {
+    public LocalDate getResponseDate() {
         return responseDate;
     }
-    public void setResponseDate(Date responseDate) {
+    public void setResponseDate(LocalDate responseDate) {
         this.responseDate = responseDate;
     }
 

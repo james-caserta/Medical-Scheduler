@@ -10,8 +10,7 @@ public class Reviews {
     private LocalDate reviewDate;
     private long patientReviewId;
     private String review;
-//    private String patientFirstName;
-//    private String patientLastName;
+
 
     public long getPatientId() {
         return patientId;
@@ -55,18 +54,4 @@ public class Reviews {
         this.review = review;
     }
 
-
-//    public String getPatientFirstName() {
-//        return patientFirstName;
-//    }
-//    public void setPatientFirstName(String patientFirstName) {
-//        this.patientFirstName = patientFirstName;
-//    }
-//
-//    public String getPatientLastName() {
-//        return patientLastName;
-//    }
-//    public void setPatientLastName(String patientLastName) {
-//        this.patientLastName = patientLastName;
-//    }
 }

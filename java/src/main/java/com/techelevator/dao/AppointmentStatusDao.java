@@ -4,5 +4,5 @@ import com.techelevator.model.AppointmentStatus;
 
 public interface AppointmentStatusDao {
 
-    AppointmentStatus getAppointmentStatusById(long appointmentId);
+    AppointmentStatus getAppointmentStatusById(long appointmentStatusId);
 }
