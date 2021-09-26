@@ -26,10 +26,12 @@
 </template>
 <script>
 import DxScheduler, { DxResource } from 'devextreme-vue/scheduler';
+import apiService from "../services/ApiService";
 
 import { data, doctors, priorities } from '../data.js';
 
 export default {
+  name: "agenda",
   components: {
     DxScheduler,
     DxResource
@@ -43,6 +45,7 @@ export default {
       priorities: priorities,
     };
   },
+  methods: {},
   // Stubbed out lifecycle hook - we will call appropriate agenda data here upon component creation.
   // created() {
   //           apiService.list().then( (response) => {

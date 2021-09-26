@@ -52,7 +52,7 @@
   
 </template>
 
-<style>
+<style scoped>
 
     .form-control {
 
