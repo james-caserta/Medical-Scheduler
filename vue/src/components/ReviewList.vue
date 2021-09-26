@@ -1,16 +1,19 @@
 <template>
 <div>
-  <h2>Office Reviews Average rating: {{ averageRating }}</h2>
+   <body>
+ 
+         <h2>Office Reviews Average rating: {{ averageRating }}</h2>
 
-    <div v-for='review in reviews' v-bind:key ='review' class="review"> 
-      
-      {{ review.id }} > {{ review.review }} {{review.rating}}
-    </div>
-  
+        <div v-for='review in reviews' v-bind:key ='review' class="review"> 
+        
+        {{ review.id }} > {{ review.review }} {{review.rating}}
+        </div>
+   </body>  
 </div>
 </template>
 
 <script>
+
 export default {
 name: 'list-of-reviews',
     data(){
@@ -37,5 +40,6 @@ name: 'list-of-reviews',
 </script>
 
 <style>
+
 
 </style>

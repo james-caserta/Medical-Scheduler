@@ -1,22 +1,29 @@
 <template>
-  <form class="reviewForm" @submit.prevent="OnSubmit">
+    <div>
+        <button
+      id="show-form-button"
+      href="#"
+      v-if="showForm === false"
+      v-on:click.prevent="showForm = true"
+      >Open Review Form</button>
 
-        <label>Submit Review</label>
-        <input type="text" required v-model = "review">
-        
-        <label>Rating</label>
-        <select id ="rating" v-model.number="rating">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>  
-        </select>
+        <form class="reviewForm" @submit.prevent="OnSubmit" v-if="showForm === true">
 
-        <button class="submitButton">Submit</button>
-      
-    
-  </form>
+                <label>Submit Review</label>
+                <input type="text" required v-model = "review"> 
+                <label>Rating</label>
+                <select id ="rating" v-model.number="rating">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>  
+                </select>
+                <button class="submit-button">Submit</button>
+                <button id="unshow-form-button" href="#" v-if="showForm === true" v-on:click.prevent="showForm = false">Close Form</button>
+              
+        </form>
+    </div> 
 </template>
 
 <script>
@@ -24,6 +31,7 @@ export default {
 
 data(){
     return{
+        showForm:false,
         review: null,
         rating: null
     }
@@ -35,13 +43,26 @@ data(){
                 review: this.review,
                 rating: this.rating
             }
-            this.$emit('review-submitted', UserReview)
+            
+            console.log(UserReview);
+
+            // TODO: call axios webservice method
+            // that will process the post, include
+            // the object UserReview above on the request.
+
+
+
             this.review = null
             this.rating = null
         },
 
         addReview(UserReview){
             this.reviews.push(UserReview)
+            this.resetForm();
+        },
+        resetForm() {
+        this.showForm = false;
+        this.newReview = {};
         }
 
     }
@@ -51,18 +72,10 @@ data(){
 <style scoped>
 
     *{
-        max-width: 420px;
-        margin: 30 px auto;
         background: white;
         text-align: left;
-       
         border-radius: 10px ;
     }
-
-    #rating{
-
-    }
-
 
     label{
         color: #aaa;
@@ -84,14 +97,19 @@ data(){
         color: #555;
     }
 
-    .submitButton{
-       margin-left: 80px;
-     
+    .submit-button{
+        margin-left: 25px;
+        padding: 5px 30px;
+    }
+
+    button{
+       margin: 1%;
        background-color: #0019a8; 
        border: none;
        color: white;
-       padding: 5px 50px;
-
+       padding: 5px 10px;
     }
+
+
 
 </style>
