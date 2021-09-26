@@ -1,4 +1,4 @@
-export const assignees = [{
+export const doctors = [{
     text: 'Samantha Bright',
     id: 1,
     color: '#727bd2'

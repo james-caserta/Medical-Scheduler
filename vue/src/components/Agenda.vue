@@ -1,4 +1,5 @@
 <template>
+    <div id="agenda" class="agenda">
   <DxScheduler
     time-zone="America/Los_Angeles"
     :data-source="dataSource"
@@ -21,6 +22,7 @@
       label="Priority"
     />
   </DxScheduler>
+  </div>
 </template>
 <script>
 import DxScheduler, { DxResource } from 'devextreme-vue/scheduler';

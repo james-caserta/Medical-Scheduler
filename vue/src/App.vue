@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav">
+    
       <router-link v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''">Home</router-link>&nbsp; &nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
      
-    </div>
+    
     <router-view />
   </div>
 </template>
@@ -26,10 +26,17 @@ export default {
   #app {
 
     font-family: 'Open Sans', sans-serif;
-    height: 100%;
-    width: 100%;
+    /* height: 100%;
+    width: 100%; */
     display: flex;
     
+  }
+
+  #nav {
+
+    display: flex;
+    flex-direction: row;
+    height: 5%;
   }
 
 </style>

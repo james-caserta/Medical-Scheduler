@@ -1,6 +1,6 @@
 <template>
   <div class="splash">
-    <div class="nav"><span id="logo">DrSched</span>
+    <div class="title"><span id="logo">DrSched</span>
       
     <span id="header2">We make booking with your doctor easy.</span>
     <span id="header3">Find your doctor and book today.</span>
@@ -18,7 +18,7 @@
 
 <style scoped>
 
-    .nav {
+    .title {
 
       display: flex;
       flex-direction: column;
