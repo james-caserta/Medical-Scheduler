@@ -1,5 +1,4 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2021-09-26 07:41:02.528
+
 
 -- tables
 -- Table: account
@@ -134,8 +133,8 @@ ALTER TABLE appointment_status ADD CONSTRAINT appointment_status_appointment
 
 -- Reference: doctor_account (table: doctor)
 ALTER TABLE doctor ADD CONSTRAINT doctor_account
-    FOREIGN KEY ()
-    REFERENCES account ()  
+    FOREIGN KEY (doctor_id)
+    REFERENCES account (account_id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;
