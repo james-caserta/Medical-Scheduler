@@ -9,18 +9,14 @@ public interface DoctorDao {
 
     Doctor createDoctor(Doctor doctor);
 
-    Doctor getDoctor(long doctorId); // get the Doctors Id
+    Doctor getDoctor(long userId); // get the Doctors Id
+
+    Doctor getDoctorByAccountId(long accountId);
 
     Doctor getUserType(String userType); // user is doctor
-
 
     Doctor getSummary(String summary);
 
     boolean create(String firstName, String lastName, String officeName);
 
-//    Doctor getOfficeName(String OfficeName); // Office ID that the doctor is linked
-
-//    Doctor getFirstName(String firstName); // get firstName
-//
-//    Doctor getLastName(String lastName); // get Last name
 }

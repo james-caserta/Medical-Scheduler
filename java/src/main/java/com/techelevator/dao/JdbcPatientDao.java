@@ -28,7 +28,7 @@ public class JdbcPatientDao implements PatientDao{
     @Override
     public Patient getPatient(long patientId) {
         Patient patient = null;
-        String sql = "SELECT patient_id, first_name, last_name, contact_number, city, state, zip, user_type " +
+        String sql = "SELECT patient_id, account_id, first_name, last_name " +
                 "FROM patient " +
                 "WHERE patient_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
@@ -40,17 +40,12 @@ public class JdbcPatientDao implements PatientDao{
 
     @Override
     public Patient createPatient(Patient patient) {
-        String sql = "INSERT INTO patient (first_name, last_name, contact_number, city, state, zipcode) " +
-                "VALUES (?, ?, ?, ?, ?, ?) RETURNING patient_id;";
+        String sql = "INSERT INTO patient (patient_id, account_id, user_type, first_name, last_name) " +
+                "VALUES (?, ?, ?, ?, ?) RETURNING patient_id;";
         Long newId = jdbcTemplate.queryForObject(sql, Long.class,
-                patient.getFirstName(), patient.getLastName(), patient.getContactNumber(), patient.getCity(), patient.getState(), patient.getZip());
+                patient.getFirstName(), patient.getLastName());
 
         return getPatient(newId);
-    }
-
-    @Override
-    public Patient getUserType(String userType) {
-        return null;
     }
 
 
@@ -64,31 +59,15 @@ public class JdbcPatientDao implements PatientDao{
     private Patient mapRowToPatient(SqlRowSet results) {
         Patient patient = new Patient();
         patient.setPatientId(results.getLong("patient_id"));
+        patient.setAccountId(results.getLong("accounts_id"));
         patient.setFirstName(results.getString("first_name"));
         patient.setLastName(results.getString("last_name"));
-        patient.setContactNumber(results.getString("contact_number"));
         patient.setUserType(results.getString("user_type"));
-        patient.setCity(results.getString("city"));
-        patient.setContactNumber(results.getString("contact_number"));
-        patient.setZip(results.getString("zipcode"));
+//        patient.setCity(results.getString("city"));
+//        patient.setContactNumber(results.getString("contact_number"));
+//        patient.setZip(results.getString("zipcode"));
 //        patient.setAccountUserType(results.getString("account_user_type"));
-//        patient.setAccountId(results.getLong("accounts_id"));
 //        patient.setEmail(results.getString("email"));
         return patient;
     }
-
-
-    //    @Override
-//    public void updatePatient(Patient patient) {
-//        String sql = "UPDATE patient " +
-//                "SET first_name = ?, last_name = ?, contact_number = ?, email = ? " +
-//                "WHERE patient_id = ?;";
-//        jdbcTemplate.update(sql, patient.getFirstName(), patient.getLastName(), patient.getContactNumber(), patient.getEmail());
-//    }
-//
-//    @Override
-//    public void deletePatient(long patientId) {
-//        String sql = "DELETE FROM patient WHERE patient_id = ?;";
-//        jdbcTemplate.update(sql, patientId);
-//    }
 }

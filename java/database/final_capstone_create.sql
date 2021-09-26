@@ -1,7 +1,6 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2021-09-26 07:41:02.528
-
 -- tables
+
+
 -- Table: account
 CREATE TABLE account (
     account_id int  NOT NULL,
@@ -36,8 +35,9 @@ CREATE TABLE appointment_status (
 CREATE TABLE doctor (
     doctor_id int  NOT NULL,
     summary varchar(500)  NOT NULL,
-    practicing_from date  NOT NULL,
     user_type varchar(10)  NOT NULL,
+    account_id int NOT NULL,
+    CONSTRAINT account_fk FOREIGN KEY(account_id) REFERENCES account(account_id),
     CONSTRAINT doctor_pk PRIMARY KEY (doctor_id)
 );
 
@@ -49,7 +49,7 @@ CREATE TABLE doctor_availability (
     start_time timestamp  NOT NULL,
     end_time timestamp  NOT NULL,
     availability char(1)  NOT NULL,
-    CONSTRAINT doctor_availability_pk PRIMARY KEY (doctor_avalibility_id)
+    CONSTRAINT doctor_availability_pk PRIMARY KEY (doctor_availability_id)
 );
 
 -- Table: doctor_response
@@ -65,12 +65,11 @@ CREATE TABLE doctor_response (
 -- Table: office
 CREATE TABLE office (
     office_id int  NOT NULL,
-    doctor_id int  NOT NULL,
-    consultation_fee int  NOT NULL,
+    doctor_id int,
+    consultation_fee int,
     street_address varchar(100)  NOT NULL,
     city varchar(100)  NOT NULL,
     state varchar(100)  NOT NULL,
-    county varchar(100)  NOT NULL,
     zip varchar(50)  NOT NULL,
     CONSTRAINT office_pk PRIMARY KEY (office_id)
 );
@@ -78,11 +77,9 @@ CREATE TABLE office (
 -- Table: patient
 CREATE TABLE patient (
     patient_id int  NOT NULL,
-    contact_number varchar(11)  NOT NULL,
-    city varchar(50)  NOT NULL,
-    state char(2)  NOT NULL,
-    zipcode int  NOT NULL,
     user_type varchar(10)  NOT NULL,
+    account_id int NOT NULL,
+    CONSTRAINT account_fk FOREIGN KEY(account_id) REFERENCES account(account_id),
     CONSTRAINT patient_pk PRIMARY KEY (patient_id)
 );
 
