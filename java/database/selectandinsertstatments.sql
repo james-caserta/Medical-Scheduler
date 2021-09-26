@@ -1,14 +1,62 @@
---SELECT * FROM users
---JOIN account ON users.user_id = account.account_id
---JOIN doctor ON doctor.doctor_id = account.account_id
+
+-- Creates Users/Accounts
+-- UPDATE HASH TO A KNOWN password!!!!
+
+DROP TABLE doctor CASCADE;
+DROP TABLE account CASCADE;
+DROP TABLE patient CASCADE;
+
+CREATE TABLE account (
+    account_id int  NOT NULL,
+    first_name varchar(50)  NOT NULL,
+    last_name varchar(50)  NOT NULL,
+    email varchar(50)  NOT NULL,
+    user_id int  NOT NULL,
+    CONSTRAINT account_pk PRIMARY KEY (account_id)
+);
+
+CREATE TABLE doctor (
+    doctor_id int  NOT NULL,
+    summary varchar(500)  NOT NULL,
+    user_type varchar(10)  NOT NULL,
+    account_id int NOT NULL,
+    CONSTRAINT account_fk FOREIGN KEY(account_id) REFERENCES account(account_id),
+    CONSTRAINT doctor_pk PRIMARY KEY (doctor_id)
+);
+
+-- Table: patient
+CREATE TABLE patient (
+    patient_id int  NOT NULL,
+    user_type varchar(10)  NOT NULL,
+    account_id int NOT NULL,
+    CONSTRAINT account_fk FOREIGN KEY(account_id) REFERENCES account(account_id),
+    CONSTRAINT patient_pk PRIMARY KEY (patient_id)
+); 
+
+INSERT INTO users (username,password_hash,role) VALUES ('userJC','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('userAT','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('userAP','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('userYK','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 
 
---INSERT INTO account(account_id,first_name,last_name,email,user_id)
---VALUES(3,'James','Leo','leo123',3);
+INSERT INTO account(account_id,first_name,last_name,email,user_id) VALUES(1,'James','Caserta','JC@gmail.com',1);
+INSERT INTO account(account_id,first_name,last_name,email,user_id) VALUES(2,'Abdulla','Treek','AT@gmail.com',2);
+INSERT INTO account(account_id,first_name,last_name,email,user_id) VALUES(3,'AJ','Page','AP@gmail.com',3);
+INSERT INTO account(account_id,first_name,last_name,email,user_id) VALUES(4,'Yousef','Khudair','YK@gmail.com',4);
 
---INSERT INTO DOCTOR
---INSERT INTO doctor(doctor_id,summary,practicing_from,user_type)
---VALUES(2,'This is richard the doctor','2020-04-15','doctor')
+-- Creates Patients
+INSERT INTO patient(patient_id,user_type, account_id) VALUES(1,'patient',1);
+INSERT INTO patient(patient_id,user_type, account_id) VALUES(4,'patient',4);
+
+--Creates Doctors
+INSERT INTO doctor(doctor_id, summary,user_type, account_id) VALUES(2,'I am a doctor','doctor',2);
+INSERT INTO doctor(doctor_id, summary,user_type, account_id) VALUES(3,'I am a doctor','doctor',3);
+
+--Creates Offices
+INSERT INTO office(office_id,doctor_id, consulation_fee, street_address, city, state, zip) VALUES(1);
+
+--Creates Office Review
+
 
 
 --INSERT INTO office (office_id,doctor_id,consulation_fee,street_address,city,state,county,zip)

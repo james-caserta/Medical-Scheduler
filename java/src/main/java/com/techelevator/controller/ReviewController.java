@@ -43,8 +43,8 @@ public class ReviewController {
         return reviewsDao.createReview(reviews);
     }
 
-// Doctor response to review
-    @RequestMapping(path = "/doctorresponse", method = RequestMethod.GET)
+// Doctor response to review based on review_id
+    @RequestMapping(path = "/doctorResponse/{id}", method = RequestMethod.GET)
     public DoctorResponse getDoctorReview(@PathVariable long doctorResponseId){
         return doctorResponseDao.getDoctorResponse(doctorResponseId);
     }

@@ -3,6 +3,9 @@
 
 -- tables
 -- Table: account
+
+
+
 CREATE TABLE account (
     account_id int  NOT NULL,
     first_name varchar(50)  NOT NULL,
@@ -36,8 +39,9 @@ CREATE TABLE appointment_status (
 CREATE TABLE doctor (
     doctor_id int  NOT NULL,
     summary varchar(500)  NOT NULL,
-    practicing_from date  NOT NULL,
     user_type varchar(10)  NOT NULL,
+    account_id int NOT NULL,
+    CONSTRAINT account_fk FOREIGN KEY(account_id) REFERENCES account(account_id),
     CONSTRAINT doctor_pk PRIMARY KEY (doctor_id)
 );
 
@@ -65,12 +69,11 @@ CREATE TABLE doctor_response (
 -- Table: office
 CREATE TABLE office (
     office_id int  NOT NULL,
-    doctor_id int  NOT NULL,
-    consulation_fee int  NOT NULL,
+    doctor_id int,
+    consulation_fee int,
     street_address varchar(100)  NOT NULL,
     city varchar(100)  NOT NULL,
     state varchar(100)  NOT NULL,
-    county varchar(100)  NOT NULL,
     zip varchar(50)  NOT NULL,
     CONSTRAINT office_pk PRIMARY KEY (office_id)
 );
@@ -78,11 +81,9 @@ CREATE TABLE office (
 -- Table: patient
 CREATE TABLE patient (
     patient_id int  NOT NULL,
-    contact_number varchar(11)  NOT NULL,
-    city varchar(50)  NOT NULL,
-    state char(2)  NOT NULL,
-    zipcode int  NOT NULL,
     user_type varchar(10)  NOT NULL,
+    account_id int NOT NULL,
+    CONSTRAINT account_fk FOREIGN KEY(account_id) REFERENCES account(account_id),
     CONSTRAINT patient_pk PRIMARY KEY (patient_id)
 );
 
@@ -134,8 +135,8 @@ ALTER TABLE appointment_status ADD CONSTRAINT appointment_status_appointment
 
 -- Reference: doctor_account (table: doctor)
 ALTER TABLE doctor ADD CONSTRAINT doctor_account
-    FOREIGN KEY ()
-    REFERENCES account ()  
+    FOREIGN KEY (doctor_id)
+    REFERENCES account (account_id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;
