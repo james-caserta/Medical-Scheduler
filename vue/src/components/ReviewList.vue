@@ -2,15 +2,16 @@
 <div>
    <body>
  
-         <h2>Office Reviews Average rating:</h2>
+         <h2>Office Reviews Average rating: {{averageRating}} </h2>
 
         <div v-for='review in reviews' v-bind:key ='review' class="review"> 
         
-        {{ review.id }} > {{ review.review }} {{review.rating}}
+            {{ review.review }} {{review.overall_rating}}
         </div>
    </body>  
 </div>
-</template>
+</template> 
+
 
 <script>
 import apiservice from '../services/ApiService.js'
@@ -26,25 +27,25 @@ name: 'list-of-reviews',
 
             )
         },
+        
 
     data(){
         return{
             reviews:[]
-
         }
     },
 
     computed:{
-     /*   averageRating(){
+        averageRating(){
             let sum = this.reviews.reduce(
                 (total, review)=> {
-                  return total + review.rating;
+                  return total + review.reviewRating;
                 
                 }, 0 
             );
 
             return sum / this.reviews.length;
-        }*/
+        }
 
     }
 }

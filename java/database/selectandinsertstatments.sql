@@ -49,7 +49,7 @@ CREATE TABLE office (
 
 -- Table: patient_review
 CREATE TABLE patient_review (
-    patient_review_id int  NOT NULL,
+    patient_review_id serial,
     patient_id int  NOT NULL,
     overall_rating int  NOT NULL,
     review varchar(500)  NOT NULL,
@@ -76,8 +76,8 @@ INSERT INTO patient(patient_id,user_type, account_id) VALUES(1,'patient',1);
 INSERT INTO patient(patient_id,user_type, account_id) VALUES(4,'patient',4);
 
 --Creates Doctors
-INSERT INTO doctor(doctor_id, summary,user_type, account_id) VALUES(2,'I am a doctor','doctor',2);
-INSERT INTO doctor(doctor_id, summary,user_type, account_id) VALUES(3,'I am a doctor','doctor',3);
+INSERT INTO doctor(doctor_id, summary, user_type, account_id) VALUES(2,'I am a doctor','doctor',2);
+INSERT INTO doctor(doctor_id, summary, user_type, account_id) VALUES(3,'I am a doctor','doctor',3);
 
 --Creates Offices
 INSERT INTO office(office_id, doctor_id, street_address, city, state, zip) VALUES(1,2, '123 Seaview Ave', 'BK', 'NY', 10301);
@@ -85,8 +85,8 @@ INSERT INTO office(office_id, doctor_id, street_address, city, state, zip) VALUE
 
 --Creates Office Review
 
-INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(1,1,4,'I had a great experience with my doctor and this office!', 2);
-INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(2,4,3,'Clean office and easy parking.', 3);
+INSERT INTO patient_review(patient_id, overall_rating, review, doctor_id) VALUES(1,4,'I had a great experience with my doctor and this office!', 2);
+INSERT INTO patient_review(patient_id, overall_rating, review, doctor_id) VALUES(4,3,'Clean office and easy parking.', 3);
 
 
 
