@@ -66,10 +66,7 @@ CREATE TABLE doctor_response (
 CREATE TABLE office (
     office_id int  NOT NULL,
     doctor_id int,
-<<<<<<< HEAD
-=======
     consultation_fee int,
->>>>>>> b0a749c64ca51b22ab5ade6c6a4511087af1e215
     street_address varchar(100)  NOT NULL,
     city varchar(100)  NOT NULL,
     state varchar(100)  NOT NULL,

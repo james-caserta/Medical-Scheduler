@@ -3,9 +3,8 @@ package com.techelevator.model;
 public class Account {
 
     private long accountId;
-    private String username;
-    private String password;
-    private int userType;
+    private String firstName;
+    private String lastName;
     private String email;
     private long userId;
 
@@ -19,25 +18,18 @@ public class Account {
         this.accountId = accountId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFirstName() {
+        return firstName;
     }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public int getUserType() {
-        return userType;
+    public String getLastName() {
+        return lastName;
     }
-    public void setUserType(int userType) {
-        this.userType = userType;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {

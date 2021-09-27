@@ -65,6 +65,7 @@
       font-size: 3em;
       color:#07329E;
       width: 40%;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     }
 
@@ -78,6 +79,7 @@
       font-size: 1.5em;
       color:#07329E;
       margin-top: 1rem;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     }
 
@@ -88,6 +90,7 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
     margin-bottom: 5rem;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
 

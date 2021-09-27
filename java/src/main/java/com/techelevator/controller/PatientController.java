@@ -7,11 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @PreAuthorize("isAuthenticated()")
-//@RequestMapping("patient")
 @RestController
 public class PatientController {
 
@@ -23,11 +22,6 @@ public class PatientController {
         this.userDao = userDao;
     }
 
-    // get all patients
-//    @RequestMapping(path = "/patient", method = RequestMethod.GET)
-//    public List<Patient> findALlPatients(){
-//        return patientDao.findAllPatients();
-//    }
 
     //get patient
     @RequestMapping(path = "/patient/{id}", method = RequestMethod.GET)
@@ -37,22 +31,18 @@ public class PatientController {
 
 
     // create patient
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "/patient/{id}", method = RequestMethod.POST)
     public Patient addPatient(@RequestBody Patient patient, @PathVariable("id") long patientId) {
         return patientDao.createPatient(patient);
     }
 
-// Update Patient
-//    @RequestMapping(path = "/patient/{id}", method = RequestMethod.PUT)
-//    public Patient updatePatient(@Valid @RequestBody Patient patient, @PathVariable long patientId) {
-//           return patientDao.updatePatient(patient, patientId);
-//    }
 
-// Delete patient
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    @RequestMapping(path = "/patient/{id}", method = RequestMethod.DELETE)
-//    public void deletePatient(@PathVariable long patientId) {
-//        patientDao.deletePatient(patientId);
+
+// Get All Patients
+//    @RequestMapping(path = "/patient", method = RequestMethod.GET)
+//    public List<Patient> findALlPatients(){
+//        return patientDao.findAllPatients();
 //    }
 
 }

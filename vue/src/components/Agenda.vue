@@ -7,6 +7,7 @@
     :views="views"
     :height="600"
     :start-day-hour="9"
+    :adaptivity-enabled="true"
     current-view="agenda"
   >
     <DxResource
@@ -26,7 +27,8 @@
 </template>
 <script>
 import DxScheduler, { DxResource } from 'devextreme-vue/scheduler';
-import apiService from "../services/ApiService";
+// Uncomment below once apiservices are built out
+// import apiService from "../services/ApiService";
 
 import { data, doctors, priorities } from '../data.js';
 
@@ -43,6 +45,12 @@ export default {
       dataSource: data,
       doctors: doctors,
       priorities: priorities,
+      agendaUser: {
+          id: "",
+          isDoctor: "",
+          officeid: "",
+      },
+
     };
   },
   methods: {},

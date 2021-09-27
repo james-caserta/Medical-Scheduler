@@ -51,6 +51,7 @@ export default {
   margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 </style>

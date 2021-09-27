@@ -85,8 +85,13 @@ INSERT INTO office(office_id, doctor_id, street_address, city, state, zip) VALUE
 
 --Creates Office Review
 
+<<<<<<< HEAD
 INSERT INTO patient_review(patient_id, overall_rating, review, doctor_id) VALUES(1,4,'I had a great experience with my doctor and this office!', 2);
 INSERT INTO patient_review(patient_id, overall_rating, review, doctor_id) VALUES(4,3,'Clean office and easy parking.', 3);
+=======
+INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(1,4,'I had a great experience with my doctor and this office!', 2);
+INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(4,3,'Clean office and easy parking.', 3);
+>>>>>>> 0132cf9ce83783a99c6d8151f742f054e02c3630
 
 
 

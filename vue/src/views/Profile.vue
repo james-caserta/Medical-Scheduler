@@ -1,6 +1,5 @@
 <template>
 <div class="profile">
-  <p>Dr Sched</p>
     <div class ="cards">
     <div class="bio-card">
         <BioCard></BioCard>
@@ -11,9 +10,7 @@
          <ReviewForm/>
       </div>
     </div>
-    <div class="footer">
-      <p>Footer</p>
-  </div>
+    
 </div>
 
 </template>
@@ -42,29 +39,37 @@ export default {
 .profile{
   display: flex;
   flex-direction: column;
-  background-color:#69d6f7;
   height: 100vh;
+  background-image: url("../assets/MainBackground.png");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
 }
 
 .cards{
   display: flex;
-  height: 50%;
+  height: 100%;
   border-radius: 25px;
+  align-items: center;
     
 }
 
 .bio-card{
-  background-color:#fcfcfc;
+  display: flex;
+  background-color:#FFFFFF;
   flex-grow: 2;
   margin: 10px 5px 10px 20px;
   border-radius: 15px;
+  height: 50%;
 }
 
 .review-card{
-  background-color:#fcfcfc;
+  display: flex;
+  background-color:#FFFFFF;
   flex-grow: 1;
   margin: 10px 20px 10px 5px;
   border-radius: 15px;
+  height: 50%;
 }
 
 </style>

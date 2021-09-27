@@ -1,8 +1,10 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
+
 public class Doctor {
 
-    private long userId;
+    private long doctorId;
     private long accountId;
     private String userType;
     private String summary;
@@ -11,13 +13,12 @@ public class Doctor {
 
 
 
-
 // Getter and Setter
-    public long getUserId() {
-        return userId;
+    public long getDoctorId() {
+        return doctorId;
     }
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setDoctorId(long doctorId) {
+        this.doctorId = doctorId;
     }
 
     public long getAccountId() {
@@ -41,6 +42,7 @@ public class Doctor {
     public void setSummary(String summary) {
         this.summary = summary;
     }
+
 
 }
 

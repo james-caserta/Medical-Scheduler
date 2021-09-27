@@ -16,9 +16,8 @@ public class JdbcDoctorDao implements DoctorDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
     @Override
-    public List<Doctor> findAll() {
+    public List<Doctor> findAllDoctors() {
         List<Doctor> doctors = new ArrayList<>();
         String sql = "SELECT * FROM doctor";
 
@@ -36,19 +35,18 @@ public class JdbcDoctorDao implements DoctorDao{
             String sql = "INSERT INTO doctor(doctor_id, summary, user_type, account_id) " +
                     "VALUES (?, ?, ?, ?) RETURNING doctor_id;";
             Long newId = jdbcTemplate.queryForObject(sql, Long.class,
-                     doctor.getUserId(), doctor.getSummary(), doctor.getUserType(), doctor.getAccountId());
-
+                     doctor.getDoctorId(), doctor.getSummary(), doctor.getUserType(), doctor.getAccountId());
 
             return getDoctor(newId);
     }
 
     @Override
-    public Doctor getDoctor(long userId) {
+    public Doctor getDoctor(long doctorId) {
         Doctor doctor = null;
-        String sql = "SELECT user_id, user_type, summary, practicing_from " +
+        String sql = "SELECT doctor_id, account_id, user_type, summary " +
                 "FROM doctor " +
-                "WHERE user_id = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+                "WHERE doctor_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
         if (results.next()) {
             doctor = mapRowToDoctor(results);
         }
@@ -58,7 +56,7 @@ public class JdbcDoctorDao implements DoctorDao{
     @Override
     public Doctor getDoctorByAccountId(long accountId) {
         Doctor doctor = null;
-        String sql = "SELECT user_id, user_type, summary, practicing_from " +
+        String sql = "SELECT doctor_id, account_id, user_type, summary " +
                 "FROM doctor " +
                 "WHERE account_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, accountId);
@@ -67,12 +65,6 @@ public class JdbcDoctorDao implements DoctorDao{
         }
         return doctor;
     }
-
-    @Override
-    public Doctor getUserType(String userType) {
-        return null;
-    }
-
 
     @Override
     public Doctor getSummary(String summary) {
@@ -93,7 +85,7 @@ public class JdbcDoctorDao implements DoctorDao{
 
     private Doctor mapRowToDoctor(SqlRowSet results) {
         Doctor doctor = new Doctor();
-        doctor.setUserId(results.getLong("user_id"));
+        doctor.setDoctorId(results.getLong("doctor_id"));
         doctor.setAccountId(results.getLong("account_id"));
         doctor.setUserType(results.getString("user_type"));
         doctor.setSummary(results.getString("summary"));

@@ -55,6 +55,7 @@
       background: #272b4a;
       border-radius: 1rem;
       padding: 2rem;
+      
         
     }
 
@@ -70,6 +71,7 @@
   height: 35px;
   font-weight: 600;
   padding-left: 5px;
+  
   }
 
   #registerbtn {
@@ -80,6 +82,7 @@
   font-weight: 600;
   text-decoration: underline;
   margin-bottom: 1rem;
+  
   }
 
   .sr-only {

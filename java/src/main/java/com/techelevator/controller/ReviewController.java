@@ -7,14 +7,11 @@ import com.techelevator.model.Reviews;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
-// @RequestMapping("review")
 public class ReviewController {
 
     private ReviewsDao reviewsDao;
@@ -38,10 +35,19 @@ public class ReviewController {
     return reviewsDao.getReview(patientReviewId);
 }
 
+
     // create review
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "/addReview", method = RequestMethod.POST)
-    public Reviews addReview(@RequestBody Reviews reviews) {
+    public Reviews addReview(@RequestBody Reviews review) {
+     return reviewsDao.createReview(review);
+    }
+
+// create review
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping( path = "/addReview/{id}", method = RequestMethod.POST)
+    public Reviews addReview(@RequestBody Reviews reviews, @PathVariable("id") long patientReviewId) {
+
         return reviewsDao.createReview(reviews);
     }
 
@@ -51,14 +57,6 @@ public class ReviewController {
         return doctorResponseDao.getDoctorResponse(doctorResponseId);
     }
 
-    // Connect the doctorResponse to patient review??
-
-
-// update review
-//    @RequestMapping(path = "/review/{id}", method = RequestMethod.PUT)
-//    public void update(@Valid @RequestBody Reviews reviews, @PathVariable long patientReviewId) {
-//       return reviewsDao.updateReview(reviews, patientReviewId);
-//    }
 
 
 
