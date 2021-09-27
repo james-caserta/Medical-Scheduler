@@ -34,9 +34,9 @@ public class JdbcDoctorDao implements DoctorDao{
     @Override
     public Doctor createDoctor(Doctor doctor) {
             String sql = "INSERT INTO doctor (first_name, last_name, user_type, summary, practicing_from, account_user_type) " +
-                    "VALUES (?, ?, ?, ?, ?, ?) RETURNING doctor_id;";
+                    "VALUES (?, ?, ?, ?, ?) RETURNING doctor_id;";
             Long newId = jdbcTemplate.queryForObject(sql, Long.class,
-                    doctor.getFirstName(), doctor.getLastName(), doctor.getUserType(), doctor.getSummary(), doctor.getPracticingFrom(), doctor.getAccountUserType());
+                    doctor.getFirstName(), doctor.getLastName(), doctor.getUserType(), doctor.getSummary(), doctor.getAccountUserType());
 
             return getDoctor(newId);
     }
@@ -93,7 +93,6 @@ public class JdbcDoctorDao implements DoctorDao{
         doctor.setLastName(results.getString("last_name"));
         doctor.setUserType(results.getString("user_type"));
         doctor.setSummary(results.getString("summary"));
-        doctor.setPracticingFrom(results.getDate("practicing_from").toLocalDate());
         doctor.setAccountUserType(results.getString("account_user_type"));
 //        doctor.setOfficeName(results.getString("office_id"));
         return doctor;

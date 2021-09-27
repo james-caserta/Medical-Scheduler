@@ -19,7 +19,7 @@ public class JdbcReviewsDao implements ReviewsDao{
     @Override
     public List<Reviews> findAllReviews() {
         List<Reviews> reviews = new ArrayList<>();
-        String sql = "SELECT overall_rating, review, review_date FROM patient_review ";
+        String sql = "SELECT * FROM patient_review";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
@@ -31,7 +31,7 @@ public class JdbcReviewsDao implements ReviewsDao{
 
     @Override
     public Reviews getReviewByPatientId(long patientId) {
-        String sql = "SELECT overall_rating, review, review_date FROM patient_review WHERE patient_id = ?";
+        String sql = "SELECT overall_rating, review FROM patient_review WHERE doctor_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
         if(results.next()) {
             return mapRowToReviews(results);
@@ -42,7 +42,7 @@ public class JdbcReviewsDao implements ReviewsDao{
 
     @Override
     public Reviews getReviewByOfficeId(long officeId) {
-        String sql = "SELECT overall_rating, review, review_date FROM patient_review WHERE office_id = ?";
+        String sql = "SELECT overall_rating, review FROM patient_review WHERE office_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
         if(results.next()) {
             return mapRowToReviews(results);
@@ -54,7 +54,7 @@ public class JdbcReviewsDao implements ReviewsDao{
     @Override
     public Reviews getReviews(long patientReviewId) {
         Reviews reviews = null;
-        String sql = "SELECT patient_review_id, patient_id, overall_rating, review, review_date, office_id " +
+        String sql = "SELECT patient_review_id, patient_id, overall_rating, review, doctor_id " +
                 "FROM patient_review " +
                 "WHERE patient_review_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientReviewId);
@@ -66,7 +66,7 @@ public class JdbcReviewsDao implements ReviewsDao{
 
     @Override
     public Reviews createReview(Reviews reviews) {
-        String sql = "INSERT INTO patient_review (patient_review_id, patient_id, overall_rating, review, review_date, office_id) " +
+        String sql = "INSERT INTO patient_review (patient_review_id, patient_id, overall_rating, review, doctor_id) " +
                 "VALUES (?, ?, ?, ?, ?, ?) RETURNING patient_review_id;";
         Long newId = jdbcTemplate.queryForObject(sql, Long.class, reviews.getPatientReviewId(), reviews.getPatientId(), reviews.getReviewRating(),
                 reviews.getReview(), reviews.getReviewDate(), reviews.getOfficeId());
@@ -79,9 +79,8 @@ public class JdbcReviewsDao implements ReviewsDao{
     private Reviews mapRowToReviews(SqlRowSet results){
         Reviews reviews = new Reviews();
         reviews.setPatientId(results.getLong("patient_id"));
-        reviews.setOfficeId(results.getLong("office_id"));
+        reviews.setOfficeId(results.getLong("doctor_id"));
         reviews.setReviewRating(results.getInt("overall_rating"));
-        reviews.setReviewDate(results.getDate("review_date").toLocalDate());
         reviews.setPatientReviewId(results.getInt("patient_review_id"));
         reviews.setReview(results.getString("review"));
 //        reviews.setPatientFirstName(results.getString("first_name"));

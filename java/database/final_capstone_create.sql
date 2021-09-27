@@ -69,7 +69,6 @@ CREATE TABLE doctor_response (
 CREATE TABLE office (
     office_id int  NOT NULL,
     doctor_id int,
-    consulation_fee int,
     street_address varchar(100)  NOT NULL,
     city varchar(100)  NOT NULL,
     state varchar(100)  NOT NULL,
@@ -92,7 +91,6 @@ CREATE TABLE patient_review (
     patient_id int  NOT NULL,
     overall_rating int  NOT NULL,
     review varchar(500)  NOT NULL,
-    review_date date  NOT NULL,
     office_id int  NOT NULL,
     CONSTRAINT patient_review_pk PRIMARY KEY (patient_review_id)
 );

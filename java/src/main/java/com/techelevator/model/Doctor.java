@@ -1,7 +1,5 @@
 package com.techelevator.model;
 
-import java.time.LocalDate;
-
 public class Doctor {
 
     private long doctorId;
@@ -9,7 +7,6 @@ public class Doctor {
     private String lastName;
     private String userType;
     private String summary;
-    private LocalDate practicingFrom;
     private String accountUserType;
     //    private String officeName;
     //    private int accountId;
@@ -51,13 +48,6 @@ public class Doctor {
     }
     public void setSummary(String summary) {
         this.summary = summary;
-    }
-
-    public LocalDate getPracticingFrom() {
-        return practicingFrom;
-    }
-    public void setPracticingFrom(LocalDate practicingFrom) {
-        this.practicingFrom = practicingFrom;
     }
 
     public String getAccountUserType() {

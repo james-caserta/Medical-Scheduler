@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
 // @RequestMapping("review")
@@ -26,7 +27,7 @@ public class ReviewController {
 
 // get all reviews
     @RequestMapping(path = "/review", method = RequestMethod.GET)
-    public List<Reviews> findALlReviews(){
+    public List<Reviews> findAllReviews(){
         return reviewsDao.findAllReviews();
     }
 
