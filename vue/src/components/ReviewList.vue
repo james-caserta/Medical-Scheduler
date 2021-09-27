@@ -1,14 +1,24 @@
 <template>
-<div>
-   <body>
+<div id="reviewslist">
  
+<<<<<<< HEAD
          <h2>Office Reviews Average rating: {{averageRating}} </h2>
+=======
+    <span>Office Reviews Average rating:</span>
+>>>>>>> 4c51cf3a6a6a96f6ee80a5b090eabf0409755f01
 
-        <div v-for='review in reviews' v-bind:key ='review' class="review"> 
+    <div v-for='review in reviews' v-bind:key ='review' class="review"> 
         
+<<<<<<< HEAD
             {{ review.review }} {{review.overall_rating}}
         </div>
    </body>  
+=======
+    {{ review.id }} > {{ review.review }} {{review.rating}}
+
+    </div>
+     
+>>>>>>> 4c51cf3a6a6a96f6ee80a5b090eabf0409755f01
 </div>
 </template> 
 
@@ -52,6 +62,14 @@ name: 'list-of-reviews',
 </script>
 
 <style>
+
+#reviewslist{
+
+display: flex;
+padding: 1rem;
+width: 100%;
+height: 100%;
+}
 
 
 </style>

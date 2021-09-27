@@ -1,13 +1,13 @@
 <template>
 <div class= "container-review">
-    <body>
-        <h2>Reviews</h2>
+    
+    <span>Reviews</span>
       
 
-        <ReviewForm @review-submitted="addReview" class="review-form"></ReviewForm>
+    <ReviewForm @review-submitted="addReview" class="review-form"></ReviewForm>
       
-        <ReviewList></ReviewList>
-    </body>
+    <ReviewList></ReviewList>
+    
 </div>
 </template>
 
@@ -33,7 +33,9 @@ export default {
 .container-review{
     display: flex;
     justify-content: space-around;
-    padding: 10px;    
+    padding: 1rem;    
+    width: 100%;
+    height: 100%;
 }
 
 body > h2{

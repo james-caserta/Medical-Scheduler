@@ -1,5 +1,6 @@
 <template>
 <div class="profile">
+  <div class="title"><span id="logo">DrSched</span></div>
     <div class ="cards">
     <div class="bio-card">
         <BioCard></BioCard>
@@ -34,7 +35,30 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+.title {
+
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      height: 20%;
+      justify-content: flex-start;
+      align-items: left;
+      /* gap: 3rem; */
+    }
+
+    #logo {
+
+    color:#07329E;
+    font-size: 4em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    /* margin-bottom: 5rem; */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
 
 .profile{
   display: flex;
@@ -42,7 +66,7 @@ export default {
   height: 100vh;
   background-image: url("../assets/MainBackground.png");
   background-size: cover;
-  background-position: top;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
@@ -50,7 +74,7 @@ export default {
   display: flex;
   height: 100%;
   border-radius: 25px;
-  align-items: center;
+  align-items: flex-start;
     
 }
 
@@ -58,18 +82,20 @@ export default {
   display: flex;
   background-color:#FFFFFF;
   flex-grow: 2;
-  margin: 10px 5px 10px 20px;
+  margin: 1rem;
   border-radius: 15px;
-  height: 50%;
+  height: 65%;
+  width: 60%;
 }
 
 .review-card{
   display: flex;
   background-color:#FFFFFF;
   flex-grow: 1;
-  margin: 10px 20px 10px 5px;
+  margin: 1rem;
   border-radius: 15px;
-  height: 50%;
+  height: 65%;
+  width: 40%;
 }
 
 </style>

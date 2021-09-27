@@ -9,6 +9,9 @@
         <div id="officeinfo">
             <OfficeInfo></OfficeInfo>
         </div>
+        <div id="agendabutton">
+            <AgendaButton></AgendaButton>
+        </div>
     </div>
     
 
@@ -22,11 +25,13 @@
 <script>
 import OfficeInfo from '../components/OfficeInfo.vue'
 import DoctorBio from '../components/DoctorBio.vue'
+import AgendaButton from '../components/AgendaButton.vue'
 export default {
 name:'ReviewCard',
     components:{
         OfficeInfo,
-        DoctorBio
+        DoctorBio,
+        AgendaButton,
       }
 }
 </script>
@@ -49,16 +54,18 @@ name:'ReviewCard',
     flex-direction: row;
     height: 45%;
     width: 100%;
+    gap: 1rem;
 }
 
 #profileitems {
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: left;
+    justify-content: left;
+    align-items: center;
     height: 100%;
-    width: 50%;
+    width: 25%;
+    gap: 0.5rem;
 }
 
 #profilename {
@@ -66,23 +73,31 @@ name:'ReviewCard',
     display: flex;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 #profilepic {
 
     display: flex;
     height: 50%;
-    width: 25%;
+    width: 50%;
     border-radius: 50%;
     background-color: #F5F1F1;
-    border-radius: 50%;
     
 }
 
 #officeinfo {
     display: flex;
     width: 50%;
+    height: 80%;
+}
+
+#agendabutton {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
     height: 80%;
 }
 
