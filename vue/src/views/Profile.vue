@@ -7,7 +7,7 @@
       </div>
 
       <div class="review-card">
-        <ReviewCard></ReviewCard>
+         <ReviewList/>
       </div>
     </div>
     <div class="footer">
@@ -19,15 +19,16 @@
 
 <script>
 
-import ReviewCard from '../components/ReviewCard.vue'
+import ReviewList from '../components/ReviewList.vue'
+
 import BioCard from '../components/BioCard.vue'
 
 export default {
   
     name: 'review',
     components:{
-    ReviewCard,
-    BioCard
+    BioCard,
+    ReviewList
        
   }
 

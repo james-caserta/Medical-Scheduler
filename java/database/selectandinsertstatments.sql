@@ -1,10 +1,11 @@
 
--- Creates Users/Accounts
--- UPDATE HASH TO A KNOWN password!!!!
 
 DROP TABLE doctor CASCADE;
 DROP TABLE account CASCADE;
 DROP TABLE patient CASCADE;
+DROP TABLE office CASCADE;
+DROP TABLE patient_review CASCADE;
+
 
 CREATE TABLE account (
     account_id int  NOT NULL,
@@ -12,6 +13,7 @@ CREATE TABLE account (
     last_name varchar(50)  NOT NULL,
     email varchar(50)  NOT NULL,
     user_id int  NOT NULL,
+    CONSTRAINT user_fk FOREIGN KEY(user_id) REFERENCES users(user_id),
     CONSTRAINT account_pk PRIMARY KEY (account_id)
 );
 
@@ -33,6 +35,31 @@ CREATE TABLE patient (
     CONSTRAINT patient_pk PRIMARY KEY (patient_id)
 ); 
 
+-- Table: office
+CREATE TABLE office (
+    office_id int  NOT NULL,
+    doctor_id int,
+    street_address varchar(100)  NOT NULL,
+    city varchar(100)  NOT NULL,
+    state varchar(100)  NOT NULL,
+    zip varchar(50)  NOT NULL,
+    CONSTRAINT doctor_fk FOREIGN KEY(doctor_id) REFERENCES doctor(doctor_id),
+    CONSTRAINT office_pk PRIMARY KEY (office_id)
+);
+
+-- Table: patient_review
+CREATE TABLE patient_review (
+    patient_review_id int  NOT NULL,
+    patient_id int  NOT NULL,
+    overall_rating int  NOT NULL,
+    review varchar(500)  NOT NULL,
+    doctor_id int  NOT NULL,
+    CONSTRAINT doctor_fk FOREIGN KEY(doctor_id) REFERENCES doctor(doctor_id),
+    CONSTRAINT patient_review_pk PRIMARY KEY (patient_review_id)
+);
+
+-- Creates Users/Accounts
+-- UPDATE HASH TO A KNOWN password!!!!
 INSERT INTO users (username,password_hash,role) VALUES ('userJC','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('userAT','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('userAP','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
@@ -53,14 +80,15 @@ INSERT INTO doctor(doctor_id, summary,user_type, account_id) VALUES(2,'I am a do
 INSERT INTO doctor(doctor_id, summary,user_type, account_id) VALUES(3,'I am a doctor','doctor',3);
 
 --Creates Offices
-INSERT INTO office(office_id,doctor_id, consulation_fee, street_address, city, state, zip) VALUES(1);
+INSERT INTO office(office_id, doctor_id, street_address, city, state, zip) VALUES(1,2, '123 Seaview Ave', 'BK', 'NY', 10301);
+INSERT INTO office(office_id, doctor_id, street_address, city, state, zip) VALUES(2,3, '123 Wall St', 'LA', 'CA', 90210);
 
 --Creates Office Review
 
+INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(1,1,4,'I had a great experience with my doctor and this office!', 2);
+INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(2,4,3,'Clean office and easy parking.', 3);
 
 
---INSERT INTO office (office_id,doctor_id,consulation_fee,street_address,city,state,county,zip)
---VALUES(1,1,200,'8305 OAK TREE RD','Raleigh','NC','Wake','27616')
 
 --SELECT first_name, last_name, summary, practicing_from,consulation_fee,street_address,city,state,county,zip FROM account
 --JOIN doctor ON account.account_id = doctor.doctor_id

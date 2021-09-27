@@ -10,7 +10,7 @@ public interface ReviewsDao {
 
     Reviews getReviewByPatientId(long patientId);
 
-    Reviews getReviewByDoctorId(long doctorId);
+    Reviews getReviewByOfficeId(long officeId);
 
     Reviews getReviews(long patientReviewId);
 
@@ -20,3 +20,4 @@ public interface ReviewsDao {
 //    void updateReview(Reviews reviews);
 //    void deleteReview(long patientReviewId);
 }
+

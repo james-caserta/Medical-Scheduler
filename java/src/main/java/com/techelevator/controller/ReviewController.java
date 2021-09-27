@@ -23,7 +23,7 @@ public class ReviewController {
 
 // get all reviews
     @RequestMapping(path = "/review", method = RequestMethod.GET)
-    public List<Reviews> findALlReviews(){
+    public List<Reviews> findAllReviews(){
         return reviewsDao.findAllReviews();
     }
 
