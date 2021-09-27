@@ -3,23 +3,30 @@ package com.techelevator.model;
 public class Patient {
 
     private long patientId;
+    private long accountId;
     private String userType;
     private String firstName;
     private String lastName;
-    private String city;
-    private String state;
-    private String zip;
-    private String contactNumber;
-    //    private String email;
-    //    private long accountId;
+//    private String city;
+//    private String state;
+//    private String zip;
+//    private String contactNumber;
+//    private String email;
 
 
-// Getter and Setter
+    // Getter and Setter
     public long getPatientId() {
         return patientId;
     }
     public void setPatientId(long patientId) {
         this.patientId = patientId;
+    }
+
+    public long getAccountId(){
+        return accountId;
+    }
+    public void setAccountId(long patientId) {
+        this.accountId = accountId;
     }
 
     public String getUserType() {
@@ -43,33 +50,35 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public String getCity() {
-        return city;
-    }
-    public void setCity(String city) {
-        this.city = city;
-    }
 
-    public String getState() {
-        return state;
-    }
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
+}
+//    public String getCity() {
+//        return city;
+//    }
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
+//
+//    public String getState() {
+//        return state;
+//    }
+//    public void setState(String state) {
+//        this.state = state;
+//    }
+//
+//    public String getZip() {
+//        return zip;
+//    }
+//    public void setZip(String zip) {
+//        this.zip = zip;
+//    }
+//
+//    public String getContactNumber() {
+//        return contactNumber;
+//    }
+//    public void setContactNumber(String contactNumber) {
+//        this.contactNumber = contactNumber;
+//    }
 
 //    public String getUserType() {
 //        return userType;
@@ -84,4 +93,4 @@ public class Patient {
 //    public void setEmail(String email) {
 //        this.email = email;
 //    }
-}
+

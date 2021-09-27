@@ -7,8 +7,6 @@ public interface PatientDao {
     Patient getPatientById(long patientId); // get the Patients Id
     // retrieve all info from patient with their id (firstname, lastname, address...)
 
-    Patient getUserType(String userType); // user type being patient
-
     Patient getPatient(long patientId);
 
     Patient createPatient(Patient patient);

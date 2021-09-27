@@ -55,6 +55,7 @@ public class JdbcAccountDao implements AccountDao{
         account.setPassword(results.getString("password"));
         account.setUserType(results.getInt("user_type"));
         account.setEmail(results.getString("email"));
+        account.setUserId(results.getLong("user_id"));
 
         return account;
     }

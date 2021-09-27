@@ -1,10 +1,7 @@
-
-
 -- tables
+
+
 -- Table: account
-
-
-
 CREATE TABLE account (
     account_id int  NOT NULL,
     first_name varchar(50)  NOT NULL,
@@ -22,7 +19,7 @@ CREATE TABLE appointment (
     start_time timestamp  NOT NULL,
     end_time timestamp  NOT NULL,
     appointment_status_id int  NOT NULL,
-    appoinment_date date  NOT NULL,
+    appointment_date date  NOT NULL,
     CONSTRAINT appointment_pk PRIMARY KEY (appointment_id)
 );
 
@@ -46,13 +43,13 @@ CREATE TABLE doctor (
 
 -- Table: doctor_availability
 CREATE TABLE doctor_availability (
-    doctor_avalibility_id int  NOT NULL,
+    doctor_availability_id int  NOT NULL,
     office_doctor_id int  NOT NULL,
     day_of_week varchar(10)  NOT NULL,
     start_time timestamp  NOT NULL,
     end_time timestamp  NOT NULL,
     availability char(1)  NOT NULL,
-    CONSTRAINT doctor_availability_pk PRIMARY KEY (doctor_avalibility_id)
+    CONSTRAINT doctor_availability_pk PRIMARY KEY (doctor_availability_id)
 );
 
 -- Table: doctor_response
@@ -69,6 +66,10 @@ CREATE TABLE doctor_response (
 CREATE TABLE office (
     office_id int  NOT NULL,
     doctor_id int,
+<<<<<<< HEAD
+=======
+    consultation_fee int,
+>>>>>>> b0a749c64ca51b22ab5ade6c6a4511087af1e215
     street_address varchar(100)  NOT NULL,
     city varchar(100)  NOT NULL,
     state varchar(100)  NOT NULL,

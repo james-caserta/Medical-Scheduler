@@ -7,7 +7,7 @@ public class Account {
     private String password;
     private int userType;
     private String email;
-//    private long userId;
+    private long userId;
 
 
 //Getter and Setter
@@ -46,11 +46,12 @@ public class Account {
     public void setEmail(String email) {
         this.email = email;
     }
-//
-//    //    public long getUserId() {
-////        return userId;
-////    }
-////    public void setUserId(long userId) {
-////        this.userId = userId;
-////    }
+
+    public long getUserId() {
+        return userId;
+    }
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
 }
