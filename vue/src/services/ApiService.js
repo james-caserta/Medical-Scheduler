@@ -4,7 +4,11 @@ export default {
 
     getAllReviews() {
         return axios.get('/review')
-      }
+      },
+
+    getOfficeInfo() {
+
+    },
 
 
 

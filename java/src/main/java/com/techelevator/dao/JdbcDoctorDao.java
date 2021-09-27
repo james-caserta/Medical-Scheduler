@@ -96,11 +96,23 @@ public class JdbcDoctorDao implements DoctorDao{
         doctor.setAccountId(results.getLong("account_id"));
         doctor.setUserType(results.getString("user_type"));
         doctor.setSummary(results.getString("summary"));
+<<<<<<< Updated upstream
         doctor.setAccountUserType(results.getString("account_user_type"));
 //        doctor.setOfficeName(results.getString("office_id"));
         doctor.setPracticingFrom(results.getDate("practicing_from").toLocalDate());
         doctor.setFirstName(results.getString("first_name"));
         doctor.setLastName(results.getString("last_name"));
+=======
+//<<<<<<< HEAD
+//        doctor.setAccountUserType(results.getString("account_user_type"));
+////        doctor.setOfficeName(results.getString("office_id"));
+//=======
+//        doctor.setPracticingFrom(results.getDate("practicing_from").toLocalDate());
+//        doctor.setFirstName(results.getString("first_name"));
+//        doctor.setLastName(results.getString("last_name"));
+//        //        doctor.setAccountUserType(results.getString("account_user_type"));
+//>>>>>>> b0a749c64ca51b22ab5ade6c6a4511087af1e215
+>>>>>>> Stashed changes
         return doctor;
     }
 }

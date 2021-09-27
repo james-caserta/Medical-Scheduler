@@ -10,11 +10,23 @@ public class Doctor {
     private String lastName;
     private String userType;
     private String summary;
+<<<<<<< Updated upstream
     private String accountUserType;
     //    private String officeName;
     //    private int accountId;
     private LocalDate practicingFrom;
 //    private String accountUserType;
+=======
+//<<<<<<< HEAD
+//    private String accountUserType;
+//    //    private String officeName;
+//    //    private int accountId;
+//=======
+//    private LocalDate practicingFrom;
+////    private String accountUserType;
+//>>>>>>> b0a749c64ca51b22ab5ade6c6a4511087af1e215
+
+>>>>>>> Stashed changes
 
 
 
@@ -61,6 +73,7 @@ public class Doctor {
         this.summary = summary;
     }
 
+<<<<<<< Updated upstream
     public String getAccountUserType() {
         return accountUserType;
     }
@@ -75,5 +88,42 @@ public class Doctor {
         this.practicingFrom = practicingFrom;
     }
 
+=======
+//<<<<<<< HEAD
+//    public String getAccountUserType() {
+//        return accountUserType;
+//    }
+//    public void setAccountUserType(String accountUserType) {
+//        this.accountUserType = accountUserType;
+//    }
+//
+//
+//
+//    //    public String getOfficeName() {
+////        return officeName;
+////    }
+////    public void setOfficeName(String officeName) {
+////        this.officeName = officeName;
+////    }
+//
+//
+////    public int getAccountId() {
+////        return accountId;
+//=======
+//    public LocalDate getPracticingFrom() {
+//        return practicingFrom;
+//    }
+//    public void setPracticingFrom(LocalDate practicingFrom) {
+//        this.practicingFrom = practicingFrom;
+//    }
+//
+////    public String getAccountUserType() {
+////        return accountUserType;
+//>>>>>>> b0a749c64ca51b22ab5ade6c6a4511087af1e215
+//    }
+//    public void setAccountUserType(String accountUserType) {
+//        this.accountUserType = accountUserType;
+//    }
+>>>>>>> Stashed changes
 }
 

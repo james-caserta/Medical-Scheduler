@@ -5,9 +5,11 @@
     :data-source="dataSource"
     :current-date="currentDate"
     :views="views"
-    :height="600"
+    :height="850"
     :start-day-hour="9"
+    :adaptivity-enabled="true"
     current-view="agenda"
+    
   >
     <DxResource
       :data-source="doctors"
