@@ -16,38 +16,48 @@ public class ReviewController {
 
     private ReviewsDao reviewsDao;
     private DoctorResponseDao doctorResponseDao;
+
     public ReviewController(ReviewsDao reviewsDao, DoctorResponseDao doctorResponseDao) {
         this.reviewsDao = reviewsDao;
         this.doctorResponseDao = doctorResponseDao;
 
     }
 
-// get all reviews
+    // get all reviews
     @RequestMapping(path = "/review", method = RequestMethod.GET)
     public List<Reviews> findAllReviews(){
         return reviewsDao.findAllReviews();
     }
 
-//get review
+    //get review
     @RequestMapping(path = "/review/{id}", method = RequestMethod.GET)
     public Reviews get(@PathVariable long patientReviewId) {
-    return reviewsDao.getReviews(patientReviewId);
+    return reviewsDao.getReview(patientReviewId);
 }
 
+
+    // create review
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping( path = "/addReview", method = RequestMethod.POST)
+    public Reviews addReview(@RequestBody Reviews review) {
+     return reviewsDao.createReview(review);
+    }
 
 // create review
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "/addReview/{id}", method = RequestMethod.POST)
     public Reviews addReview(@RequestBody Reviews reviews, @PathVariable("id") long patientReviewId) {
+
         return reviewsDao.createReview(reviews);
     }
 
-// Doctor response to review based on review_id
+    // Doctor response to review based on review_id
     @RequestMapping(path = "/doctorResponse/{id}", method = RequestMethod.GET)
     public DoctorResponse getDoctorReview(@PathVariable long doctorResponseId){
         return doctorResponseDao.getDoctorResponse(doctorResponseId);
     }
 
-    // Connect the doctorResponse to patient review??
+
+
 
 }

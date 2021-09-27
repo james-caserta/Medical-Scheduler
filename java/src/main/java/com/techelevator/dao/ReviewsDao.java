@@ -12,7 +12,7 @@ public interface ReviewsDao {
 
     Reviews getReviewByOfficeId(long officeId);
 
-    Reviews getReviews(long patientReviewId);
+    Reviews getReview(long patientReviewId);
 
     Reviews createReview(Reviews reviews);
 

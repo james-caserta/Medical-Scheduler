@@ -8,6 +8,7 @@
 
       <div class="review-card">
          <ReviewList/>
+         <ReviewForm/>
       </div>
     </div>
     
@@ -18,7 +19,7 @@
 <script>
 
 import ReviewList from '../components/ReviewList.vue'
-
+import ReviewForm from '../components/ReviewForm.vue'
 import BioCard from '../components/BioCard.vue'
 
 export default {
@@ -26,7 +27,8 @@ export default {
     name: 'profile',
     components:{
     BioCard,
-    ReviewList
+    ReviewList,
+    ReviewForm
        
   }
 

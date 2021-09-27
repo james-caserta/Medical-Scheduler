@@ -57,7 +57,7 @@ public class JdbcReviewsDao implements ReviewsDao{
     }
 
     @Override
-    public Reviews getReviews(long patientReviewId) {
+    public Reviews getReview(long patientReviewId) {
         Reviews reviews = null;
         String sql = "SELECT patient_review_id, patient_id, overall_rating, review, doctor_id " +
                 "FROM patient_review " +
@@ -71,13 +71,13 @@ public class JdbcReviewsDao implements ReviewsDao{
 
     @Override
     public Reviews createReview(Reviews reviews) {
-        String sql = "INSERT INTO patient_review (patient_id, overall_rating, review, doctor_id) " +
-                "VALUES (?, ?, ?, ?) " +
-                "RETURNING patient_review_id;";
-        Long newId = jdbcTemplate.queryForObject(sql, Long.class, reviews.getPatientId(), reviews.getReviewRating(),
+
+        String sql = "INSERT INTO patient_review ( patient_id, overall_rating, review, doctor_id) " +
+                "VALUES ( ?, ?, ?, ?) RETURNING patient_review_id;";
+        Long newId = jdbcTemplate.queryForObject(sql, Long.class, reviews.getPatientId(), reviews.getOverall_rating(),
                 reviews.getReview(), reviews.getDoctorId());
 
-        return getReviews(newId);
+        return getReview(newId);
     }
 
 
@@ -86,9 +86,9 @@ public class JdbcReviewsDao implements ReviewsDao{
         Reviews reviews = new Reviews();
         reviews.setPatientId(results.getLong("patient_id"));
         reviews.setDoctorId(results.getLong("doctor_id"));
-        reviews.setReviewRating(results.getInt("overall_rating"));
-        reviews.setPatientReviewId(results.getInt("patient_review_id"));
+        reviews.setOverall_rating(results.getInt("overall_rating"));
         reviews.setReview(results.getString("review"));
+        reviews.setPatientReviewId(results.getLong("patient_review_id"));
 
         return reviews;
     }
