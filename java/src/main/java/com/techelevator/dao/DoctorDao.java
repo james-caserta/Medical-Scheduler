@@ -13,8 +13,6 @@ public interface DoctorDao {
 
     Doctor getDoctorByAccountId(long accountId);
 
-    Doctor getUserType(String userType); // user is doctor
-
     Doctor getSummary(String summary);
 
     boolean create(String firstName, String lastName, String officeName);

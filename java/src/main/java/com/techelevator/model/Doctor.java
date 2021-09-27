@@ -4,26 +4,21 @@ import java.time.LocalDate;
 
 public class Doctor {
 
-    private long userId;
+    private long doctorId;
     private long accountId;
-    private String firstName;
-    private String lastName;
     private String userType;
     private String summary;
-    private String accountUserType;
-    //    private String officeName;
-    //    private int accountId;
-    private LocalDate practicingFrom;
-//    private String accountUserType;
+    private String firstName;
+    private String lastName;
 
 
 
 // Getter and Setter
-    public long getUserId() {
-        return userId;
+    public long getDoctorId() {
+        return doctorId;
     }
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setDoctorId(long doctorId) {
+        this.doctorId = doctorId;
     }
 
     public long getAccountId() {
@@ -31,20 +26,6 @@ public class Doctor {
     }
     public void setAccountId(long accountId) {
         this.accountId = accountId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getUserType() {
@@ -61,19 +42,18 @@ public class Doctor {
         this.summary = summary;
     }
 
-    public String getAccountUserType() {
-        return accountUserType;
+    public String getFirstName() {
+        return firstName;
     }
-    public void setAccountUserType(String accountUserType) {
-        this.accountUserType = accountUserType;
-    }
-
-    public LocalDate getPracticingFrom() {
-        return practicingFrom;
-    }
-    public void setPracticingFrom(LocalDate practicingFrom) {
-        this.practicingFrom = practicingFrom;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }
 

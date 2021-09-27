@@ -15,11 +15,23 @@ public class JdbcAccountDao implements AccountDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Override
+    public Account createAccount(Account account) {
+        String sql = "INSERT INTO account (account_id, first_name, last_name, email, user_id ) " +
+                "VALUES (?, ?, ?, ?, ?, ?) RETURNING account_id;";
+        Long newId = jdbcTemplate.queryForObject(sql, Long.class, account.getAccountId(),
+                account.getFirstName(), account.getLastName(), account.getEmail(), account.getUserId());
+
+
+        return getAccountById(newId);
+    }
+
 
     @Override
     public List<Account> findAllAccount() {
         List<Account> account = new ArrayList<>();
-        String sql = "SELECT user_name, password, user_type, email FROM account ";
+        String sql = "SELECT account_id, first_name, last_name, email, user_id " +
+                "FROM account ";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
@@ -31,18 +43,15 @@ public class JdbcAccountDao implements AccountDao{
 
     @Override
     public Account getAccountById(long accountId) {
-        String sql = "SELECT user_name, password, user_type, email FROM account WHERE account_id = ?";
+        String sql = "SELECT account_id, first_name, last_name, email, user_id " +
+                " FROM account " +
+                "WHERE account_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, accountId);
         if(results.next()) {
             return mapRowToAccount(results);
         } else {
-            throw new RuntimeException("Account id "+accountId+" was not found.");
+            throw new RuntimeException("Account: "+accountId+" was not found.");
         }
-    }
-
-    @Override
-    public Account getAccountByUsername(String username) {
-       return null;
     }
 
 
@@ -51,9 +60,8 @@ public class JdbcAccountDao implements AccountDao{
     private Account mapRowToAccount(SqlRowSet results){
         Account account = new Account();
         account.setAccountId(results.getLong("account_id"));
-        account.setUsername(results.getString("user_name"));
-        account.setPassword(results.getString("password"));
-        account.setUserType(results.getInt("user_type"));
+        account.setFirstName(results.getString("first_name"));
+        account.setLastName(results.getString("last_name"));
         account.setEmail(results.getString("email"));
         account.setUserId(results.getLong("user_id"));
 
