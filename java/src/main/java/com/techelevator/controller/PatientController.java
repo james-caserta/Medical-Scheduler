@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.PatientDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Patient;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,7 @@ public class PatientController {
 
 
     // create patient
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "/patient/{id}", method = RequestMethod.POST)
     public Patient addPatient(@RequestBody Patient patient, @PathVariable("id") long patientId) {
         return patientDao.createPatient(patient);
@@ -37,24 +39,10 @@ public class PatientController {
 
 
 
-
 // Get All Patients
 //    @RequestMapping(path = "/patient", method = RequestMethod.GET)
 //    public List<Patient> findALlPatients(){
 //        return patientDao.findAllPatients();
-//    }
-
-// Update Patient
-//    @RequestMapping(path = "/patient/{id}", method = RequestMethod.PUT)
-//    public Patient updatePatient(@Valid @RequestBody Patient patient, @PathVariable long patientId) {
-//           return patientDao.updatePatient(patient, patientId);
-//    }
-
-// Delete patient
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    @RequestMapping(path = "/patient/{id}", method = RequestMethod.DELETE)
-//    public void deletePatient(@PathVariable long patientId) {
-//        patientDao.deletePatient(patientId);
 //    }
 
 }
