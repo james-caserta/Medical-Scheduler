@@ -4,16 +4,13 @@ import com.techelevator.dao.DoctorResponseDao;
 import com.techelevator.dao.ReviewsDao;
 import com.techelevator.model.DoctorResponse;
 import com.techelevator.model.Reviews;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
-// @RequestMapping("review")
 public class ReviewController {
 
     private ReviewsDao reviewsDao;

@@ -7,9 +7,9 @@ import com.techelevator.model.Doctor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
-//@RequestMapping("doctor")
 public class DoctorController {
 
     private DoctorDao doctorDao;

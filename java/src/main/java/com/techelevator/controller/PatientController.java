@@ -3,15 +3,13 @@ package com.techelevator.controller;
 import com.techelevator.dao.PatientDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Patient;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin
 @PreAuthorize("isAuthenticated()")
-//@RequestMapping("patient")
 @RestController
 public class PatientController {
 
