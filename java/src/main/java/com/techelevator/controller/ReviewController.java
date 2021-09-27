@@ -50,7 +50,11 @@ public class ReviewController {
 
 
 
-
+    // create review
+//    @RequestMapping( path = "/review/{id}", method = RequestMethod.POST)
+//    public Reviews addReview(@RequestBody Reviews reviews, @PathVariable("id") long patientReviewId) {
+//        return reviewsDao.createReview(reviews);
+//    }
 
 // update review
 //    @RequestMapping(path = "/review/{id}", method = RequestMethod.PUT)

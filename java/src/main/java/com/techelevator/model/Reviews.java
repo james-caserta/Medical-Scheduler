@@ -5,9 +5,8 @@ import java.time.LocalDate;
 public class Reviews {
 
     private long patientId;
-    private long officeId;
+    private long doctorId;
     private int reviewRating;
-    private LocalDate reviewDate;
     private long patientReviewId;
     private String review;
 
@@ -19,11 +18,11 @@ public class Reviews {
         this.patientId = patientId;
     }
 
-    public long getOfficeId() {
-        return officeId;
+    public long getDoctorId() {
+        return doctorId;
     }
-    public void setOfficeId(long officeId) {
-        this.officeId = officeId;
+    public void setDoctorId(long doctorId) {
+        this.doctorId = doctorId;
     }
 
     public int getReviewRating() {
@@ -31,13 +30,6 @@ public class Reviews {
     }
     public void setReviewRating(int reviewRating) {
         this.reviewRating = reviewRating;
-    }
-
-    public LocalDate getReviewDate() {
-        return reviewDate;
-    }
-    public void setReviewDate(LocalDate reviewDate) {
-        this.reviewDate = reviewDate;
     }
 
     public long getPatientReviewId() {

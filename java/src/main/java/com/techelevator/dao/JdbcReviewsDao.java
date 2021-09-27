@@ -31,23 +31,23 @@ public class JdbcReviewsDao implements ReviewsDao{
 
     @Override
     public Reviews getReviewByPatientId(long patientId) {
-        String sql = "SELECT overall_rating, review FROM patient_review WHERE doctor_id = ?";
+        String sql = "SELECT * FROM patient_review WHERE patient_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
         if(results.next()) {
             return mapRowToReviews(results);
         } else {
-            throw new RuntimeException("patientId "+patientId+" was not found.");
+            throw new RuntimeException("Patient Id "+patientId+" was not found.");
         }
     }
 
     @Override
     public Reviews getReviewByOfficeId(long officeId) {
-        String sql = "SELECT overall_rating, review FROM patient_review WHERE office_id = ?";
+        String sql = "SELECT * FROM patient_review WHERE office_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
         if(results.next()) {
             return mapRowToReviews(results);
         } else {
-            throw new RuntimeException("officeId "+officeId+" was not found.");
+            throw new RuntimeException("Office Id "+officeId+" was not found.");
         }
     }
 
@@ -67,9 +67,9 @@ public class JdbcReviewsDao implements ReviewsDao{
     @Override
     public Reviews createReview(Reviews reviews) {
         String sql = "INSERT INTO patient_review (patient_review_id, patient_id, overall_rating, review, doctor_id) " +
-                "VALUES (?, ?, ?, ?, ?, ?) RETURNING patient_review_id;";
+                "VALUES (?, ?, ?, ?, ?) RETURNING patient_review_id;";
         Long newId = jdbcTemplate.queryForObject(sql, Long.class, reviews.getPatientReviewId(), reviews.getPatientId(), reviews.getReviewRating(),
-                reviews.getReview(), reviews.getReviewDate(), reviews.getOfficeId());
+                reviews.getReview(), reviews.getDoctorId());
 
         return getReviews(newId);
     }
@@ -79,12 +79,10 @@ public class JdbcReviewsDao implements ReviewsDao{
     private Reviews mapRowToReviews(SqlRowSet results){
         Reviews reviews = new Reviews();
         reviews.setPatientId(results.getLong("patient_id"));
-        reviews.setOfficeId(results.getLong("doctor_id"));
+        reviews.setDoctorId(results.getLong("doctor_id"));
         reviews.setReviewRating(results.getInt("overall_rating"));
         reviews.setPatientReviewId(results.getInt("patient_review_id"));
         reviews.setReview(results.getString("review"));
-//        reviews.setPatientFirstName(results.getString("first_name"));
-//        reviews.setPatientLastName(results.getString("last_name"));
 
         return reviews;
     }
@@ -93,9 +91,9 @@ public class JdbcReviewsDao implements ReviewsDao{
     //    @Override
 //    public void updateReview(Reviews reviews) {
 //        String sql = "UPDATE patient_review " +
-//                "SET overall_rating = ?, review = ?, review_date = ? " +
+//                "SET overall_rating = ?, review = ? " +
 //                "WHERE patient_review_id = ?;";
-//        jdbcTemplate.update(sql, reviews.getReviewRating(), reviews.getReview(), reviews.getReviewDate());
+//        jdbcTemplate.update(sql, reviews.getReviewRating(), reviews.getReview());
 //    }
 //
 //    @Override
