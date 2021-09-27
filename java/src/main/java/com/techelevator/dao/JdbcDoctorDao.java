@@ -18,7 +18,7 @@ public class JdbcDoctorDao implements DoctorDao{
 
 
     @Override
-    public List<Doctor> findAll() {
+    public List<Doctor> findAllDoctors() {
         List<Doctor> doctors = new ArrayList<>();
         String sql = "SELECT * FROM doctor";
 

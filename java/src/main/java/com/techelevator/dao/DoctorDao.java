@@ -5,7 +5,7 @@ import com.techelevator.model.Doctor;
 import java.util.List;
 
 public interface DoctorDao {
-    List<Doctor> findAll();
+    List<Doctor> findAllDoctors();
 
     Doctor createDoctor(Doctor doctor);
 
