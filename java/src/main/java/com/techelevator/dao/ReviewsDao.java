@@ -16,8 +16,5 @@ public interface ReviewsDao {
 
     Reviews createReview(Reviews reviews);
 
-
-//    void updateReview(Reviews reviews);
-//    void deleteReview(long patientReviewId);
 }
 

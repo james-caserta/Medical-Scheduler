@@ -4,8 +4,11 @@ package com.techelevator.controller;
 import com.techelevator.dao.DoctorDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Doctor;
+import com.techelevator.model.Reviews;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -32,6 +35,14 @@ public class DoctorController {
     public Doctor getDoctor(@PathVariable long doctorId){
         return doctorDao.getDoctor(doctorId);
     }
+
+
+// Get ALL doctors
+    @RequestMapping(path = "/Alldoctors", method = RequestMethod.GET)
+    public List<Doctor> findAllDoctors(){
+        return doctorDao.findAllDoctors();
+    }
+
 
 
 

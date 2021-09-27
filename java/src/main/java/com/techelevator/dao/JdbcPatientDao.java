@@ -21,14 +21,14 @@ public class JdbcPatientDao implements PatientDao{
         if(results.next()) {
             return mapRowToPatient(results);
         } else {
-            throw new RuntimeException("patientId "+patientId+" was not found.");
+            throw new RuntimeException("Patient: "+patientId+" was not found.");
         }
     }
 
     @Override
     public Patient getPatient(long patientId) {
         Patient patient = null;
-        String sql = "SELECT patient_id, account_id, first_name, last_name " +
+        String sql = "SELECT patient_id, account_id, user_type " +
                 "FROM patient " +
                 "WHERE patient_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
@@ -40,10 +40,10 @@ public class JdbcPatientDao implements PatientDao{
 
     @Override
     public Patient createPatient(Patient patient) {
-        String sql = "INSERT INTO patient (patient_id, account_id, user_type, first_name, last_name) " +
-                "VALUES (?, ?, ?, ?, ?) RETURNING patient_id;";
+        String sql = "INSERT INTO patient (patient_id, account_id, user_type ) " +
+                "VALUES (?, ?, ?,) RETURNING patient_id;";
         Long newId = jdbcTemplate.queryForObject(sql, Long.class,
-                patient.getFirstName(), patient.getLastName());
+                patient.getPatientId(), patient.getAccountId(), patient.getUserType());
 
         return getPatient(newId);
     }
@@ -60,14 +60,8 @@ public class JdbcPatientDao implements PatientDao{
         Patient patient = new Patient();
         patient.setPatientId(results.getLong("patient_id"));
         patient.setAccountId(results.getLong("accounts_id"));
-        patient.setFirstName(results.getString("first_name"));
-        patient.setLastName(results.getString("last_name"));
         patient.setUserType(results.getString("user_type"));
-//        patient.setCity(results.getString("city"));
-//        patient.setContactNumber(results.getString("contact_number"));
-//        patient.setZip(results.getString("zipcode"));
-//        patient.setAccountUserType(results.getString("account_user_type"));
-//        patient.setEmail(results.getString("email"));
+
         return patient;
     }
 }

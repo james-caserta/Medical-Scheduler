@@ -18,7 +18,7 @@ public class JdbcDoctorDao implements DoctorDao{
 
 
     @Override
-    public List<Doctor> findAll() {
+    public List<Doctor> findAllDoctors() {
         List<Doctor> doctors = new ArrayList<>();
         String sql = "SELECT * FROM doctor";
 
@@ -32,22 +32,22 @@ public class JdbcDoctorDao implements DoctorDao{
 
     @Override
     public Doctor createDoctor(Doctor doctor) {
-            String sql = "INSERT INTO doctor (user_id, account_id, first_name, last_name, user_type, summary, practicing_from ) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING doctor_id;";
-            Long newId = jdbcTemplate.queryForObject(sql, Long.class, doctor.getUserId(), doctor.getAccountId(), doctor.getFirstName(), doctor.getLastName(),
-                    doctor.getUserType(), doctor.getSummary(), doctor.getPracticingFrom());
+            String sql = "INSERT INTO doctor (doctor_id, account_id, user_type, summary ) " +
+                    "VALUES (?, ?, ?, ?) RETURNING doctor_id;";
+            Long newId = jdbcTemplate.queryForObject(sql, Long.class, doctor.getDoctorId(), doctor.getAccountId(),
+                    doctor.getUserType(), doctor.getSummary());
 
 
             return getDoctor(newId);
     }
 
     @Override
-    public Doctor getDoctor(long userId) {
+    public Doctor getDoctor(long doctorId) {
         Doctor doctor = null;
-        String sql = "SELECT user_id, user_type, summary, practicing_from " +
+        String sql = "SELECT doctor_id, account_id, user_type, summary " +
                 "FROM doctor " +
-                "WHERE user_id = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+                "WHERE doctor_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, doctorId);
         if (results.next()) {
             doctor = mapRowToDoctor(results);
         }
@@ -57,7 +57,7 @@ public class JdbcDoctorDao implements DoctorDao{
     @Override
     public Doctor getDoctorByAccountId(long accountId) {
         Doctor doctor = null;
-        String sql = "SELECT user_id, user_type, summary, practicing_from " +
+        String sql = "SELECT doctor_id, account_id, user_type, summary " +
                 "FROM doctor " +
                 "WHERE account_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, accountId);
@@ -66,12 +66,6 @@ public class JdbcDoctorDao implements DoctorDao{
         }
         return doctor;
     }
-
-    @Override
-    public Doctor getUserType(String userType) {
-        return null;
-    }
-
 
     @Override
     public Doctor getSummary(String summary) {
@@ -92,27 +86,13 @@ public class JdbcDoctorDao implements DoctorDao{
 
     private Doctor mapRowToDoctor(SqlRowSet results) {
         Doctor doctor = new Doctor();
-        doctor.setUserId(results.getLong("user_id"));
+        doctor.setDoctorId(results.getLong("doctor_id"));
         doctor.setAccountId(results.getLong("account_id"));
         doctor.setUserType(results.getString("user_type"));
         doctor.setSummary(results.getString("summary"));
-<<<<<<< Updated upstream
-        doctor.setAccountUserType(results.getString("account_user_type"));
-//        doctor.setOfficeName(results.getString("office_id"));
-        doctor.setPracticingFrom(results.getDate("practicing_from").toLocalDate());
-        doctor.setFirstName(results.getString("first_name"));
-        doctor.setLastName(results.getString("last_name"));
-=======
-//<<<<<<< HEAD
-//        doctor.setAccountUserType(results.getString("account_user_type"));
-////        doctor.setOfficeName(results.getString("office_id"));
-//=======
-//        doctor.setPracticingFrom(results.getDate("practicing_from").toLocalDate());
-//        doctor.setFirstName(results.getString("first_name"));
-//        doctor.setLastName(results.getString("last_name"));
-//        //        doctor.setAccountUserType(results.getString("account_user_type"));
-//>>>>>>> b0a749c64ca51b22ab5ade6c6a4511087af1e215
->>>>>>> Stashed changes
+        //        doctor.setFirstName(results.getString("first_name"));
+        //        doctor.setLastName(results.getString("last_name"));
+        //        doctor.setOfficeName(results.getString("office_id"));
         return doctor;
     }
 }
