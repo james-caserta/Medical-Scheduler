@@ -27,7 +27,7 @@ import OfficeInfo from '../components/OfficeInfo.vue'
 import DoctorBio from '../components/DoctorBio.vue'
 import AgendaButton from '../components/AgendaButton.vue'
 export default {
-name:'ReviewCard',
+name:'BioCard',
     components:{
         OfficeInfo,
         DoctorBio,
