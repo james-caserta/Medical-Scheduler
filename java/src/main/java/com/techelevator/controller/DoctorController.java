@@ -38,11 +38,11 @@ public class DoctorController {
 
 
 // Get ALL doctors
-    @RequestMapping(path = "/Alldoctors", method = RequestMethod.GET)
+    @RequestMapping(path = "/allDoctors", method = RequestMethod.GET)
     public List<Doctor> findAllDoctors(){
         return doctorDao.findAllDoctors();
     }
 
 
-    
+
 }
