@@ -24,7 +24,7 @@ import BioCard from '../components/BioCard.vue'
 
 export default {
   
-    name: 'review',
+    name: 'profile',
     components:{
     BioCard,
     ReviewList,

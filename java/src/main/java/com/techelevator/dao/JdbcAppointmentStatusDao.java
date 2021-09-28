@@ -24,7 +24,17 @@ public class JdbcAppointmentStatusDao implements AppointmentStatusDao{
         }
     }
 
-//  ***Appointment Status MAP ***
+    @Override
+    public AppointmentStatus createAppointmentStatus(AppointmentStatus appointmentStatus) {
+        String sql = "INSERT INTO appointment_status (appointment_status_id, appointment_id, status ) " +
+                "VALUES (?, ?, ?) RETURNING appointment_status_id;";
+        Long newId = jdbcTemplate.queryForObject(sql, Long.class, appointmentStatus.getAppointmentStatusId(),
+                appointmentStatus.getAppointmentId(), appointmentStatus.getStatus());
+
+        return getAppointmentStatusById(newId);
+    }
+
+    //  ***Appointment Status MAP ***
     private AppointmentStatus mapRowToAppointmentStatus(SqlRowSet results){
         AppointmentStatus appointmentStatus = new AppointmentStatus();
         appointmentStatus.setAppointmentStatusId(results.getLong("appointment_status_id"));
