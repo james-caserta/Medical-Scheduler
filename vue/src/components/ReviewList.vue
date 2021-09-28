@@ -1,30 +1,19 @@
 <template>
 <div id="reviewslist">
-<<<<<<< HEAD
 
     <div id="reviewscontent">
  
     <span class="reviewlisttitles">Office Reviews</span>
-=======
- <body> 
-         <h2>Office Reviews Average rating: {{averageRating}} </h2>
->>>>>>> ac5be98a75c803494adb909dd79ee64311fc6611
 
-        <div v-for='review in reviews' v-bind:key ='review' class="review"> 
+        <div id="reviewtext" v-for='review in reviews' v-bind:key ='review' class="review"> 
         
-<<<<<<< HEAD
         {{ review.id }} > {{ review.review }} {{review.rating}}
 
         </div>
 
     </div>
-    <span class="reviewlisttitles">Average rating: {{averageRating}} </span>
+    <!-- <span class="reviewlisttitles">Average Rating: {{averageRating}} </span> -->
      
-=======
-            {{ review.review }} {{review.overall_rating}}
-        </div>
-   </body>  
->>>>>>> ac5be98a75c803494adb909dd79ee64311fc6611
 </div>
 </template> 
 
@@ -67,13 +56,14 @@ name: 'list-of-reviews',
 }
 </script>
 
-<style>
+<style scoped>
 
 #reviewslist{
 
 display: flex;
+flex-direction: column;
 padding: 1rem;
-width: 100%;
+width: 94%;
 height: 100%;
 }
 
@@ -81,6 +71,25 @@ height: 100%;
 
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
+    font-size: 1.5em;
+}
+
+#reviewtext {
+
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    border-width: medium;
+    border-radius: 10px;
+    border-color:#F5F1F1;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.75em;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    overflow: auto;
+    background-color: #F5F1F1;
+
 }
 
 

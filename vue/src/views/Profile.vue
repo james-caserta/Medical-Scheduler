@@ -90,6 +90,7 @@ export default {
 
 .review-card{
   display: flex;
+  flex-direction: column;
   background-color:#FFFFFF;
   flex-grow: 1;
   margin: 1rem;

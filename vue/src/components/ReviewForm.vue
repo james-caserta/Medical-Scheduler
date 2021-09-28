@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div id="reviewFormContainer">
     <button
-      id="show-form-button"
+      class="btn"
       href="#"
       v-if="showForm === false"
       v-on:click.prevent="showForm = true"
     >
-      Open Review Form
+      Add Review
     </button>
 
     <form class="reviewForm" v-if="showForm === true" v-on:submit.prevent="onSubmit">
@@ -20,14 +20,14 @@
         <option>4</option>
         <option>5</option>
       </select>
-      <button class="submit-button">Submit</button>
+      <button class="btn">Submit</button>
       <button
-        id="unshow-form-button"
+        class="btn"
         href="#"
         v-if="showForm === true"
         v-on:click.prevent="showForm = false"
       >
-        Close Form
+        Cancel
       </button>
     </form>
   </div>
@@ -76,10 +76,11 @@ export default {
 </script>
 
 <style scoped>
-* {
-  background: white;
-  text-align: left;
-  border-radius: 10px;
+#reviewFormContainer {
+
+  display: flex;
+  width: 94%;
+  padding: 1rem;
 }
 
 label {
@@ -102,16 +103,34 @@ input {
   color: #555;
 }
 
-.submit-button {
+/* .submit-button {
   margin-left: 25px;
   padding: 5px 30px;
-}
+} */
 
-button {
+/* button {
   margin: 1%;
   background-color: #0019a8;
   border: none;
   color: white;
   padding: 5px 10px;
-}
+} */
+
+.btn {
+
+margin: 0.1rem;
+background: #6b89c6;
+border-radius: 1rem;
+font-family: 'Open Sans', sans-serif;
+cursor: pointer;
+font-size: 1em;
+color: white;
+font-weight: 600;
+  
+  }
+
+  .reviewForm {
+
+    width: 100%
+  }
 </style>
