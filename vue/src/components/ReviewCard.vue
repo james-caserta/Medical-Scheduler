@@ -36,6 +36,8 @@ export default {
     padding: 1rem;    
     width: 100%;
     height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
 }
 
 body > h2{
