@@ -1,18 +1,31 @@
 <template>
 <div id="reviewslist">
+<<<<<<< HEAD
 
     <div id="reviewscontent">
  
     <span class="reviewlisttitles">Office Reviews</span>
+=======
 
-        <div v-for='review in reviews' v-bind:key ='review' class="review"> 
+    <span class="reviewlisttitles">Office Reviews</span>
+
+    <div id="reviewscontent">
+ 
+    
+>>>>>>> eb84045f71ac8a7a926d834c0c61ca56e971bdb1
+
+        <div id="reviewtext" v-for='review in reviews' v-bind:key ='review' class="review"> 
         
+<<<<<<< HEAD
         {{ review.id }} > {{ review.review }} {{review.rating}}
+=======
+        {{ review.id }} > {{ review.review }} <br><br>{{review.overall_rating}}
+>>>>>>> eb84045f71ac8a7a926d834c0c61ca56e971bdb1
 
         </div>
 
     </div>
-    <span class="reviewlisttitles">Average rating: {{averageRating}} </span>
+    <!-- <span class="reviewlisttitles">Average Rating: {{averageRating}} </span> -->
      
 </div>
 </template> 
@@ -56,20 +69,70 @@ name: 'list-of-reviews',
 }
 </script>
 
-<style>
+<style scoped>
 
 #reviewslist{
 
 display: flex;
-padding: 1rem;
+flex-direction: column;
 width: 100%;
 height: 100%;
+
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  padding-right: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F1F1;
+  border-radius: 15px; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #6b89c6;
+  border-radius: 15px; 
+}
+
+#reviewscontent {
+
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+
 }
 
 .reviewlisttitles {
 
+    display: flex;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
+    font-size: 1.5em;
+    height: 15%;
+    width: 90%;
+    padding: 1rem;
+    
+}
+
+#reviewtext {
+
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    border-width: medium;
+    border-radius: 10px;
+    border-color:#F5F1F1;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.75em;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background-color: #F5F1F1;
+
 }
 
 

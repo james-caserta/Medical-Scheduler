@@ -47,6 +47,21 @@ public class JdbcDoctorDao implements DoctorDao{
     }
 
     @Override
+    public List<Doctor> getAllDoctorInfo(){
+        List<Doctor> doctors = new ArrayList<>();
+        String sql = "SELECT * " +
+                "(SELECT summary FROM doctor " +
+                "UNION SELECT street_address, city, state, zip, consultation_fee FROM office " +
+                "UNION SELECT first_name, last_name FROM account)";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while(results.next()){
+            Doctor doctor = mapRowToDoctor(results);
+            doctors.add(doctor);
+        }
+        return doctors;
+    }
+
+    @Override
     public Doctor createDoctor(Doctor doctor) {
 
             String sql = "INSERT INTO doctor(doctor_id, summary, user_type, account_id) " +

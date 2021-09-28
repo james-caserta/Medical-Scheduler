@@ -1,11 +1,36 @@
 <template>
   <div class="container-doctor-bio">
-      <p>Doctor bio</p>
+      <span id="doctorbio">{{doctor.summary}}</span>
   </div>
 </template>
 
 <script>
+import apiservice from '../services/ApiService.js'
+
 export default {
+  name: 'doctorbio',
+
+  created(){
+            apiservice.getDoctorByID(2).then(
+                (response) => {
+                    this.doctor = response.data
+                }
+
+            )
+  },
+
+  data(){
+        return{
+            doctor:{
+              doctorId: '',
+              accountId: '',
+              userType: '',
+              summary: '',
+            },
+
+        }
+    },
+
 
 }
 </script>
@@ -17,7 +42,7 @@ export default {
   background-color: #F5F1F1;
   border-radius: 15px;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
+  font-weight: 800;
   width: 100%;
   height: 100%;
   padding: 0.5rem;
