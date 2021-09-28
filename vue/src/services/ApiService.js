@@ -9,7 +9,11 @@ export default {
     
     addReview(UserReview){
         return axios.post('/addReview', UserReview)
-      }
+      },
+
+    getAllDoctors(){
+      return axios.get('/allDoctors')
+    }
 
 
 
