@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Account;
 import com.techelevator.model.Doctor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -15,6 +16,22 @@ public class JdbcDoctorDao implements DoctorDao{
     public JdbcDoctorDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+    @Override
+    public List<Account> getDoctorByOfficeId(Long officeId) {
+        List<Account> listOfDoctors = new ArrayList<>();
+        String sql= "SELECT account.account_id, account.first_name, account.last_name, account.email, account.user_id " +
+                "FROM account JOIN doctor ON account.account_id = doctor.account_id JOIN office ON office.doctor_id = " +
+                "doctor.doctor_id WHERE office.office_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, officeId);
+        while(results.next()){
+            listOfDoctors.add(mapRowToAccount(results));
+        }
+
+        return listOfDoctors;
+    }
+
 
     @Override
     public List<Doctor> findAllDoctors() {
@@ -83,6 +100,8 @@ public class JdbcDoctorDao implements DoctorDao{
         return false;
     }
 
+
+
     private Doctor mapRowToDoctor(SqlRowSet results) {
         Doctor doctor = new Doctor();
         doctor.setDoctorId(results.getLong("doctor_id"));
@@ -91,5 +110,16 @@ public class JdbcDoctorDao implements DoctorDao{
         doctor.setSummary(results.getString("summary"));
 
         return doctor;
+    }
+
+    private Account mapRowToAccount(SqlRowSet results){
+        Account account = new Account();
+        account.setAccountId(results.getLong("account_id"));
+        account.setFirstName(results.getString("first_name"));
+        account.setLastName(results.getString("last_name"));
+        account.setEmail(results.getString("email"));
+        account.setUserId(results.getLong("user_id"));
+
+        return account;
     }
 }

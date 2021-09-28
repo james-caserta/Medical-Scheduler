@@ -8,7 +8,7 @@ public class Office {
     private String city;
     private String state;
     private String zip;
-    private int consultationFee;
+
 
 
 // Getter and Setter
@@ -52,12 +52,5 @@ public class Office {
     }
     public void setZip(String zip) {
         this.zip = zip;
-    }
-
-    public int getConsultationFee() {
-        return consultationFee;
-    }
-    public void setConsultationFee(int consultationFee) {
-        this.consultationFee = consultationFee;
     }
 }

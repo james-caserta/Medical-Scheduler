@@ -1,18 +1,12 @@
 <template>
 <div id="reviewslist">
-<<<<<<< HEAD
 
     <div id="reviewscontent">
  
     <span class="reviewlisttitles">Office Reviews</span>
-=======
- <body> 
-         <h2>Office Reviews Average rating: {{averageRating}} </h2>
->>>>>>> ac5be98a75c803494adb909dd79ee64311fc6611
 
         <div v-for='review in reviews' v-bind:key ='review' class="review"> 
         
-<<<<<<< HEAD
         {{ review.id }} > {{ review.review }} {{review.rating}}
 
         </div>
@@ -20,11 +14,6 @@
     </div>
     <span class="reviewlisttitles">Average rating: {{averageRating}} </span>
      
-=======
-            {{ review.review }} {{review.overall_rating}}
-        </div>
-   </body>  
->>>>>>> ac5be98a75c803494adb909dd79ee64311fc6611
 </div>
 </template> 
 

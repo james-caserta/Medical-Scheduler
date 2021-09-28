@@ -1,13 +1,11 @@
 package com.techelevator.controller;
 
 
-import com.techelevator.dao.AccountDao;
-import com.techelevator.dao.DoctorAvailabilityDao;
-import com.techelevator.dao.DoctorDao;
-import com.techelevator.dao.UserDao;
+import com.techelevator.dao.*;
 import com.techelevator.model.Account;
 import com.techelevator.model.Doctor;
 import com.techelevator.model.DoctorAvailability;
+import com.techelevator.model.Office;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +21,14 @@ public class DoctorController {
     private UserDao userDao;
     private AccountDao accountDao;
     private DoctorAvailabilityDao doctorAvailabilityDao;
+    private OfficeDao officeDao;
 
-    public DoctorController(DoctorDao doctorDao, UserDao userDao, AccountDao accountDao, DoctorAvailabilityDao doctorAvailabilityDao) {
+    public DoctorController(DoctorDao doctorDao, UserDao userDao, AccountDao accountDao, DoctorAvailabilityDao doctorAvailabilityDao,OfficeDao officeDao) {
         this.doctorDao = doctorDao;
         this.userDao = userDao;
         this.accountDao = accountDao;
         this.doctorAvailabilityDao = doctorAvailabilityDao;
+        this.officeDao = officeDao;
     }
 
 //  Create doctor
@@ -40,7 +40,7 @@ public class DoctorController {
     }
 
 //  Get doctor by id
-    @RequestMapping(path = "doctor", method = RequestMethod.GET)
+    @RequestMapping(path = "/doctor/{id}", method = RequestMethod.GET)
     public Doctor getDoctor(@PathVariable long doctorId){
         return doctorDao.getDoctor(doctorId);
     }
@@ -76,6 +76,23 @@ public class DoctorController {
     @RequestMapping(path = "/account", method = RequestMethod.GET)
     public Account getAccount(@PathVariable long accountId){
         return accountDao.getAccountById(accountId);
+    }
+
+    /*Get all offices*/
+    @RequestMapping(path = "/getAllOffices", method = RequestMethod.GET)
+    public List<Office> getAllOffices(){
+        return officeDao.getAllOffices();
+    }
+
+    /*Get Doctors by office id*/
+    @RequestMapping(path = "/getDoctorsByOfficeId/{id}", method = RequestMethod.GET)
+    public List<Account> getDoctorsByOfficeId(@PathVariable("id")  Long officeId){
+        return doctorDao.getDoctorByOfficeId(officeId);
+    }
+    /*Get office by doctor Id*/
+    @RequestMapping(path = "/getOfficeByDoctorId/{id}", method = RequestMethod.GET)
+    public Office getOfficeByDoctorId(@PathVariable("id") Long doctorId){
+        return officeDao.getOfficeByDoctorId(doctorId);
     }
 
 
