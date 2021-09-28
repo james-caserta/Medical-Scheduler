@@ -7,6 +7,7 @@ import store from '../store/index'
 import Splash from '../views/Splash.vue'
 import Profile from '../views/Profile.vue'
 import Agenda from '../views/Agenda.vue'
+import DoctorSelect from '../views/DoctorSelect.vue'
 
 Vue.use(Router)
 
@@ -71,6 +72,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/doctor-select",
+      name: "doctorselect",
+      component: DoctorSelect,
+      meta: {
+        requiresAuth: false
+      },
+    }
     
   ]
 })

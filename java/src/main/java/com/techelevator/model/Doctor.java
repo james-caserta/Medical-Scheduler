@@ -8,8 +8,8 @@ public class Doctor {
     private long accountId;
     private String userType;
     private String summary;
-    private String firstName;
-    private String lastName;
+
+
 
 
 
@@ -28,6 +28,7 @@ public class Doctor {
         this.accountId = accountId;
     }
 
+
     public String getUserType() {
         return userType;
     }
@@ -42,18 +43,6 @@ public class Doctor {
         this.summary = summary;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 }
 

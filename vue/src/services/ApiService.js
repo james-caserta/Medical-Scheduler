@@ -6,9 +6,10 @@ export default {
         return axios.get('/review')
       },
 
-    getOfficeInfo() {
-
-    },
+    
+    addReview(UserReview){
+        return axios.post('/addReview', UserReview)
+      }
 
 
 

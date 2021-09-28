@@ -16,7 +16,6 @@ public class JdbcDoctorDao implements DoctorDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
     @Override
     public List<Doctor> findAllDoctors() {
         List<Doctor> doctors = new ArrayList<>();
@@ -32,11 +31,11 @@ public class JdbcDoctorDao implements DoctorDao{
 
     @Override
     public Doctor createDoctor(Doctor doctor) {
-            String sql = "INSERT INTO doctor (doctor_id, account_id, user_type, summary ) " +
-                    "VALUES (?, ?, ?, ?) RETURNING doctor_id;";
-            Long newId = jdbcTemplate.queryForObject(sql, Long.class, doctor.getDoctorId(), doctor.getAccountId(),
-                    doctor.getUserType(), doctor.getSummary());
 
+            String sql = "INSERT INTO doctor(doctor_id, summary, user_type, account_id) " +
+                    "VALUES (?, ?, ?, ?) RETURNING doctor_id;";
+            Long newId = jdbcTemplate.queryForObject(sql, Long.class,
+                     doctor.getDoctorId(), doctor.getSummary(), doctor.getUserType(), doctor.getAccountId());
 
             return getDoctor(newId);
     }
@@ -90,9 +89,7 @@ public class JdbcDoctorDao implements DoctorDao{
         doctor.setAccountId(results.getLong("account_id"));
         doctor.setUserType(results.getString("user_type"));
         doctor.setSummary(results.getString("summary"));
-        //        doctor.setFirstName(results.getString("first_name"));
-        //        doctor.setLastName(results.getString("last_name"));
-        //        doctor.setOfficeName(results.getString("office_id"));
+
         return doctor;
     }
 }
