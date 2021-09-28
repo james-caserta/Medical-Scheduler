@@ -23,33 +23,38 @@ public class ReviewController {
 
     }
 
-    // get all reviews
+//    Get all reviews
     @RequestMapping(path = "/review", method = RequestMethod.GET)
     public List<Reviews> findAllReviews(){
         return reviewsDao.findAllReviews();
     }
 
-    //get review
+//    Get review
     @RequestMapping(path = "/review/{id}", method = RequestMethod.GET)
     public Reviews get(@PathVariable long patientReviewId) {
     return reviewsDao.getReview(patientReviewId);
 }
 
 
-    // create review
+//  Create review
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "/addReview", method = RequestMethod.POST)
     public Reviews addReview(@RequestBody Reviews review) {
      return reviewsDao.createReview(review);
     }
 
-// create review
+
+//  Create review
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "/addReview/{id}", method = RequestMethod.POST)
     public Reviews addReview(@RequestBody Reviews reviews, @PathVariable("id") long patientReviewId) {
 
         return reviewsDao.createReview(reviews);
     }
+
+
+//   ****************   Doctor Review   *********************
+
 
     // Doctor response to review based on review_id
     @RequestMapping(path = "/doctorResponse/{id}", method = RequestMethod.GET)

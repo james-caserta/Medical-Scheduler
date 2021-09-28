@@ -9,7 +9,9 @@ public interface DoctorDao {
 
     Doctor createDoctor(Doctor doctor);
 
-    Doctor getDoctor(long userId); // get the Doctors Id
+    Doctor getDoctor(long userId);
+
+    List<Doctor> getAllDoctorInfo();
 
     Doctor getDoctorByAccountId(long accountId);
 

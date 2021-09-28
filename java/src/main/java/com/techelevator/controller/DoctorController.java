@@ -53,17 +53,15 @@ public class DoctorController {
     }
 
 
-//    ******  Availability  ******
-
-
-// Get Doctor Availability
-    @RequestMapping(path = "/availability", method = RequestMethod.GET)
-    public DoctorAvailability getAvailability(@PathVariable long doctorAvailabilityId){
-        return doctorAvailabilityDao.getDoctorAvailability(doctorAvailabilityId);
+// Get Doctor, Office, & Account info for Doctor Page
+    @RequestMapping(path = "/doctorInfo", method = RequestMethod.GET)
+    public List<Doctor> getAllDoctorInfo(){
+        return doctorDao.getAllDoctorInfo();
     }
 
 
-//    *******   ACCOUNT   *********
+
+//   *******************************     ACCOUNT     *******************************************
 
 // Create Account
     @ResponseStatus(HttpStatus.CREATED)
