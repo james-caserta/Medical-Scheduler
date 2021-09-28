@@ -7,7 +7,7 @@ import store from '../store/index'
 import Splash from '../views/Splash.vue'
 import Profile from '../views/Profile.vue'
 import Agenda from '../views/Agenda.vue'
-import DoctorSelect from '../views/DoctorSelect.vue'
+import Offices from '../views/Offices.vue'
 
 Vue.use(Router)
 
@@ -71,14 +71,15 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+      
     },
     {
-      path: "/doctor-select",
-      name: "doctorselect",
-      component: DoctorSelect,
+      path: "/offices",
+      name: "offices",
+      component: Offices,
       meta: {
         requiresAuth: false
-      },
+      }
     }
     
   ]

@@ -7,6 +7,7 @@ export default {
     },
 
     
+<<<<<<< HEAD
   addReview(UserReview){
       return axios.post('/addReview', UserReview)
     },
@@ -14,6 +15,15 @@ export default {
   getAllDoctors() {
       return axios.get('/allDoctors')
     },
+=======
+    addReview(UserReview){
+        return axios.post('/addReview', UserReview)
+      },
+
+    getAllDoctors(){
+      return axios.get('/allDoctors')
+    }
+>>>>>>> ac5be98a75c803494adb909dd79ee64311fc6611
 
 
 
