@@ -40,7 +40,7 @@ public class DoctorController {
     }
 
 //  Get doctor by id
-    @RequestMapping(path = "doctor", method = RequestMethod.GET)
+    @RequestMapping(path = "/doctor/{id}", method = RequestMethod.GET)
     public Doctor getDoctor(@PathVariable long doctorId){
         return doctorDao.getDoctor(doctorId);
     }

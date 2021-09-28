@@ -26,7 +26,6 @@ export default {
               accountId: '',
               userType: '',
               summary: '',
-
             },
 
         }
