@@ -1,11 +1,37 @@
 <template>
   <div class="container-doctor-bio">
-      <p>Doctor bio</p>
+      <span id="doctorbio">{{doctor.summary}}</span>
   </div>
 </template>
 
 <script>
+import apiservice from '../services/ApiService.js'
+
 export default {
+  name: 'doctorbio',
+
+  created(){
+            apiservice.getDoctorByID(2).then(
+                (response) => {
+                    this.doctor = response.data
+                }
+
+            )
+  },
+
+  data(){
+        return{
+            doctor:{
+              doctorId: '',
+              accountId: '',
+              userType: '',
+              summary: '',
+
+            },
+
+        }
+    },
+
 
 }
 </script>

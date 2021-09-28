@@ -1,13 +1,15 @@
 <template>
 <div id="reviewslist">
 
+    <span class="reviewlisttitles">Office Reviews</span>
+
     <div id="reviewscontent">
  
-    <span class="reviewlisttitles">Office Reviews</span>
+    
 
         <div id="reviewtext" v-for='review in reviews' v-bind:key ='review' class="review"> 
         
-        {{ review.id }} > {{ review.review }} {{review.rating}}
+        {{ review.id }} > {{ review.review }} <br><br>{{review.overall_rating}}
 
         </div>
 
@@ -62,16 +64,47 @@ name: 'list-of-reviews',
 
 display: flex;
 flex-direction: column;
-padding: 1rem;
-width: 94%;
+width: 100%;
 height: 100%;
+
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  padding-right: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F1F1;
+  border-radius: 15px; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #6b89c6;
+  border-radius: 15px; 
+}
+
+#reviewscontent {
+
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+
 }
 
 .reviewlisttitles {
 
+    display: flex;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
     font-size: 1.5em;
+    height: 15%;
+    width: 90%;
+    padding: 1rem;
+    
 }
 
 #reviewtext {
@@ -87,7 +120,6 @@ height: 100%;
     font-size: 0.75em;
     margin: 0.5rem 0;
     padding: 0.5rem;
-    overflow: auto;
     background-color: #F5F1F1;
 
 }

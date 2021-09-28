@@ -1,6 +1,7 @@
 <template>
   <div id="reviewFormContainer">
     <button
+      id="addbutton"
       class="btn"
       href="#"
       v-if="showForm === false"
@@ -8,10 +9,11 @@
     >
       Add Review
     </button>
-
+    
     <form class="reviewForm" v-if="showForm === true" v-on:submit.prevent="onSubmit">
       <label>Submit Review</label>
       <input type="text" required v-model="review" />
+        <div id="ratingbuttons">
       <label>Rating</label>
       <select id="rating" v-model.number="overall_rating">
         <option>1</option>
@@ -29,6 +31,7 @@
       >
         Cancel
       </button>
+        </div>
     </form>
   </div>
 </template>
@@ -79,28 +82,34 @@ export default {
 #reviewFormContainer {
 
   display: flex;
+  flex-direction: column;
   width: 94%;
-  padding: 1rem;
+  height: 100%;
+  /* margin: 1rem; */
+  /* height: 25%; */
+  /* padding: 1rem; */
 }
 
 label {
-  color: #aaa;
-  display: inline-block;
-  margin: 25px 0 15px;
-  font-size: 0.6em;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  /* margin: 25px 0 15px; */
+  font-size: 0.80em;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   font-weight: bold;
 }
 
 input {
   display: block;
-  padding: 10px 6px;
-  width: 100%;
-  box-sizing: border-box;
+  /* padding: 10px 6px; */
+  width: 80%;
+  /* box-sizing: border-box; */
   border: none;
-  border-bottom: 1px solid #ddd;
-  color: #555;
+  border-bottom: 1px solid black;
+  color: black;
 }
 
 /* .submit-button {
@@ -126,11 +135,35 @@ cursor: pointer;
 font-size: 1em;
 color: white;
 font-weight: 600;
+width: 5rem;
   
-  }
+}
 
-  .reviewForm {
+.reviewForm {
 
-    width: 100%
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-around;
+  /* background-color:#F5F1F1; */
+  width: 100%;
+  height: 100%;
+}
+
+#addbutton {
+
+  width: 5rem;
+}
+
+#rating {
+
+  width: 2rem;
+}
+
+#ratingbuttons {
+
+  display: flex;
+  gap: 1rem;
+  margin: 5px;
+}
 </style>

@@ -7,8 +7,10 @@
       </div>
 
       <div class="review-card">
-         <ReviewList/>
-         <ReviewForm/>
+        <div id="review-card-content">
+         <ReviewList id="reviewsList"/>
+         <ReviewForm id="reviewsForm"/>
+         </div>
       </div>
     </div>
     
@@ -68,6 +70,8 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .cards{
@@ -97,6 +101,31 @@ export default {
   border-radius: 15px;
   height: 65%;
   width: 40%;
+}
+
+#review-card-content {
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+#reviewsList {
+
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+}
+
+#reviewsForm {
+
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start;
+  justify-content: bottom; */
+  height: 100%;
+  padding: 1rem;
 }
 
 </style>
