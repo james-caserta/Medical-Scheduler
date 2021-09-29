@@ -18,7 +18,7 @@ public class JdbcOfficeDao implements OfficeDao{
     @Override
     public Office getOfficeByDoctorId(Long doctorId) {
         Office office = null;
-        String sql = "SELECT office_id, doctor_id, street_address, city, state, zip " +
+        String sql = "SELECT office_id, doctor_id, phone_number ,street_address, city, state, zip, consultation_fee " +
                 "FROM office " +
                 "WHERE doctor_id = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, doctorId);
@@ -31,7 +31,7 @@ public class JdbcOfficeDao implements OfficeDao{
     @Override
     public List<Office> getAllOffices(){
         List<Office> officeList = new ArrayList<Office>();
-        String sql= "SELECT office_id, doctor_id, street_address, city, state, zip FROM office ";
+        String sql= "SELECT office_id, doctor_id, phone_number ,street_address, city, state, zip, consultation_fee FROM office ";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
         while(results.next()){
@@ -44,7 +44,7 @@ public class JdbcOfficeDao implements OfficeDao{
     @Override
     public Office getOfficeInfoByOfficeId(long officeId) {
         Office office = null;
-        String sql = "SELECT street_address, city, state, zip, consultation_fee " +
+        String sql = "SELECT office_id, doctor_id, phone_number ,street_address, city, state, zip, consultation_fee " +
                 "FROM office " +
                 "WHERE office_id = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, officeId);
@@ -54,22 +54,15 @@ public class JdbcOfficeDao implements OfficeDao{
         return office;
     }
 
-    @Override
-    public void updateInfoByOfficeId(Office office) {
-        String sql = "UPDATE office " +
-                "SET street_address = ?, city = ?, state = ?, zip = ?" +
-                "WHERE office_id = ?;";
-        jdbcTemplate.update(sql, office.getStreetAddress(), office.getCity(), office.getState(),
-                office.getZip());
-    }
 
     @Override
-    public void updateInfoByDoctorId(Office office) {
+    public void updateOfficeInfoByDoctorId(Long doctorId, Office office) {
         String sql = "UPDATE office " +
-                "SET street_address = ?, city = ?, state = ?, zip = ?" +
+                "SET phone_number= ?, street_address = ?, city = ?, state = ?, zip = ?, consultation_fee" +
                 "WHERE doctor_id = ?;";
-        jdbcTemplate.update(sql, office.getStreetAddress(), office.getCity(), office.getState(),
-                office.getZip());
+        jdbcTemplate.update(sql,office.getPhoneNumber(), office.getStreetAddress(), office.getCity(), office.getState(),
+                office.getZip(), office.getConsultation_fee());
+
     }
 
 
@@ -77,10 +70,12 @@ public class JdbcOfficeDao implements OfficeDao{
         Office office = new Office();
         office.setOfficeId(results.getLong("office_id"));
         office.setDoctorId(results.getLong("doctor_id"));
+        office.setPhoneNumber(results.getString("phone_number"));
         office.setStreetAddress(results.getString("street_address"));
         office.setCity(results.getString("city"));
         office.setState(results.getString("state"));
         office.setZip(results.getString("zip"));
+        office.setConsultation_fee(results.getInt("consultation_fee"));
         return office;
     }
 }
