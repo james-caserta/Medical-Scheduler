@@ -10,7 +10,7 @@
       Add Review
     </button>
     
-    <form class="reviewForm" v-if="showForm === true" v-on:submit.prevent="onSubmit">
+    <form class="reviewForm" v-if="showForm === true" v-on:submit="onSubmit">
       <label>Submit Review</label>
       <input type="text" required v-model="review" />
         <div id="ratingbuttons">

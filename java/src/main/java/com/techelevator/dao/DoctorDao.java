@@ -11,12 +11,9 @@ public interface DoctorDao {
     Doctor createDoctor(Doctor doctor);
 
     Doctor getDoctor(long userId);
-<<<<<<< HEAD
-=======
 
     List<Doctor> getAllDoctorInfo();
->>>>>>> eb84045f71ac8a7a926d834c0c61ca56e971bdb1
-
+    
     Doctor getDoctorByAccountId(long accountId);
 
     Doctor getSummary(String summary);
