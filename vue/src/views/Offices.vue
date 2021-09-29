@@ -1,14 +1,14 @@
 <template>
     <div>
         <p>List of Doctors</p>
-        <ListOfOffices/>
+        <Offices/>
         <ListOfDoctors/>
     </div>
 </template>
 
 <script>
 import ListOfDoctors from '../components/ListOfDoctors.vue'
-import ListOfOffices from '../components/Offices.vue'
+import Offices from '../components/Offices.vue'
 
 export default {
     name:{
@@ -16,7 +16,7 @@ export default {
     },
     components: {
         ListOfDoctors,
-        ListOfOffices
+        Offices
       
     }
 

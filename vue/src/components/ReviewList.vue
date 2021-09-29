@@ -1,26 +1,13 @@
 <template>
 <div id="reviewslist">
-<<<<<<< HEAD
 
     <div id="reviewscontent">
  
     <span class="reviewlisttitles">Office Reviews</span>
-=======
-
-    <span class="reviewlisttitles">Office Reviews</span>
-
-    <div id="reviewscontent">
- 
-    
->>>>>>> eb84045f71ac8a7a926d834c0c61ca56e971bdb1
 
         <div id="reviewtext" v-for='review in reviews' v-bind:key ='review' class="review"> 
         
-<<<<<<< HEAD
         {{ review.id }} > {{ review.review }} {{review.rating}}
-=======
-        {{ review.id }} > {{ review.review }} <br><br>{{review.overall_rating}}
->>>>>>> eb84045f71ac8a7a926d834c0c61ca56e971bdb1
 
         </div>
 
