@@ -68,5 +68,6 @@ public class Office {
     }
     public void setConsultationFee(String consultationFee) {
         this.consultationFee = consultationFee;
+
     }
 }
