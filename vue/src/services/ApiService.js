@@ -30,5 +30,12 @@ export default {
       return axios.get('/office', office_id)
     },
 
+  getDoctorByID(){
+      return axios.get('/doctor/', {
+        params: {
+          doctor_id: '',
+        }
+      })
+    },
 
 }

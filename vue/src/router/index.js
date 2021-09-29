@@ -8,6 +8,7 @@ import Splash from '../views/Splash.vue'
 import Profile from '../views/Profile.vue'
 import Agenda from '../views/Agenda.vue'
 import Offices from '../views/Offices.vue'
+import DoctorSelect from '../views/DoctorSelect.vue'
 
 Vue.use(Router)
 
@@ -61,7 +62,7 @@ const router = new Router({
       name: "profile",
       component: Profile,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -80,7 +81,15 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }
+    },
+    {
+      path: "/doctor-select",
+      name: "doctor-select",
+      component: DoctorSelect,
+      meta: {
+        requiresAuth: true
+      }
+    },
     
   ]
 })

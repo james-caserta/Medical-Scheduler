@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 @PreAuthorize("isAuthenticated()")
 public class DoctorController {
 
@@ -40,8 +40,8 @@ public class DoctorController {
     }
 
 //  Get doctor by id
-    @RequestMapping(path = "/doctor/{id}", method = RequestMethod.GET)
-    public Doctor getDoctor(@PathVariable long doctorId){
+    @RequestMapping(path = "/doctor/{doctorId}", method = RequestMethod.GET)
+    public Doctor getDoctor(@PathVariable int doctorId){
         return doctorDao.getDoctor(doctorId);
     }
 

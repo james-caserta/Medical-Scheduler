@@ -11,7 +11,7 @@ export default {
   name: 'doctorbio',
 
   created(){
-            apiservice.getDoctorByID(2).then(
+            apiservice.getDoctorByID().then(
                 (response) => {
                     this.doctor = response.data
                 }
@@ -22,7 +22,7 @@ export default {
   data(){
         return{
             doctor:{
-              doctorId: '',
+              doctorId: '2',
               accountId: '',
               userType: '',
               summary: '',

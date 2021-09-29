@@ -18,7 +18,7 @@
             
                 </div><br>
 
-            {{ review.id }} > {{ review.review }} 
+            {{ review.id }} "{{ review.review }}"
             
             <!-- {{review.overall_rating}} -->
 

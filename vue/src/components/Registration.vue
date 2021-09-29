@@ -2,7 +2,7 @@
 
     <div id="register">
 <form class="form-register" @submit.prevent="register">
-      <span id="registerbtn">Register</span>
+      <span class="registerbtn">Register</span>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -39,6 +39,8 @@
         Submit
       </button>
 
+      <router-link :to="{ name: 'login' }" id="alreadyuser">I already have an account</router-link>
+
       <!-- <router-link :to="{ name: 'login' }">Already registered?</router-link> -->
 </form>
      </div>
@@ -74,7 +76,7 @@
   
   }
 
-  #registerbtn {
+  .registerbtn {
 
   font-size: 1.25em;
   color: white;
@@ -99,14 +101,12 @@
     color: white;
   }
 
-  #register {
+  #alreadyuser {
 
-    
-  }
-
-  .form-control {
-
-
+  font-size: 1em;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
   }
 
   .alert {

@@ -12,6 +12,18 @@
 
 <style scoped>
 
+#doctorlist {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.doctor {
+
+    display: flex;
+    flex-direction: column;
+}
+
 </style>
 
 <script>
