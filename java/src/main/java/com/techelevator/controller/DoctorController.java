@@ -70,11 +70,15 @@ public class DoctorController {
         return accountDao.createAccount(account);
     }
 
-// Get Account by Id
+// Get Account by id
     @RequestMapping(path = "/account", method = RequestMethod.GET)
     public Account getAccount(@PathVariable long accountId){
         return accountDao.getAccountById(accountId);
     }
+
+
+//  ***********************   OFFICE   ****************************
+
 
     /*Get all offices*/
     @RequestMapping(path = "/getAllOffices", method = RequestMethod.GET)
@@ -87,7 +91,7 @@ public class DoctorController {
     public List<Account> getDoctorsByOfficeId(@PathVariable("id")  Long officeId){
         return doctorDao.getDoctorByOfficeId(officeId);
     }
-    /*Get office by doctor Id*/
+    /*Get office by doctor id*/
     @RequestMapping(path = "/getOfficeByDoctorId/{id}", method = RequestMethod.GET)
     public Office getOfficeByDoctorId(@PathVariable("id") Long doctorId){
         return officeDao.getOfficeByDoctorId(doctorId);

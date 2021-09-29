@@ -22,6 +22,7 @@ public class CalendarController {
         this.doctorAvailabilityDao = doctorAvailabilityDao;
     }
 
+
 //  Create Appointment
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "/appointment/{id}", method = RequestMethod.POST)
@@ -49,7 +50,7 @@ public class CalendarController {
     }
 
 
-//    ******  Availability  ******
+//    *******************    Availability    ************************
 
 
 //  Get Doctor Availability
