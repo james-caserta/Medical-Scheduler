@@ -8,6 +8,8 @@ public class Office {
     private String city;
     private String state;
     private String zip;
+    private String phoneNumber;
+    private String consultationFee;
 
 
 
@@ -52,5 +54,20 @@ public class Office {
     }
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getConsultationFee() {
+        return consultationFee;
+    }
+    public void setConsultationFee(String consultationFee) {
+        this.consultationFee = consultationFee;
+
     }
 }

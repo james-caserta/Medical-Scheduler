@@ -11,11 +11,11 @@ import java.util.List;
 
 @Component
 public class JdbcDoctorDao implements DoctorDao{
-
     private JdbcTemplate jdbcTemplate;
     public JdbcDoctorDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
 
     @Override
     public List<Account> getDoctorByOfficeId(Long officeId) {
@@ -28,7 +28,6 @@ public class JdbcDoctorDao implements DoctorDao{
         while(results.next()){
             listOfDoctors.add(mapRowToAccount(results));
         }
-
         return listOfDoctors;
     }
 

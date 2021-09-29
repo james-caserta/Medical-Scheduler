@@ -13,7 +13,7 @@ public interface DoctorDao {
     Doctor getDoctor(long userId);
 
     List<Doctor> getAllDoctorInfo();
-    
+
     Doctor getDoctorByAccountId(long accountId);
 
     Doctor getSummary(String summary);

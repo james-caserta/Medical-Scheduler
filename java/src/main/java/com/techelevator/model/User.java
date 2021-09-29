@@ -28,7 +28,6 @@ public class User {
    public Long getId() {
       return id;
    }
-
    public void setId(Long id) {
       this.id = id;
    }
@@ -36,7 +35,6 @@ public class User {
    public String getUsername() {
       return username;
    }
-
    public void setUsername(String username) {
       this.username = username;
    }
@@ -44,7 +42,6 @@ public class User {
    public String getPassword() {
       return password;
    }
-
    public void setPassword(String password) {
       this.password = password;
    }
@@ -52,7 +49,6 @@ public class User {
    public boolean isActivated() {
       return activated;
    }
-
    public void setActivated(boolean activated) {
       this.activated = activated;
    }
@@ -60,7 +56,6 @@ public class User {
    public Set<Authority> getAuthorities() {
       return authorities;
    }
-
    public void setAuthorities(Set<Authority> authorities) {
       this.authorities = authorities;
    }
