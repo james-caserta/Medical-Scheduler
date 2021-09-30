@@ -57,6 +57,14 @@ export default {
   getOfficeDoctorPrincipal(){
     return axios.get('/getOfficeDoctorPrincipal')
   },
+
+  addAccount(account){
+    return axios.post('/account', account)
+  },
+
+  getUserIDPrincipal(){
+    return axios.get('/getUserIDPrincipal')
+  },
   
 
 }

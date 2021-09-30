@@ -5,6 +5,7 @@ import com.techelevator.dao.*;
 import com.techelevator.model.Account;
 import com.techelevator.model.Doctor;
 import com.techelevator.model.Office;
+import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -65,8 +66,8 @@ public class DoctorController {
 
 // Create Account
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/account/{id}", method = RequestMethod.POST)
-    public Account createAccount(@RequestBody Account account, @PathVariable("id") long accountId){
+    @RequestMapping(path = "/account", method = RequestMethod.POST)
+    public Account createAccount(@RequestBody Account account){
         return accountDao.createAccount(account);
     }
 
@@ -125,6 +126,11 @@ public class DoctorController {
     @RequestMapping(path = "/getOfficeDoctorPrincipal", method = RequestMethod.GET)
     public Office getOfficeDoctorPrincipal(Principal principal){
         return officeDao.getOfficeByDoctorId(getDoctorPrincipal(principal).getDoctorId());
+    }
+
+    @RequestMapping(path = "/getUserIDPrincipal", method = RequestMethod.GET)
+    public long getUserIDPrincipal(Principal principal){
+        return userDao.findByUsername(principal.getName()).getId();
     }
 
 }

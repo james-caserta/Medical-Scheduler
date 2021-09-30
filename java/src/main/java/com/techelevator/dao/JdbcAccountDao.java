@@ -17,9 +17,9 @@ public class JdbcAccountDao implements AccountDao{
 
     @Override
     public Account createAccount(Account account) {
-        String sql = "INSERT INTO account (account_id, first_name, last_name, email, user_id ) " +
-                "VALUES (?, ?, ?, ?, ?, ?) RETURNING account_id;";
-        Long newId = jdbcTemplate.queryForObject(sql, Long.class, account.getAccountId(),
+        String sql = "INSERT INTO account (first_name, last_name, email, user_id) " +
+                "VALUES (?, ?, ?, ?) RETURNING account_id;";
+        Long newId = jdbcTemplate.queryForObject(sql, Long.class,
                 account.getFirstName(), account.getLastName(), account.getEmail(), account.getUserId());
 
 
