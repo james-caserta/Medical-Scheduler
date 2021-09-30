@@ -31,8 +31,8 @@ public class CalendarController {
     }
 
 //  Get Appointment
-    @RequestMapping(path = "/appointment", method = RequestMethod.GET)
-    public Appointment getAppointment(@PathVariable long appointmentId){
+    @RequestMapping(path = "/appointment/{appointmentId}", method = RequestMethod.GET)
+    public Appointment getAppointment(@PathVariable int appointmentId){
         return appointmentDao.getAppointmentById(appointmentId);
     }
 

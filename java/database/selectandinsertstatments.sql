@@ -1,11 +1,21 @@
 
-
+DROP TABLE users CASCADE;
 DROP TABLE doctor CASCADE;
 DROP TABLE account CASCADE;
 DROP TABLE patient CASCADE;
 DROP TABLE office CASCADE;
 DROP TABLE patient_review CASCADE;
+DROP TABLE appointment CASCADE;
 
+CREATE TABLE users (
+    user_id int  NOT NULL DEFAULT nextval( 'seq_user_id' :: regclass ),
+    username varchar(50)  NOT NULL,
+    password_hash varchar(200)  NOT NULL,
+    role varchar(50)  NOT NULL,
+    is_doctor boolean NOT NULL,
+    CONSTRAINT role_id UNIQUE (role) NOT DEFERRABLE  INITIALLY IMMEDIATE,
+    CONSTRAINT PK_user PRIMARY KEY (user_id)
+);
 
 CREATE TABLE account (
     account_id int  NOT NULL,
@@ -58,12 +68,26 @@ CREATE TABLE patient_review (
     CONSTRAINT patient_review_pk PRIMARY KEY (patient_review_id)
 );
 
+-- Table: appointment
+CREATE TABLE appointment (
+    appointment_id serial,
+    patient_id int  NOT NULL,
+    description varchar(500)  NOT NULL,
+    start_date timestamp NOT NULL,
+    end_date timestamp NOT NULL,
+    doctor_id int  NOT NULL,
+    office_id int NOT NULL,
+    CONSTRAINT office_id_fk FOREIGN KEY(office_id) REFERENCES office(office_id),
+    CONSTRAINT doctor_id_fk FOREIGN KEY(doctor_id) REFERENCES doctor(doctor_id),
+    CONSTRAINT appointment_id_pk PRIMARY KEY (appointment_id)
+);
+
 -- Creates Users/Accounts
 -- UPDATE HASH TO A KNOWN password!!!!
-INSERT INTO users (username,password_hash,role) VALUES ('userJC','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('userAT','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('userAP','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('userYK','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userJC','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
+INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userAT','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
+INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userAP','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
+INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userYK','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
 
 
 INSERT INTO account(account_id,first_name,last_name,email,user_id) VALUES(1,'James','Caserta','JC@gmail.com',1);
@@ -92,7 +116,9 @@ INSERT INTO patient_review(patient_id, overall_rating, review, doctor_id) VALUES
 INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(1,4,'I had a great experience with my doctor and this office!', 2);
 INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(4,3,'Clean office and easy parking.', 3);
 
+--Creates Appointments
 
+INSERT INTO appointment(patient_id, description, start_date, end_date, doctor_id, office_id) VALUES (1, 'Annual Check-up', '2021-05-03T20:15:00.000Z', '2021-05-03T23:15:00.000Z', 2, 2);
 
 --SELECT first_name, last_name, summary, practicing_from,consulation_fee,street_address,city,state,county,zip FROM account
 --JOIN doctor ON account.account_id = doctor.doctor_id

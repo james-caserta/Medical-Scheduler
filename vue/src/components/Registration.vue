@@ -34,7 +34,7 @@
         required
       />
       
-      <div class="doctor-box"><input type="checkbox" id="doctor-box" class="form-control" v-model="isDoctor"> <label for="doctor-box">Are you a doctor?</label></div>
+      <div class="doctor-box"><input type="checkbox" id="doctor-box" class="form-control" v-model="user.is_doctor"> <label for="doctor-box">Are you a doctor?</label></div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Submit
       </button>
@@ -124,12 +124,12 @@ export default {
   name: "registration",
 data() {
     return {
-    isDoctor: false,
       user: {
         username: '',
         password: '',
         confirmPassword: '',
         role: 'user',
+        isDoctor: true,
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
@@ -142,31 +142,34 @@ data() {
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } 
       
-      else if(this.isDoctor === true) {
-          this.user.role = "doctor";
-        authService
-          .register(this.user)
-          .then((response) => {
-            if (response.status == 201) {
-              this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
-              });
-            }
-          })
-          .catch((error) => {
-            const response = error.response;
-            this.registrationErrors = true;
-            if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
-            }
-          });
-      }
+      // else if(this.user.is_doctor === true) {
+      //     this.user.is_doctor = true;
+      //   authService
+      //     .register(this.user)
+      //     .then((response) => {
+      //       console.log(response)
+      //       if (response.status == 201) {
+      //         this.$router.push({
+      //           path: '/login',
+      //           query: { registration: 'success' },
+      //         });
+      //       }
+      //     })
+      //     .catch((error) => {
+      //       const response = error.response;
+      //       this.registrationErrors = true;
+      //       if (response.status === 400) {
+      //         this.registrationErrorMsg = 'Bad Request: Validation Errors';
+      //       }
+      //     });
+      // }
       
       else {
+                   console.log(this.user)
         authService
           .register(this.user)
           .then((response) => {
+ 
             if (response.status == 201) {
               this.$router.push({
                 path: '/login',

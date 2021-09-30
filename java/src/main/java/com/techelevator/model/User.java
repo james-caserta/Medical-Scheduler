@@ -15,14 +15,16 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
+   private boolean is_Doctor;
 
    public User() { }
 
-   public User(Long id, String username, String password, String authorities) {
+   public User(Long id, String username, String password, String authorities, boolean is_Doctor) {
       this.id = id;
       this.username = username;
       this.password = password;
       this.activated = true;
+      this.is_Doctor = false;
    }
 
    public Long getId() {
@@ -60,6 +62,14 @@ public class User {
       this.authorities = authorities;
    }
 
+   public boolean is_Doctor() {
+      return is_Doctor;
+   }
+
+   public void setIsDoctor(boolean is_Doctor) {
+      this.is_Doctor = is_Doctor;
+   }
+
    public void setAuthorities(String authorities) {
       String[] roles = authorities.split(",");
       for(String role : roles) {
@@ -77,12 +87,13 @@ public class User {
               activated == user.activated &&
               Objects.equals(username, user.username) &&
               Objects.equals(password, user.password) &&
-              Objects.equals(authorities, user.authorities);
+              Objects.equals(authorities, user.authorities) &&
+              Objects.equals(is_Doctor, user.is_Doctor);
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(id, username, password, activated, authorities);
+      return Objects.hash(id, username, password, activated, authorities, is_Doctor);
    }
 
    @Override
@@ -92,6 +103,7 @@ public class User {
               ", username='" + username + '\'' +
               ", activated=" + activated +
               ", authorities=" + authorities +
+              ", is_doctor=" + is_Doctor +
               '}';
    }
 }
