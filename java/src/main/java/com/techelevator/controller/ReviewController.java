@@ -44,14 +44,6 @@ public class ReviewController {
     }
 
 
-//  Create review
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping( path = "/addReview/{id}", method = RequestMethod.POST)
-    public Reviews addReview(@RequestBody Reviews reviews, @PathVariable("id") long patientReviewId) {
-        return reviewsDao.createReview(reviews);
-    }
-
-
 //   ****************   Doctor Review   *********************
 
 

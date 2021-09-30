@@ -30,12 +30,10 @@ export default {
       return axios.get('/office/'+ office_id)
     },
 
-<<<<<<< HEAD
   updateOfficeInfoByDoctorId(doctor_id,office){
     return axios.put('/updateDoctorOfficeInfo/'+ doctor_id, office)
-  }
+  },
 
-=======
   getDoctorByID(doctorId){
       return axios.get('/doctor/' + doctorId)
     },
@@ -45,7 +43,6 @@ export default {
   },
   getIsDoctor(){
     return axios.get('/isDoctor/')
-  }
->>>>>>> c7f19bb6af78bb31d94f8929b43bff4c61d0225c
+  },
 
 }
