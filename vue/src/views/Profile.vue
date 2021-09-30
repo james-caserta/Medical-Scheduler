@@ -23,6 +23,7 @@
 import ReviewList from '../components/ReviewList.vue'
 import ReviewForm from '../components/ReviewForm.vue'
 import BioCard from '../components/BioCard.vue'
+import ApiService from '../services/ApiService.js'
 
 export default {
   
@@ -32,7 +33,20 @@ export default {
     ReviewList,
     ReviewForm
        
+  },
+
+  created() {
+    ApiService.getIsDoctor().then(response  => {this.isUserDoctor = response.data})
+
+  },
+
+data(){
+
+  return{
+
+    isUserDoctor: false
   }
+}
 
 }
 </script>

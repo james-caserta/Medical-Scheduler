@@ -110,6 +110,17 @@ public class JdbcDoctorDao implements DoctorDao{
     }
 
     @Override
+    public boolean isDoctor(String username) {
+        boolean isDoctor = false;
+        String sql = "SELECT * FROM users WHERE username = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
+        if (results.next()) {
+            isDoctor = results.getBoolean("is_doctor");
+        }
+        return isDoctor;
+    }
+
+    @Override
     public boolean create(String firstName, String lastName, String officeName) {
         return false;
     }

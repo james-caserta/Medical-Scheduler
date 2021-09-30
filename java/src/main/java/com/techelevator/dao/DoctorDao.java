@@ -22,4 +22,6 @@ public interface DoctorDao {
 
     List<Account> getDoctorByOfficeId(Long officeId);
 
+    boolean isDoctor(String username);
+
 }

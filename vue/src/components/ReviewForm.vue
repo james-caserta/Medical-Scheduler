@@ -150,6 +150,7 @@ width: 5rem;
 #addbutton {
 
   width: 5rem;
+  border-width: thin;
 }
 
 #rating {
