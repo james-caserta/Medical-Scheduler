@@ -3,7 +3,7 @@
 
     <div id="upperprofile">
         <div id="profileitems">
-      <span id="profilename">Dr. Smith</span>
+      <span id="profilename">Dr. </span>
       <img id="profilepic" src="../assets/dsicon.png" alt="Profile Picture">
         </div>
         <div id="officeinfo">
@@ -109,7 +109,9 @@ data(){
 #officeinfo {
     display: flex;
     width: 50%;
-    height: 80%;
+    height: 90%;
+    background-color: #F5F1F1;
+    border-radius: 15px;
 }
 
 #agendabutton {

@@ -45,7 +45,7 @@ export default {
     return {
       data: [],
       views: ['agenda'],
-      currentDate: new Date(2021, 4, 11),
+      currentDate: new Date(),
       dataSource: data,
       doctors: doctors,
       priorities: offices,
