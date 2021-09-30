@@ -54,7 +54,7 @@
       flex-direction: column;
       align-items: center;
       gap: 5px;
-      background: #5d76ab;
+      background: #009cdd;
       border-radius: 1rem;
       padding: 2rem;
       
@@ -63,7 +63,7 @@
 
     .btn {
   margin: 3px;
-  background: #272b4a;
+  background: black;
 	border-radius: 1rem;
   border-width: thin;
 	font-family: 'Open Sans', sans-serif;
@@ -137,7 +137,7 @@ data() {
         password: '',
         confirmPassword: '',
         role: 'user',
-        isDoctor: true,
+        is_doctor: false,
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',

@@ -1,5 +1,5 @@
 <template>
-    <div id="agendabuttons">
+    <div id="agendabuttons" v-if="isUserDoctor">
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Update Availability</button>
 
@@ -46,7 +46,22 @@ font-weight: 600;
 
 </style>
 <script>
+import ApiService from '../services/ApiService.js'
+
 export default {
+
+  created() {
+    ApiService.getIsDoctor().then(response  => {this.isUserDoctor = response.data})
+
+  },
+
+data(){
+
+  return{
+
+    isUserDoctor: false
+  }
     
+}
 }
 </script>

@@ -58,6 +58,17 @@ public class JdbcOfficeDao implements OfficeDao{
 
 
     @Override
+
+    public Office updateOfficeInfoByDoctorId(Long doctorId, Office office) {
+        String sql = "UPDATE office " +
+                "SET phone_number= ?, street_address = ?, city = ?, state = ?, zip = ?, consultation_fee =? " +
+                "WHERE doctor_id = ?;";
+        jdbcTemplate.update(sql,office.getPhoneNumber(), office.getStreetAddress(), office.getCity(), office.getState(),
+                office.getZip(), office.getConsultationFee(), doctorId);
+
+        return office;
+    }
+
     public void updateInfoByOfficeId(Office office) {
         String sql = "UPDATE office " +
                 "SET street_address = ?, city = ?, state = ?, zip = ?, consultation_fee = ?, phone_number = ? " +
@@ -67,14 +78,7 @@ public class JdbcOfficeDao implements OfficeDao{
     }
 
 
-    @Override
-    public void updateOfficeInfoByDoctorId(Long doctorId, Office office) {
-        String sql = "UPDATE office " +
-                "SET street_address = ?, city = ?, state = ?, zip = ?, consultation_fee = ?, phone_number = ? " +
-                "WHERE doctor_id = ?;";
-        jdbcTemplate.update(sql, office.getStreetAddress(), office.getCity(), office.getState(),
-                office.getZip(), office.getConsultationFee(), office.getPhoneNumber());
-    }
+
 
 
     private Office mapRowToOffice(SqlRowSet results) {

@@ -58,9 +58,6 @@ export default {
         review: this.review,
       };
 
-      console.log("** DEBUG **");
-      console.log(UserReview);
-
       apiservice.addReview(UserReview).then((response) => {
          if (response.status === 201) {
               this.$router.push(`/profile`).catch( () => {});
