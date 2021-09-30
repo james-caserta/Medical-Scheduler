@@ -20,9 +20,7 @@ public class JdbcAccountDao implements AccountDao{
         String sql = "INSERT INTO account (first_name, last_name, email, user_id) " +
                 "VALUES (?, ?, ?, ?) RETURNING account_id;";
         Long newId = jdbcTemplate.queryForObject(sql, Long.class,
-
                 account.getFirstName(), account.getLastName(), account.getEmail(), account.getUserId());
-
 
         return getAccountById(newId);
     }

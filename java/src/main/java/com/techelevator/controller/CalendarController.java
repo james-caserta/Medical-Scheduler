@@ -50,7 +50,7 @@ public class CalendarController {
     }
 
 
-//    *******************    Availability    ************************
+//   *******************************     AVAILABILITY     *******************************************
 
 
 //  Get Doctor Availability
