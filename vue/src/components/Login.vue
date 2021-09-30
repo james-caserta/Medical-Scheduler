@@ -85,7 +85,7 @@ export default {
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    background: #5d76ab;
+    background: #009cdd;
     border-radius: 1rem;
     padding: 2rem;
         
@@ -93,7 +93,7 @@ export default {
 
     .btn {
   margin: 3px;
-  background: #272b4a;
+  background: black;
 	border-radius: 1rem;
   border-width: thin;
 	font-family: 'Open Sans', sans-serif;

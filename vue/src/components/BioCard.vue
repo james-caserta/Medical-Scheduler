@@ -10,7 +10,8 @@
             <OfficeInfo></OfficeInfo>
         </div>
         <div id="agendabutton">
-            <AgendaButton></AgendaButton>
+            <AgendaButtonDoc v-if="isUserDoctor"></AgendaButtonDoc>
+            <AgendaButtonUser v-if="!isUserDoctor"></AgendaButtonUser>
         </div>
     </div>
     
@@ -25,14 +26,33 @@
 <script>
 import OfficeInfo from '../components/OfficeInfo.vue'
 import DoctorBio from '../components/DoctorBio.vue'
-import AgendaButton from '../components/AgendaButton.vue'
+import AgendaButtonDoc from '../components/AgendaButtonDoc.vue'
+import ApiService from '../services/ApiService.js'
+import AgendaButtonUser from '../components/AgendaButtonUser.vue'
+
 export default {
 name:'BioCard',
     components:{
         OfficeInfo,
         DoctorBio,
-        AgendaButton,
-      }
+        AgendaButtonDoc,
+        AgendaButtonUser,
+      },
+
+created() {
+  ApiService.getIsDoctor().then(response  => {this.isUserDoctor = response.data})
+
+  },
+
+data(){
+
+  return{
+
+    isUserDoctor: false
+  }
+    
+}
+
 }
 </script>
 
