@@ -106,18 +106,7 @@ input {
   color: black;
 }
 
-/* .submit-button {
-  margin-left: 25px;
-  padding: 5px 30px;
-} */
 
-/* button {
-  margin: 1%;
-  background-color: #0019a8;
-  border: none;
-  color: white;
-  padding: 5px 10px;
-} */
 
 .btn {
 
