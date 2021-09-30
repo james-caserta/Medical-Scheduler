@@ -3,6 +3,7 @@
         <p>List of Doctors</p>
         <Offices/>
         <ListOfDoctors/>
+        
     </div>
 </template>
 
@@ -11,9 +12,8 @@ import ListOfDoctors from '../components/ListOfDoctors.vue'
 import Offices from '../components/Offices.vue'
 
 export default {
-    name:{
-
-    },
+    name: 'offices',
+       
     components: {
         ListOfDoctors,
         Offices
@@ -25,6 +25,5 @@ export default {
 </script>
 
 <style>
-
 
 </style>

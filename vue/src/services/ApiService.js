@@ -6,8 +6,8 @@ export default {
       return axios.get('/review')
     },
 
-  addReview(UserReview){
-        return axios.post('/addReview', UserReview)
+  addReview(userReview){
+        return axios.post('/addReview', userReview)
     },
 
   getAllDoctors(){
@@ -22,13 +22,17 @@ export default {
       return axios.get('/getDoctorsByOfficeId',office_id)
     },
 
-  getOfficeByDoctorId(doctor_id){
-      return axios.get('/getOfficeByDoctorId',doctor_id)
+  getOfficeByDoctorId(doctorId){
+      return axios.get('/getOfficeByDoctorId/'+ doctorId)
     },  
 
   getOfficeByID(office_id){
-      return axios.get('/office', office_id)
+      return axios.get('/office/'+ office_id)
     },
+
+  updateOfficeInfoByDoctorId(doctor_id,office){
+    return axios.put('/updateDoctorOfficeInfo/'+ doctor_id, office)
+  }
 
 
 }

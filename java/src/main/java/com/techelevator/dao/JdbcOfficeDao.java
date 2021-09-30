@@ -56,13 +56,14 @@ public class JdbcOfficeDao implements OfficeDao{
 
 
     @Override
-    public void updateOfficeInfoByDoctorId(Long doctorId, Office office) {
+    public Office updateOfficeInfoByDoctorId(Long doctorId, Office office) {
         String sql = "UPDATE office " +
-                "SET phone_number= ?, street_address = ?, city = ?, state = ?, zip = ?, consultation_fee" +
+                "SET phone_number= ?, street_address = ?, city = ?, state = ?, zip = ?, consultation_fee =? " +
                 "WHERE doctor_id = ?;";
         jdbcTemplate.update(sql,office.getPhoneNumber(), office.getStreetAddress(), office.getCity(), office.getState(),
-                office.getZip(), office.getConsultation_fee());
+                office.getZip(), office.getConsultation_fee(), doctorId);
 
+        return office;
     }
 
 
