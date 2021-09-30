@@ -26,7 +26,6 @@ public class JdbcAccountDao implements AccountDao{
         return getAccountById(newId);
     }
 
-
     @Override
     public List<Account> findAllAccount() {
         List<Account> account = new ArrayList<>();
@@ -52,6 +51,18 @@ public class JdbcAccountDao implements AccountDao{
         } else {
             throw new RuntimeException("Account: "+accountId+" was not found.");
         }
+    }
+
+    @Override
+    public Account getAccountByUserId(int id) {
+        String sql = "SELECT * FROM account WHERE user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        if(results.next()){
+            return mapRowToAccount(results);
+        } else {
+            throw new RuntimeException("User ID: "+ id +" was not found.");
+        }
+
     }
 
 

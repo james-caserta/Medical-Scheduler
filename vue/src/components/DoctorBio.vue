@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import ApiService from '../services/ApiService.js'
 import apiservice from '../services/ApiService.js'
 
 export default {
@@ -13,20 +14,15 @@ export default {
 
   
   created(){
-            apiservice.getDoctorByID(this.doctor.doctorId).then(
-                (response) => {
-                  
-                    this.doctor = response.data
-                    
-                }
-
-            )
+    ApiService.getDoctorPrincipal().then(response => {this.doctor = response.data})
+    // ApiService.getAccountPrincipal().then(response => {this.account = response.data})
+    apiservice.getDoctorByID(this.doctor.doctorId).then((response) => {this.doctor = response.data})
   },
 
   data(){
         return{
             doctor:{
-              doctorId: 2,
+              doctorId: '',
               accountId: '',
               userType: '',
               summary: '',

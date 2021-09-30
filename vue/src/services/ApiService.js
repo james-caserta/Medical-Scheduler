@@ -45,4 +45,17 @@ export default {
     return axios.get('/isDoctor/')
   },
 
+  getDoctorPrincipal(){
+    return axios.get('/getDoctorPrincipal')
+  },
+
+  getAccountPrincipal(){
+    return axios.get('/getAccountPrincipal')
+  },
+
+  getOfficeDoctorPrincipal(){
+    return axios.get('/getOfficeDoctorPrincipal')
+  },
+  
+
 }
