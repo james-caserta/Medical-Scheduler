@@ -22,6 +22,7 @@ public class CalendarController {
         this.doctorAvailabilityDao = doctorAvailabilityDao;
     }
 
+
 //  Create Appointment
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "/appointment/{id}", method = RequestMethod.POST)
@@ -30,8 +31,8 @@ public class CalendarController {
     }
 
 //  Get Appointment
-    @RequestMapping(path = "/appointment", method = RequestMethod.GET)
-    public Appointment getAppointment(@PathVariable long appointmentId){
+    @RequestMapping(path = "/appointment/{appointmentId}", method = RequestMethod.GET)
+    public Appointment getAppointment(@PathVariable int appointmentId){
         return appointmentDao.getAppointmentById(appointmentId);
     }
 
@@ -49,7 +50,7 @@ public class CalendarController {
     }
 
 
-//    ******  Availability  ******
+//    *******************    Availability    ************************
 
 
 //  Get Doctor Availability

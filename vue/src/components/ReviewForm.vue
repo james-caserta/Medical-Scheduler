@@ -10,7 +10,7 @@
       Add Review
     </button>
     
-    <form class="reviewForm" v-if="showForm === true" v-on:submit.prevent="onSubmit">
+    <form class="reviewForm" v-if="showForm === true" v-on:submit="onSubmit">
       <label>Submit Review</label>
       <input type="text" required v-model="review" />
         <div id="ratingbuttons">
@@ -82,9 +82,6 @@ export default {
   flex-direction: column;
   width: 94%;
   height: 100%;
-  /* margin: 1rem; */
-  /* height: 25%; */
-  /* padding: 1rem; */
 }
 
 label {
@@ -150,6 +147,7 @@ width: 5rem;
 #addbutton {
 
   width: 5rem;
+  border-width: thin;
 }
 
 #rating {

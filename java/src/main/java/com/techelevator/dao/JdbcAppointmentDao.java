@@ -15,11 +15,11 @@ public class JdbcAppointmentDao implements AppointmentDao{
 
     @Override
     public Appointment createAppointment(Appointment appointment) {
-        String sql = "INSERT INTO appointment (patientId, officeId, start_time, end_time, appointment_status_id, appointment_date) " +
+        String sql = "INSERT INTO appointment (patientId, officeId, start_date, end_date, doctor_id, description) " +
                 "VALUES (?, ?, ?, ?, ?, ?) RETURNING appointment_id;";
         Long newId = jdbcTemplate.queryForObject(sql, Long.class,
-                appointment.getPatientId(), appointment.getOfficeId(), appointment.getStartTime(), appointment.getEndTime(),
-                appointment.getAppointmentStatusId(), appointment.getAppointmentDate());
+                appointment.getPatientId(), appointment.getOfficeId(), appointment.getStartDate(), appointment.getEndDate(),
+                appointment.getDoctorId(), appointment.getDescription());
 
         return getAppointment(newId);
     }
@@ -27,7 +27,7 @@ public class JdbcAppointmentDao implements AppointmentDao{
     @Override
     public Appointment getAppointment(long appointmentId) {
         Appointment appointment = null;
-        String sql = "SELECT appointment_id, patient_id, office_id, start_time, end_time, appointment_status_id, appointment_date " +
+        String sql = "SELECT appointment_id, patient_id, office_id, start_date, end_date, doctor_id, description " +
                 "FROM appointment " +
                 "WHERE appointment_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, appointmentId);
@@ -54,10 +54,10 @@ public class JdbcAppointmentDao implements AppointmentDao{
         appointment.setPatientId(results.getLong("patient_id"));
         appointment.setAppointmentId(results.getLong("appointment_id"));
         appointment.setOfficeId(results.getLong("office_id"));
-        appointment.setStartTime(results.getString("start_time"));
-        appointment.setEndTime(results.getString("end_time"));
-        appointment.setAppointmentStatusId(results.getLong("appointment_status_id"));
-        appointment.setAppointmentDate(results.getDate("appointment_date").toLocalDate());
+        appointment.setStartDate(results.getString("start_date"));
+        appointment.setEndDate(results.getString("end_date"));
+        appointment.setDoctorId(results.getLong("doctor_id"));
+        appointment.setDescription(results.getString("description"));
 
         return appointment;
     }

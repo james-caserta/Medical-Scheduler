@@ -10,10 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 @PreAuthorize("isAuthenticated()")
 public class DoctorController {
 
@@ -40,8 +41,8 @@ public class DoctorController {
     }
 
 //  Get doctor by id
-    @RequestMapping(path = "/doctor/{id}", method = RequestMethod.GET)
-    public Doctor getDoctor(@PathVariable long doctorId){
+    @RequestMapping(path = "/doctor/{doctorId}", method = RequestMethod.GET)
+    public Doctor getDoctor(@PathVariable int doctorId){
         return doctorDao.getDoctor(doctorId);
     }
 
@@ -70,11 +71,15 @@ public class DoctorController {
         return accountDao.createAccount(account);
     }
 
-// Get Account by Id
+// Get Account by id
     @RequestMapping(path = "/account", method = RequestMethod.GET)
     public Account getAccount(@PathVariable long accountId){
         return accountDao.getAccountById(accountId);
     }
+
+
+//  ***********************   OFFICE   ****************************
+
 
     /*Get all offices*/
     @RequestMapping(path = "/getAllOffices", method = RequestMethod.GET)
@@ -87,16 +92,23 @@ public class DoctorController {
     public List<Account> getDoctorsByOfficeId(@PathVariable("id")  Long officeId){
         return doctorDao.getDoctorByOfficeId(officeId);
     }
-    /*Get office by doctor Id*/
+    /*Get office by doctor id*/
     @RequestMapping(path = "/getOfficeByDoctorId/{id}", method = RequestMethod.GET)
     public Office getOfficeByDoctorId(@PathVariable("id") Long doctorId){
         return officeDao.getOfficeByDoctorId(doctorId);
     }
 
+
     /*Update Office information by Doctor Id*/
     @RequestMapping(path = "/updateDoctorOfficeInfo/{doctorId}", method = RequestMethod.PUT)
     public Office updateOfficeInfoByDoctorId(@RequestBody Office office, @PathVariable("doctorId") long doctorId){
         return officeDao.updateOfficeInfoByDoctorId(doctorId,office);
+    }
+
+    @RequestMapping(path = "/isDoctor", method = RequestMethod.GET)
+    public boolean isDoctor(Principal principal){
+        return doctorDao.isDoctor(principal.getName());
+
     }
 
 

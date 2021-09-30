@@ -9,11 +9,15 @@ import apiservice from '../services/ApiService.js'
 
 export default {
   name: 'doctorbio',
+  
 
+  
   created(){
-            apiservice.getDoctorByID(2).then(
+            apiservice.getDoctorByID(this.doctor.doctorId).then(
                 (response) => {
+                  
                     this.doctor = response.data
+                    
                 }
 
             )
@@ -22,7 +26,7 @@ export default {
   data(){
         return{
             doctor:{
-              doctorId: '',
+              doctorId: 2,
               accountId: '',
               userType: '',
               summary: '',

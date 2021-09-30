@@ -31,7 +31,9 @@ public class JdbcOfficeDao implements OfficeDao{
     @Override
     public List<Office> getAllOffices(){
         List<Office> officeList = new ArrayList<Office>();
-        String sql= "SELECT office_id, doctor_id, phone_number ,street_address, city, state, zip, consultation_fee FROM office ";
+
+        String sql= "SELECT office_id, doctor_id, street_address, city, state, zip, consultation_fee, phone_number " +
+                "FROM office ";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
         while(results.next()){
@@ -56,27 +58,40 @@ public class JdbcOfficeDao implements OfficeDao{
 
 
     @Override
+
     public Office updateOfficeInfoByDoctorId(Long doctorId, Office office) {
         String sql = "UPDATE office " +
                 "SET phone_number= ?, street_address = ?, city = ?, state = ?, zip = ?, consultation_fee =? " +
                 "WHERE doctor_id = ?;";
         jdbcTemplate.update(sql,office.getPhoneNumber(), office.getStreetAddress(), office.getCity(), office.getState(),
-                office.getZip(), office.getConsultation_fee(), doctorId);
+                office.getZip(), office.getConsultationFee(), doctorId);
 
         return office;
     }
+
+    public void updateInfoByOfficeId(Office office) {
+        String sql = "UPDATE office " +
+                "SET street_address = ?, city = ?, state = ?, zip = ?, consultation_fee = ?, phone_number = ? " +
+                "WHERE office_id = ?;";
+        jdbcTemplate.update(sql, office.getStreetAddress(), office.getCity(), office.getState(),
+                office.getZip(), office.getConsultationFee(), office.getPhoneNumber());
+    }
+
+
+
 
 
     private Office mapRowToOffice(SqlRowSet results) {
         Office office = new Office();
         office.setOfficeId(results.getLong("office_id"));
         office.setDoctorId(results.getLong("doctor_id"));
-        office.setPhoneNumber(results.getString("phone_number"));
         office.setStreetAddress(results.getString("street_address"));
         office.setCity(results.getString("city"));
         office.setState(results.getString("state"));
         office.setZip(results.getString("zip"));
-        office.setConsultation_fee(results.getInt("consultation_fee"));
+        office.setPhoneNumber(results.getString("phone_number"));
+        office.setConsultationFee(results.getString("consultation_fee"));
+
         return office;
     }
 }

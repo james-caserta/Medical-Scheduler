@@ -27,30 +27,38 @@
   </div>
 </template>
 <script>
-import DxScheduler, { DxResource } from 'devextreme-vue/scheduler';
 
-import { data, doctors, priorities } from '../data.js';
+let data = [];
+let doctors = [];
+let offices = [];
+
+import DxScheduler, { DxResource } from 'devextreme-vue/scheduler';
+import apiservice from '../services/ApiService.js'
 
 export default {
+  
   components: {
     DxScheduler,
     DxResource
   },
   data() {
     return {
+      data: [],
       views: ['agenda'],
       currentDate: new Date(2021, 4, 11),
       dataSource: data,
       doctors: doctors,
-      priorities: priorities,
+      priorities: offices,
     };
   },
-  // Stubbed out lifecycle hook - we will call appropriate agenda data here upon component creation.
-  // created() {
-  //           apiService.list().then( (response) => {
-  //               this.users = response.data;
-  //           });
-  //       }
+  created(){
+        apiservice.getAppointmentById(1).then(
+            (response) => {
+                    this.appointment = response.data
+            }
+
+        )
+    },
 };
 </script>
 <style scoped>

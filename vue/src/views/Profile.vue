@@ -23,6 +23,7 @@
 import ReviewList from '../components/ReviewList.vue'
 import ReviewForm from '../components/ReviewForm.vue'
 import BioCard from '../components/BioCard.vue'
+import ApiService from '../services/ApiService.js'
 
 export default {
   
@@ -32,7 +33,20 @@ export default {
     ReviewList,
     ReviewForm
        
+  },
+
+  created() {
+    ApiService.getIsDoctor().then(response  => {this.isUserDoctor = response.data})
+
+  },
+
+data(){
+
+  return{
+
+    isUserDoctor: false
   }
+}
 
 }
 </script>
@@ -115,16 +129,16 @@ export default {
 
   display: flex;
   flex-direction: column;
-  height: 80%;
+  height: 75%;
 }
 
 #reviewsForm {
 
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start;
-  justify-content: bottom; */
-  height: 100%;
+  /* align-items: center; */
+  justify-content: center;
+  height: 25%;
   padding: 1rem;
 }
 

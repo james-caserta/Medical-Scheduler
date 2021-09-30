@@ -14,6 +14,8 @@ public interface OfficeDao {
 
     Office updateOfficeInfoByDoctorId(Long doctorId, Office office);
 
+    void updateInfoByOfficeId(Office office);
+
 
 
 }

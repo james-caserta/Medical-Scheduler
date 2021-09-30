@@ -2,7 +2,7 @@
 
     <div id="register">
 <form class="form-register" @submit.prevent="register">
-      <span id="registerbtn">Register</span>
+      <span class="registerbtn">Register</span>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -34,10 +34,12 @@
         required
       />
       
-      <div class="doctor-box"><input type="checkbox" id="doctor-box" class="form-control" v-model="isDoctor"> <label for="doctor-box">Are you a doctor?</label></div>
+      <div class="doctor-box"><input type="checkbox" id="doctor-box" class="form-control" v-model="user.is_doctor"> <label for="doctor-box">Are you a doctor?</label></div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Submit
       </button>
+
+      <router-link :to="{ name: 'login' }" id="alreadyuser">I have an account</router-link>
 
       <!-- <router-link :to="{ name: 'login' }">Already registered?</router-link> -->
 </form>
@@ -52,7 +54,7 @@
       flex-direction: column;
       align-items: center;
       gap: 5px;
-      background: #272b4a;
+      background: #5d76ab;
       border-radius: 1rem;
       padding: 2rem;
       
@@ -61,8 +63,9 @@
 
     .btn {
   margin: 3px;
-  background: #6b89c6;
+  background: #272b4a;
 	border-radius: 1rem;
+  border-width: thin;
 	font-family: 'Open Sans', sans-serif;
 	cursor: pointer;
   font-size: 1.25em;
@@ -74,14 +77,14 @@
   
   }
 
-  #registerbtn {
+  .registerbtn {
 
-  font-size: 1.25em;
-  color: white;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-  text-decoration: underline;
   margin-bottom: 1rem;
+  font-weight: 800;
+  font-size: 1.5em;
+  color:white;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   
   }
 
@@ -91,22 +94,25 @@
     margin-right: 5.5rem;
     align-items: left;
     color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .doctor-box {
 
     margin-right: 1rem;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-weight: 600;
     color: white;
+    font-family: 'Open Sans', sans-serif;
   }
 
-  #register {
+  #alreadyuser {
 
-    
-  }
-
-  .form-control {
-
-
+  font-size: 1em;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .alert {
@@ -124,12 +130,12 @@ export default {
   name: "registration",
 data() {
     return {
-    isDoctor: false,
       user: {
         username: '',
         password: '',
         confirmPassword: '',
         role: 'user',
+        isDoctor: true,
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
@@ -142,31 +148,12 @@ data() {
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } 
       
-      else if(this.isDoctor === true) {
-          this.user.role = "doctor";
-        authService
-          .register(this.user)
-          .then((response) => {
-            if (response.status == 201) {
-              this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
-              });
-            }
-          })
-          .catch((error) => {
-            const response = error.response;
-            this.registrationErrors = true;
-            if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
-            }
-          });
-      }
-      
       else {
+                   console.log(this.user)
         authService
           .register(this.user)
           .then((response) => {
+ 
             if (response.status == 201) {
               this.$router.push({
                 path: '/login',

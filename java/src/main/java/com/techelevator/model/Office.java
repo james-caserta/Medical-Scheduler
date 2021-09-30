@@ -9,7 +9,7 @@ public class Office {
     private String state;
     private String zip;
     private String phoneNumber;
-    private int consultation_fee;
+    private String consultationFee;
 
 
 
@@ -59,16 +59,15 @@ public class Office {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getConsultation_fee() {
-        return consultation_fee;
+    public String getConsultationFee() {
+        return consultationFee;
     }
+    public void setConsultationFee(String consultationFee) {
+        this.consultationFee = consultationFee;
 
-    public void setConsultation_fee(int consultation_fee) {
-        this.consultation_fee = consultation_fee;
     }
 }
