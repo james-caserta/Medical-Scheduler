@@ -4,7 +4,6 @@ package com.techelevator.controller;
 import com.techelevator.dao.*;
 import com.techelevator.model.Account;
 import com.techelevator.model.Doctor;
-import com.techelevator.model.DoctorAvailability;
 import com.techelevator.model.Office;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -32,6 +31,8 @@ public class DoctorController {
         this.officeDao = officeDao;
     }
 
+//    *******************************     DOCTOR     *******************************************
+
 //  Create doctor
     @PreAuthorize("isAuthenticated")
     @ResponseStatus(HttpStatus.CREATED)
@@ -47,14 +48,14 @@ public class DoctorController {
     }
 
 
-// Get ALL doctors
+//  Get ALL doctors
     @RequestMapping(path = "/allDoctors", method = RequestMethod.GET)
     public List<Doctor> findAllDoctors(){
         return doctorDao.findAllDoctors();
     }
 
 
-// Get Doctor, Office, & Account info for Doctor Page
+//  Get Doctor, Office, & Account info for Doctor Page
     @RequestMapping(path = "/doctorInfo", method = RequestMethod.GET)
     public List<Doctor> getAllDoctorInfo(){
         return doctorDao.getAllDoctorInfo();
@@ -64,52 +65,82 @@ public class DoctorController {
 
 //   *******************************     ACCOUNT     *******************************************
 
-// Create Account
+
+//  Create Account
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/account/{id}", method = RequestMethod.POST)
-    public Account createAccount(@RequestBody Account account, @PathVariable("id") long accountId){
+    @RequestMapping(path = "/account", method = RequestMethod.POST)
+    public Account createAccount(@RequestBody Account account){
         return accountDao.createAccount(account);
     }
 
-// Get Account by id
+//  Get Account by id
     @RequestMapping(path = "/account", method = RequestMethod.GET)
     public Account getAccount(@PathVariable long accountId){
         return accountDao.getAccountById(accountId);
     }
 
 
-//  ***********************   OFFICE   ****************************
 
 
-    /*Get all offices*/
+//   *******************************     OFFICE     *******************************************
+
+
+//  Get all offices
     @RequestMapping(path = "/getAllOffices", method = RequestMethod.GET)
     public List<Office> getAllOffices(){
         return officeDao.getAllOffices();
     }
 
-    /*Get Doctors by office id*/
+//  Get Doctors by office id
     @RequestMapping(path = "/getDoctorsByOfficeId/{id}", method = RequestMethod.GET)
     public List<Account> getDoctorsByOfficeId(@PathVariable("id")  Long officeId){
         return doctorDao.getDoctorByOfficeId(officeId);
     }
-    /*Get office by doctor id*/
+
+//  Get office by doctor id
     @RequestMapping(path = "/getOfficeByDoctorId/{id}", method = RequestMethod.GET)
     public Office getOfficeByDoctorId(@PathVariable("id") Long doctorId){
         return officeDao.getOfficeByDoctorId(doctorId);
     }
 
-
-    /*Update Office information by Doctor Id*/
+//  Update Office information by Doctor id
     @RequestMapping(path = "/updateDoctorOfficeInfo/{doctorId}", method = RequestMethod.PUT)
     public Office updateOfficeInfoByDoctorId(@RequestBody Office office, @PathVariable("doctorId") long doctorId){
         return officeDao.updateOfficeInfoByDoctorId(doctorId,office);
     }
 
+
+//   *******************************     PRINCIPAL     *******************************************
+
+
+//  Is Doctor
     @RequestMapping(path = "/isDoctor", method = RequestMethod.GET)
     public boolean isDoctor(Principal principal){
         return doctorDao.isDoctor(principal.getName());
-
     }
 
+//  Doctor by username
+    @RequestMapping(path = "/getDoctorPrincipal", method = RequestMethod.GET)
+    public Doctor getDoctorPrincipal(Principal principal){
+        return doctorDao.getDoctor(userDao.findIdByUsername(principal.getName()));
+    }
+
+//  Account by user id
+    @RequestMapping(path = "/getAccountPrincipal", method = RequestMethod.GET)
+    public Account getAccountPrincipal(Principal principal){
+        return accountDao.getAccountByUserId(userDao.findIdByUsername(principal.getName()));
+    }
+
+//  Doctor office by id
+    @RequestMapping(path = "/getOfficeDoctorPrincipal", method = RequestMethod.GET)
+    public Office getOfficeDoctorPrincipal(Principal principal){
+        return officeDao.getOfficeByDoctorId(getDoctorPrincipal(principal).getDoctorId());
+    }
+
+//  User id by username
+    @RequestMapping(path = "/getUserIDPrincipal", method = RequestMethod.GET)
+    public long getUserIDPrincipal(Principal principal){
+        return userDao.findByUsername(principal.getName()).getId();
+    }
 
 }

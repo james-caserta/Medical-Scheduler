@@ -11,4 +11,6 @@ public interface AccountDao {
     Account getAccountById(long accountId);
 
     Account createAccount(Account account);
+
+    Account getAccountByUserId(int id);
 }

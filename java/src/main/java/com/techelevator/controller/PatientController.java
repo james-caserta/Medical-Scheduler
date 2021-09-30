@@ -22,14 +22,14 @@ public class PatientController {
         this.userDao = userDao;
     }
 
-    //get patient
+//  Get patient
     @RequestMapping(path = "/patient/{id}", method = RequestMethod.GET)
     public Patient getPatient(@PathVariable long patientId) {
         return patientDao.getPatient(patientId);
     }
 
 
-    // create patient
+//  Create patient
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "/patient/{id}", method = RequestMethod.POST)
     public Patient addPatient(@RequestBody Patient patient, @PathVariable("id") long patientId) {

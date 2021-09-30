@@ -17,7 +17,7 @@
                {{office.zip}} <br>
                 Phone Number:  {{office.phoneNumber}} </p>
 
-                <Button v-on:click = "selectOffice()" class="btn">View Doctors</Button>
+                <Button v-on:click = "selectOffice(officeId)" class="btn">View Doctors</Button>
             </div>
            
 

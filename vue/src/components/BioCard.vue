@@ -3,14 +3,15 @@
 
     <div id="upperprofile">
         <div id="profileitems">
-      <span id="profilename">Dr. Smith</span>
+      <span id="profilename">Dr. {{account.lastName}}</span>
       <img id="profilepic" src="../assets/dsicon.png" alt="Profile Picture">
         </div>
         <div id="officeinfo">
             <OfficeInfo></OfficeInfo>
         </div>
         <div id="agendabutton">
-            <AgendaButton></AgendaButton>
+            <AgendaButtonDoc v-if="isUserDoctor"></AgendaButtonDoc>
+            <AgendaButtonUser v-if="!isUserDoctor"></AgendaButtonUser>
         </div>
     </div>
     
@@ -25,14 +26,49 @@
 <script>
 import OfficeInfo from '../components/OfficeInfo.vue'
 import DoctorBio from '../components/DoctorBio.vue'
-import AgendaButton from '../components/AgendaButton.vue'
+import AgendaButtonDoc from '../components/AgendaButtonDoc.vue'
+import ApiService from '../services/ApiService.js'
+import AgendaButtonUser from '../components/AgendaButtonUser.vue'
+
 export default {
 name:'BioCard',
     components:{
         OfficeInfo,
         DoctorBio,
-        AgendaButton,
-      }
+        AgendaButtonDoc,
+        AgendaButtonUser,
+      },
+
+created() {
+  ApiService.getIsDoctor().then(response  => {this.isUserDoctor = response.data})
+  ApiService.getDoctorPrincipal().then(response => {this.doctor = response.data})
+  ApiService.getAccountPrincipal().then(response => {this.account = response.data})
+
+  },
+
+data(){
+
+  return{
+
+    isUserDoctor: false,
+    doctor: {
+    "doctorId": '',
+    "accountId": '',
+    "userType": '',
+    "summary": '',
+    },
+    account: {
+    "accountId": '',
+    "firstName": '',
+    "lastName": '',
+    "email": '',
+    "userId": '',
+
+    },
+  }
+    
+}
+
 }
 </script>
 
@@ -89,7 +125,9 @@ name:'BioCard',
 #officeinfo {
     display: flex;
     width: 50%;
-    height: 80%;
+    height: 90%;
+    background-color: #F5F1F1;
+    border-radius: 15px;
 }
 
 #agendabutton {

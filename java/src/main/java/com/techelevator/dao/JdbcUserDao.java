@@ -34,7 +34,7 @@ public class JdbcUserDao implements UserDao {
 		if(results.next()) {
 			return mapRowToUser(results);
 		} else {
-			throw new RuntimeException("userId "+userId+" was not found.");
+			throw new RuntimeException("User id "+userId+" was not found.");
 		}
 	}
 

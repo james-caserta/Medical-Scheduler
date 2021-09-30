@@ -1,45 +1,48 @@
 <template>
 
-    <div id="register">
+    <div id="registeraccount">
 <form class="form-register" @submit.prevent="register">
       <span class="registerbtn">Register</span>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="firstname" class="sr-only">First name</label>
       <input
         type="text"
-        id="username"
+        id="firstname"
         class="form-control"
-        placeholder="Username"
-        v-model="user.username"
+        placeholder="First name"
+        v-model="account.firstName"
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <label for="lastname" class="sr-only">Last name</label>
       <input
-        type="password"
-        id="password"
+        type="text"
+        id="lastname"
         class="form-control"
-        placeholder="Password"
-        v-model="user.password"
+        placeholder="Last name"
+        v-model="account.lastName"
         required
+        autofocus
       />
+      <label for="email" class="sr-only">E-mail</label>
       <input
-        type="password"
-        id="confirmPassword"
+        type="email"
+        id="email"
         class="form-control"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
+        placeholder="E-mail"
+        v-model="account.email"
         required
+        autofocus
       />
       
-      <div class="doctor-box"><input type="checkbox" id="doctor-box" class="form-control" v-model="user.is_doctor"> <label for="doctor-box">Are you a doctor?</label></div>
+      <!-- <div class="doctor-box"><input type="checkbox" id="doctor-box" class="form-control" v-model="user.is_doctor"> <label for="doctor-box">Are you a doctor?</label></div> -->
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Submit
       </button>
 
-      <router-link :to="{ name: 'login' }" id="alreadyuser">I have an account</router-link>
+      <!-- <router-link :to="{ name: 'login' }" id="alreadyuser">I have an account</router-link> -->
 
       <!-- <router-link :to="{ name: 'login' }">Already registered?</router-link> -->
 </form>
@@ -48,6 +51,12 @@
 </template>
 
 <style scoped>
+
+#registeraccount {
+
+  display: flex;
+  flex-direction: column;
+}
 
     .form-register {
       display: flex;
@@ -93,29 +102,30 @@
   .sr-only {
 
     font-weight: 600;
-    margin-right: 5.5rem;
+    /* margin-right: 5.5rem; */
     align-items: left;
+    justify-content: flex-start;
     color: white;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
-  .doctor-box {
+  /* .doctor-box {
 
     margin-right: 1rem;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-weight: 600;
     color: white;
     font-family: 'Open Sans', sans-serif;
-  }
+  } */
 
-  #alreadyuser {
+  /* #alreadyuser {
 
   font-size: 1em;
   color: white;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+  } */
 
   .alert {
 
@@ -126,56 +136,56 @@
 </style>
 
 <script>
-import authService from '../services/AuthService';
+import ApiService from '../services/ApiService';
 
 export default {
-  name: "registration",
+  name: "accountregistration",
 data() {
     return {
       user: {
+        userId: '',
         username: '',
         password: '',
         confirmPassword: '',
-        role: 'user',
-        is_doctor: false,
+        role: '',
+        is_doctor: '',
+      },
+      account: {
+        accountId: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        userId: '',
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
     };
   },
   methods: {
+    addUserID(){
+      this.account.userId = this.user.userId;
+
+    },
+
     register() {
-      if (this.user.password != this.user.confirmPassword) {
-        this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
-      } 
-      
-      else {
-                   console.log(this.user)
-        authService
-          .register(this.user)
+        ApiService
+          .addAccount(this.account)
           .then((response) => {
  
             if (response.status == 201) {
-              this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
-              });
+              this.$router.push('/profile')
             }
           })
-          .catch((error) => {
-            const response = error.response;
-            this.registrationErrors = true;
-            if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
-            }
-          });
+          .catch(() => {});
       }
     },
-    clearErrors() {
-      this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
-    },
-  },
-};
+    
+
+    created(){
+
+      ApiService.getUserIDPrincipal().then(response => {this.account.userId = response.data})
+
+
+  }
+  }
 </script>

@@ -9,6 +9,7 @@ import Profile from '../views/Profile.vue'
 import Agenda from '../views/Agenda.vue'
 import Offices from '../views/Offices.vue'
 import DoctorSelect from '../views/DoctorSelect.vue'
+import Routing from '../views/Routing.vue'
 
 Vue.use(Router)
 
@@ -90,6 +91,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: "/routing",
+      name: "routing",
+      component: Routing,
+      meta: {
+        requiresAuth: true
+      }
+    }
     
   ]
 })

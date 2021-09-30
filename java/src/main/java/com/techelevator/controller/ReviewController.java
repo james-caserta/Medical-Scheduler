@@ -20,16 +20,16 @@ public class ReviewController {
     public ReviewController(ReviewsDao reviewsDao, DoctorResponseDao doctorResponseDao) {
         this.reviewsDao = reviewsDao;
         this.doctorResponseDao = doctorResponseDao;
-
     }
 
-//    Get all reviews
+
+//  Get all reviews
     @RequestMapping(path = "/review", method = RequestMethod.GET)
     public List<Reviews> findAllReviews(){
         return reviewsDao.findAllReviews();
     }
 
-//    Get review
+//  Get review
     @RequestMapping(path = "/review/{id}", method = RequestMethod.GET)
     public Reviews get(@PathVariable long patientReviewId) {
     return reviewsDao.getReview(patientReviewId);
@@ -44,24 +44,14 @@ public class ReviewController {
     }
 
 
-//  Create review
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping( path = "/addReview/{id}", method = RequestMethod.POST)
-    public Reviews addReview(@RequestBody Reviews reviews, @PathVariable("id") long patientReviewId) {
-        return reviewsDao.createReview(reviews);
-    }
+
+//   *******************************     DOCTOR REVIEW     *******************************************
 
 
-//   ****************   Doctor Review   *********************
 
-
-    // Doctor response to review based on review_id
+//  Doctor response to review based on review_id
     @RequestMapping(path = "/doctorResponse/{id}", method = RequestMethod.GET)
     public DoctorResponse getDoctorReview(@PathVariable long doctorResponseId){
         return doctorResponseDao.getDoctorResponse(doctorResponseId);
     }
-
-
-
-
 }

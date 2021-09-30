@@ -17,15 +17,13 @@ public class JdbcAccountDao implements AccountDao{
 
     @Override
     public Account createAccount(Account account) {
-        String sql = "INSERT INTO account (account_id, first_name, last_name, email, user_id ) " +
-                "VALUES (?, ?, ?, ?, ?, ?) RETURNING account_id;";
-        Long newId = jdbcTemplate.queryForObject(sql, Long.class, account.getAccountId(),
+        String sql = "INSERT INTO account (first_name, last_name, email, user_id) " +
+                "VALUES (?, ?, ?, ?) RETURNING account_id;";
+        Long newId = jdbcTemplate.queryForObject(sql, Long.class,
                 account.getFirstName(), account.getLastName(), account.getEmail(), account.getUserId());
-
 
         return getAccountById(newId);
     }
-
 
     @Override
     public List<Account> findAllAccount() {
@@ -52,6 +50,18 @@ public class JdbcAccountDao implements AccountDao{
         } else {
             throw new RuntimeException("Account: "+accountId+" was not found.");
         }
+    }
+
+    @Override
+    public Account getAccountByUserId(int id) {
+        String sql = "SELECT * FROM account WHERE user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        if(results.next()){
+            return mapRowToAccount(results);
+        } else {
+            throw new RuntimeException("User ID: "+ id +" was not found.");
+        }
+
     }
 
 

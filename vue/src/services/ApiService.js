@@ -45,6 +45,28 @@ export default {
   
   getIsDoctor(){
     return axios.get('/isDoctor/')
-  }
+  },
+  
+
+  getDoctorPrincipal(){
+    return axios.get('/getDoctorPrincipal')
+  },
+
+  getAccountPrincipal(){
+    return axios.get('/getAccountPrincipal')
+  },
+
+  getOfficeDoctorPrincipal(){
+    return axios.get('/getOfficeDoctorPrincipal')
+  },
+
+  addAccount(account){
+    return axios.post('/account', account)
+  },
+
+  getUserIDPrincipal(){
+    return axios.get('/getUserIDPrincipal')
+  },
+  
 
 }
