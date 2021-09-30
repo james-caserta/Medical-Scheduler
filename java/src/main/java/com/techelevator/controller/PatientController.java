@@ -22,7 +22,6 @@ public class PatientController {
         this.userDao = userDao;
     }
 
-
     //get patient
     @RequestMapping(path = "/patient/{id}", method = RequestMethod.GET)
     public Patient getPatient(@PathVariable long patientId) {
@@ -36,13 +35,5 @@ public class PatientController {
     public Patient addPatient(@RequestBody Patient patient, @PathVariable("id") long patientId) {
         return patientDao.createPatient(patient);
     }
-
-
-
-// Get All Patients
-//    @RequestMapping(path = "/patient", method = RequestMethod.GET)
-//    public List<Patient> findALlPatients(){
-//        return patientDao.findAllPatients();
-//    }
 
 }

@@ -98,9 +98,17 @@ public class DoctorController {
         return officeDao.getOfficeByDoctorId(doctorId);
     }
 
+
+    /*Update Office information by Doctor Id*/
+    @RequestMapping(path = "/updateDoctorOfficeInfo/{doctorId}", method = RequestMethod.PUT)
+    public Office updateOfficeInfoByDoctorId(@RequestBody Office office, @PathVariable("doctorId") long doctorId){
+        return officeDao.updateOfficeInfoByDoctorId(doctorId,office);
+    }
+
     @RequestMapping(path = "/isDoctor", method = RequestMethod.GET)
     public boolean isDoctor(Principal principal){
         return doctorDao.isDoctor(principal.getName());
+
     }
 
 

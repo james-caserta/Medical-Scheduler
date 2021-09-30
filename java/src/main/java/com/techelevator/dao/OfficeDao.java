@@ -12,7 +12,7 @@ public interface OfficeDao {
 
     Office getOfficeInfoByOfficeId(long officeId);
 
-    void updateOfficeInfoByDoctorId(Long doctorId, Office office);
+    Office updateOfficeInfoByDoctorId(Long doctorId, Office office);
 
     void updateInfoByOfficeId(Office office);
 
