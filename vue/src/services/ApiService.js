@@ -30,6 +30,7 @@ export default {
       return axios.get('/office', office_id)
     },
 
+
   getDoctorByID(){
       return axios.get('/doctor', {
         params: {
@@ -37,5 +38,13 @@ export default {
         }
       })
     },
+
+  getDoctorByID(doctorId){
+      return axios.get('/doctor/' + doctorId)
+    },
+  
+  getAppointmentById(appointmentId){
+    return axios.get('/appointment/' + appointmentId)
+  }
 
 }

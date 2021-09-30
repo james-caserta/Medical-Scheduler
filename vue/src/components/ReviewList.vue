@@ -116,7 +116,7 @@ height: 100%;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
     font-size: 1.5em;
-    height: 15%;
+    height: 10%;
     width: 90%;
     padding: 1rem;
     
@@ -148,6 +148,7 @@ height: 100%;
     overflow: scroll;
     overflow-x: hidden;
     width: 100%;
+    height: 70%;
 
 }
 

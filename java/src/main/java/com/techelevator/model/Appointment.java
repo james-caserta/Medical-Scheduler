@@ -7,10 +7,10 @@ public class Appointment {
     private long appointmentId;
     private long patientId;
     private long officeId;
-    private String startTime;
-    private String endTime;
-    private long appointmentStatusId;
-    private LocalDate appointmentDate;
+    private long doctorId;
+    private String startDate;
+    private String endDate;
+    private String description;
 
 //Getter and Setter
 
@@ -35,31 +35,35 @@ public class Appointment {
         this.officeId = officeId;
     }
 
-    public String getStartTime() {
-        return startTime;
-    }
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public long getDoctorId() {
+        return doctorId;
     }
 
-    public String getEndTime() {
-        return endTime;
-    }
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setDoctorId(long doctorId) {
+        this.doctorId = doctorId;
     }
 
-    public long getAppointmentStatusId() {
-        return appointmentStatusId;
-    }
-    public void setAppointmentStatusId(long appointmentStatusId) {
-        this.appointmentStatusId = appointmentStatusId;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public LocalDate getAppointmentDate() {
-        return appointmentDate;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
-    public void setAppointmentDate(LocalDate appointmentDate) {
-        this.appointmentDate = appointmentDate;
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

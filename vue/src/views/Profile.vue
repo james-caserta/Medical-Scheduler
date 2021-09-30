@@ -115,7 +115,7 @@ export default {
 
   display: flex;
   flex-direction: column;
-  height: 80%;
+  height: 75%;
 }
 
 #reviewsForm {
@@ -124,7 +124,7 @@ export default {
   flex-direction: column;
   /* align-items: center; */
   justify-content: center;
-  height: 100%;
+  height: 25%;
   padding: 1rem;
 }
 

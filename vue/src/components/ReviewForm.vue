@@ -85,9 +85,6 @@ export default {
   flex-direction: column;
   width: 94%;
   height: 100%;
-  /* margin: 1rem; */
-  /* height: 25%; */
-  /* padding: 1rem; */
 }
 
 label {
