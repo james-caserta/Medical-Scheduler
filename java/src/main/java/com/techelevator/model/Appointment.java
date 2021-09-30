@@ -63,5 +63,6 @@ public class Appointment {
         this.description = description;
     }
 
-    //
+    // assigneeId = doctorId
+    // priorityId =
 }
