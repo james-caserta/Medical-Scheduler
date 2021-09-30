@@ -85,7 +85,7 @@ export default {
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    background: #272b4a;
+    background: #5d76ab;
     border-radius: 1rem;
     padding: 2rem;
         
@@ -93,15 +93,16 @@ export default {
 
     .btn {
   margin: 3px;
-  background: #6b89c6;
+  background: #272b4a;
 	border-radius: 1rem;
+  border-width: thin;
 	font-family: 'Open Sans', sans-serif;
 	cursor: pointer;
   font-size: 1.25em;
   color: white;
   width: 140px;
   height: 35px;
-  font-weight: 600;
+  font-weight: 800;
   padding-left: 5px;
   }
 
@@ -111,16 +112,17 @@ export default {
     margin-right: 5.5rem;
     align-items: left;
     color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   #registerbtn {
 
-  font-size: 1.25em;
+  font-size: 1.5em;
   color: white;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-  text-decoration: underline;
+  font-weight: 800;
   margin-bottom: 1rem;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .alert {
