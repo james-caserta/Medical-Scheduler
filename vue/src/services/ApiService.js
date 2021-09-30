@@ -31,7 +31,7 @@ export default {
     },
 
   getDoctorByID(){
-      return axios.get('/doctor/', {
+      return axios.get('/doctor', {
         params: {
           doctor_id: '',
         }
