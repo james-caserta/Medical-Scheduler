@@ -35,7 +35,7 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Sign in
       </button>
-      <!-- <router-link :to="{ name: 'register' }">Need an account?</router-link> -->
+      <router-link :to="{ name: 'splash' }" id="needaccount">Need an account?</router-link>
     </form>
   </div>
 </template>
@@ -126,6 +126,14 @@ export default {
   .alert {
 
       color: white;
+  }
+
+  #needaccount {
+
+  font-size: 1em;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
   }
 
 </style>
