@@ -4,12 +4,12 @@ package com.techelevator.controller;
 import com.techelevator.dao.*;
 import com.techelevator.model.Account;
 import com.techelevator.model.Doctor;
-import com.techelevator.model.DoctorAvailability;
 import com.techelevator.model.Office;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController

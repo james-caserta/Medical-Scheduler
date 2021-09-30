@@ -82,7 +82,7 @@
   color: white;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
   margin-bottom: 1rem;
   
   }
