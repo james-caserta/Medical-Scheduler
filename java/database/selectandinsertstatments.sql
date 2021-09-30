@@ -8,12 +8,13 @@ DROP TABLE patient_review CASCADE;
 DROP TABLE appointment CASCADE;
 
 CREATE TABLE users (
-    user_id int  NOT NULL DEFAULT nextval( 'seq_user_id' :: regclass ),
+    --user_id serial  NOT NULL DEFAULT nextval( 'seq_user_id' :: regclass ),
+    user_id serial,
     username varchar(50)  NOT NULL,
     password_hash varchar(200)  NOT NULL,
     role varchar(50)  NOT NULL,
     is_doctor boolean NOT NULL,
-    CONSTRAINT role_id UNIQUE (role) NOT DEFERRABLE  INITIALLY IMMEDIATE,
+    --CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES account(user_id),
     CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
@@ -22,7 +23,7 @@ CREATE TABLE account (
     first_name varchar(50)  NOT NULL,
     last_name varchar(50)  NOT NULL,
     email varchar(50)  NOT NULL,
-    user_id int  NOT NULL,
+    user_id int,
     CONSTRAINT user_fk FOREIGN KEY(user_id) REFERENCES users(user_id),
     CONSTRAINT account_pk PRIMARY KEY (account_id)
 );
@@ -88,6 +89,7 @@ INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userJC','$2a
 INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userAT','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
 INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userAP','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
 INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userYK','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
+INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('dad2','$2a$10$WVGvp9WcNDRJoKdqFLL5Ne6uByFDrVAw2jHKj3ll96NqR411wJVsy','ROLE_USER', true);
 
 
 INSERT INTO account(account_id,first_name,last_name,email,user_id) VALUES(1,'James','Caserta','JC@gmail.com',1);
@@ -109,12 +111,8 @@ INSERT INTO office(office_id, doctor_id, street_address, city, state, zip) VALUE
 
 --Creates Office Review
 
-
-INSERT INTO patient_review(patient_id, overall_rating, review, doctor_id) VALUES(1,4,'I had a great experience with my doctor and this office!', 2);
-INSERT INTO patient_review(patient_id, overall_rating, review, doctor_id) VALUES(4,3,'Clean office and easy parking.', 3);
-
-INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(1,4,'I had a great experience with my doctor and this office!', 2);
-INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(4,3,'Clean office and easy parking.', 3);
+INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(1,4,2,'I had a great experience with my doctor and this office!', 2);
+INSERT INTO patient_review(patient_review_id, patient_id, overall_rating, review, doctor_id) VALUES(4,3,2,'Clean office and easy parking.', 2);
 
 --Creates Appointments
 
@@ -173,3 +171,25 @@ INSERT INTO appointment(patient_id, description, start_date, end_date, doctor_id
 --JOIN doctor ON account.account_id = doctor.doctor_id
 --JOIN office ON doctor.doctor_id = office.office_id
 --JOIN doctor_response ON doctor_response.office_doctor_id = office.office_id
+
+CREATE USER final_capstone_owner
+WITH PASSWORD 'finalcapstone';
+
+GRANT ALL
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_owner;
+
+GRANT ALL
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_owner;
+
+CREATE USER final_capstone_appuser
+WITH PASSWORD 'finalcapstone';
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_appuser;
+
+GRANT USAGE, SELECT
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_appuser;
