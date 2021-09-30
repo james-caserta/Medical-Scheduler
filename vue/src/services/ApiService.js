@@ -34,8 +34,6 @@ export default {
     return axios.put('/updateDoctorOfficeInfo/'+ doctor_id, office)
   },
 
-<<<<<<< HEAD
-=======
   getDoctorByID(doctorId){
       return axios.get('/doctor/' + doctorId)
     },
@@ -43,9 +41,10 @@ export default {
   getAppointmentById(appointmentId){
     return axios.get('/appointment/' + appointmentId)
   },
+  
   getIsDoctor(){
     return axios.get('/isDoctor/')
   },
->>>>>>> 42c123319f95cb0ba971f8980d968b7593240d63
+
 
 }
