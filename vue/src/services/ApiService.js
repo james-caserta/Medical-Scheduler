@@ -36,6 +36,9 @@ export default {
   
   getAppointmentById(appointmentId){
     return axios.get('/appointment/' + appointmentId)
+  },
+  getIsDoctor(){
+    return axios.get('/isDoctor/')
   }
 
 }
