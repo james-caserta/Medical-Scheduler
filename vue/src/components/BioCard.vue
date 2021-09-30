@@ -3,7 +3,7 @@
 
     <div id="upperprofile">
         <div id="profileitems">
-      <span id="profilename">Dr. </span>
+      <span id="profilename">Dr. {{account.lastName}}</span>
       <img id="profilepic" src="../assets/dsicon.png" alt="Profile Picture">
         </div>
         <div id="officeinfo">
@@ -41,6 +41,8 @@ name:'BioCard',
 
 created() {
   ApiService.getIsDoctor().then(response  => {this.isUserDoctor = response.data})
+  ApiService.getDoctorPrincipal().then(response => {this.doctor = response.data})
+  ApiService.getAccountPrincipal().then(response => {this.account = response.data})
 
   },
 
@@ -48,7 +50,21 @@ data(){
 
   return{
 
-    isUserDoctor: false
+    isUserDoctor: false,
+    doctor: {
+    "doctorId": '',
+    "accountId": '',
+    "userType": '',
+    "summary": '',
+    },
+    account: {
+    "accountId": '',
+    "firstName": '',
+    "lastName": '',
+    "email": '',
+    "userId": '',
+
+    },
   }
     
 }
