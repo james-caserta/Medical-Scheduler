@@ -38,7 +38,6 @@ public class Appointment {
     public long getDoctorId() {
         return doctorId;
     }
-
     public void setDoctorId(long doctorId) {
         this.doctorId = doctorId;
     }
@@ -46,7 +45,6 @@ public class Appointment {
     public String getStartDate() {
         return startDate;
     }
-
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
@@ -54,7 +52,6 @@ public class Appointment {
     public String getEndDate() {
         return endDate;
     }
-
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
@@ -62,8 +59,10 @@ public class Appointment {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
+
+    // assigneeId = doctorId
+    // priorityId =
 }

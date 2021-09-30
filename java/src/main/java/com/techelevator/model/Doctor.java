@@ -1,6 +1,5 @@
 package com.techelevator.model;
 
-import java.time.LocalDate;
 
 public class Doctor {
 
@@ -8,9 +7,6 @@ public class Doctor {
     private long accountId;
     private String userType;
     private String summary;
-
-
-
 
 
 // Getter and Setter

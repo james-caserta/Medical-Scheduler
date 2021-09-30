@@ -80,6 +80,8 @@
   .registerbtn {
 
   font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  /*text-decoration: underline;*/
   margin-bottom: 1rem;
   font-weight: 800;
   font-size: 1.5em;
