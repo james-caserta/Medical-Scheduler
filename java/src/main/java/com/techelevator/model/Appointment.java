@@ -63,7 +63,7 @@ public class Appointment {
         this.description = description;
     }
 
-    
+
     // Front-End connection for Agenda
     // assigneeId = doctorId
     // priorityId =
