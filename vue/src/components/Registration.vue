@@ -39,7 +39,7 @@
         Submit
       </button>
 
-      <router-link :to="{ name: 'login' }" id="alreadyuser">I already have an account</router-link>
+      <router-link :to="{ name: 'login' }" id="alreadyuser">I have an account</router-link>
 
       <!-- <router-link :to="{ name: 'login' }">Already registered?</router-link> -->
 </form>
@@ -54,7 +54,7 @@
       flex-direction: column;
       align-items: center;
       gap: 5px;
-      background: #272b4a;
+      background: #5d76ab;
       border-radius: 1rem;
       padding: 2rem;
       
@@ -63,8 +63,9 @@
 
     .btn {
   margin: 3px;
-  background: #6b89c6;
+  background: #272b4a;
 	border-radius: 1rem;
+  border-width: thin;
 	font-family: 'Open Sans', sans-serif;
 	cursor: pointer;
   font-size: 1.25em;
@@ -78,12 +79,17 @@
 
   .registerbtn {
 
-  font-size: 1.25em;
-  color: white;
   font-family: 'Open Sans', sans-serif;
+<<<<<<< HEAD
   font-weight: 600;
   /*text-decoration: underline;*/
+=======
+>>>>>>> c1f551bc2a9abbeda331ef5ab8480d754a74e93a
   margin-bottom: 1rem;
+  font-weight: 800;
+  font-size: 1.5em;
+  color:white;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   
   }
 
@@ -93,12 +99,16 @@
     margin-right: 5.5rem;
     align-items: left;
     color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .doctor-box {
 
     margin-right: 1rem;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-weight: 600;
     color: white;
+    font-family: 'Open Sans', sans-serif;
   }
 
   #alreadyuser {
@@ -107,6 +117,7 @@
   color: white;
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   .alert {
@@ -141,28 +152,6 @@ data() {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } 
-      
-      // else if(this.user.is_doctor === true) {
-      //     this.user.is_doctor = true;
-      //   authService
-      //     .register(this.user)
-      //     .then((response) => {
-      //       console.log(response)
-      //       if (response.status == 201) {
-      //         this.$router.push({
-      //           path: '/login',
-      //           query: { registration: 'success' },
-      //         });
-      //       }
-      //     })
-      //     .catch((error) => {
-      //       const response = error.response;
-      //       this.registrationErrors = true;
-      //       if (response.status === 400) {
-      //         this.registrationErrorMsg = 'Bad Request: Validation Errors';
-      //       }
-      //     });
-      // }
       
       else {
                    console.log(this.user)
