@@ -5,7 +5,7 @@
              <div class="title"><span id="logo">DrSched</span></div>
              <div class ="cards">
         
-        <OfficeInfo/>
+        <Offices/>
             
     </div>
     </div>
@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import OfficeInfo from '../components/OfficeInfo.vue'
+import Offices from '../components/Offices.vue'
 
 export default {
     name: 'offices',
        
     components: {
-        OfficeInfo,
+        Offices,
     
     }
 
