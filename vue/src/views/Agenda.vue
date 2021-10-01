@@ -1,12 +1,14 @@
 <template>
   <div id="agenda" class="agenda">
     <div id="window">
+      <div id="actualagenda">
   <DxScheduler
     time-zone="America/Los_Angeles"
     :data-source="dataSource"
     :current-date="currentDate"
     :views="views"
     :height="720"
+    :width="1240"
     :start-day-hour="9"
     :adaptivity-enabled="true"
     :on-appointment-added="showAddedToast"
@@ -29,7 +31,11 @@
       label="Office"
     />
   </DxScheduler>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" v-on:click="goProfile">Back</button>
+  </div>
+  
     </div>
+    
   </div>
 </template>
 <script>
@@ -108,6 +114,8 @@ methods: {
     showDeletedToast: function(e) {
       this.showToast('Deleted', e.appointmentData.text, 'warning');
     },
+
+    goProfile(){this.$router.push("/profile");},
   },
 
 
@@ -115,14 +123,48 @@ methods: {
 </script>
 <style scoped>
 
-  .agenda {
-
+  #agenda {
+    display: flex;
   background-image: url("../assets/MainBackground.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
+  align-items: center;
+  justify-content: center;
+  }
+
+  .btn {
+
+/* margin: 0.1rem; */
+background: #6b89c6;
+/* border-radius: 1rem; */
+border-width: thin;
+font-family: 'Open Sans', sans-serif;
+cursor: pointer;
+font-size: 1em;
+padding: 1rem;
+color: white;
+font-weight: 600;
+width: 5rem;
+  
+  }
+
+  #window {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  #actualagenda {
+
+    display: flex;
+    /* flex-direction: column; */
+    /* height: 100%; */
   }
 
 </style>
