@@ -2,7 +2,7 @@
   <div class="container-office-info">
       <span id="header">Office Information</span>
       <p>Address: {{office.streetAddress}}, {{office.city}}, {{office.state}} {{office.zip}}</p>
-      <p>Phone: +1({{office.phoneNumber}}) </p>
+      <p>Phone: {{office.phoneNumber}} </p>
       <p>Office Hours: Monday-Friday 9am-5pm</p>
       <p class="covid">COVID-19 Testing Center</p>
   </div>

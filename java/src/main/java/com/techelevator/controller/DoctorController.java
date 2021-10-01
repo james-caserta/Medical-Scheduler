@@ -125,7 +125,7 @@ public class DoctorController {
         return doctorDao.getDoctor(userDao.findIdByUsername(principal.getName()));
     }
 
-//  Account by user id
+//  Account by username
     @RequestMapping(path = "/getAccountPrincipal", method = RequestMethod.GET)
     public Account getAccountPrincipal(Principal principal){
         return accountDao.getAccountByUserId(userDao.findIdByUsername(principal.getName()));
