@@ -138,12 +138,12 @@ public class JdbcDoctorDao implements DoctorDao{
     }
 
     private Account mapRowToAccount(SqlRowSet results){
+
         Account account = new Account();
         account.setAccountId(results.getLong("account_id"));
         account.setFirstName(results.getString("first_name"));
         account.setLastName(results.getString("last_name"));
         account.setEmail(results.getString("email"));
-        account.setUserId(results.getLong("user_id"));
 
         return account;
     }

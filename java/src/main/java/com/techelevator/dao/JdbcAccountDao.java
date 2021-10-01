@@ -17,10 +17,10 @@ public class JdbcAccountDao implements AccountDao{
 
     @Override
     public Account createAccount(Account account) {
-        String sql = "INSERT INTO account (first_name, last_name, email, user_id) " +
+        String sql = "INSERT INTO account (account_id, first_name, last_name, email) " +
                 "VALUES (?, ?, ?, ?) RETURNING account_id;";
-        Long newId = jdbcTemplate.queryForObject(sql, Long.class,
-                account.getFirstName(), account.getLastName(), account.getEmail(), account.getUserId());
+        Long newId = jdbcTemplate.queryForObject(sql, Long.class,account.getAccountId(),
+                account.getFirstName(), account.getLastName(), account.getEmail());
 
         return getAccountById(newId);
     }
@@ -54,7 +54,7 @@ public class JdbcAccountDao implements AccountDao{
 
     @Override
     public Account getAccountByUserId(int id) {
-        String sql = "SELECT * FROM account WHERE user_id = ?";
+        String sql = "SELECT * FROM account WHERE account_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         if(results.next()){
             return mapRowToAccount(results);
@@ -64,16 +64,28 @@ public class JdbcAccountDao implements AccountDao{
 
     }
 
+    @Override
+    public List<Account> getAllDoctors() {
+        List<Account> allDoctors = new ArrayList<>();
+        String sql = "SELECT account_id, first_name, last_name, email FROM account JOIN users " +
+                     "ON users.user_id = account.account_id  " +
+                     "WHERE is_doctor = true;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while(results.next()){
+            allDoctors.add(mapRowToAccount(results));
 
+        }
 
-// *** Account Map ***
+        return allDoctors;
+    }
+
+    // *** Account Map ***
     private Account mapRowToAccount(SqlRowSet results){
         Account account = new Account();
         account.setAccountId(results.getLong("account_id"));
         account.setFirstName(results.getString("first_name"));
         account.setLastName(results.getString("last_name"));
         account.setEmail(results.getString("email"));
-        account.setUserId(results.getLong("user_id"));
 
         return account;
     }

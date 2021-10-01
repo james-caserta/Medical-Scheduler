@@ -143,4 +143,11 @@ public class DoctorController {
         return userDao.findByUsername(principal.getName()).getId();
     }
 
+    /*Get all doctors*/
+    //  Get all offices
+    @RequestMapping(path = "/getAllDoctors", method = RequestMethod.GET)
+    public List<Account> getAllDoctors(){
+        return accountDao.getAllDoctors();
+    }
+
 }

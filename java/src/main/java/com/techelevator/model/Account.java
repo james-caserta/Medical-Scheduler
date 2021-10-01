@@ -6,7 +6,7 @@ public class Account {
     private String firstName;
     private String lastName;
     private String email;
-    private long userId;
+
 
 
 //Getter and Setter
@@ -39,11 +39,5 @@ public class Account {
         this.email = email;
     }
 
-    public long getUserId() {
-        return userId;
-    }
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
 
 }

@@ -18,25 +18,25 @@
 </template> 
 
 <script>
-//import apiservice from '../services/ApiService.js'
+import apiservice from '../services/ApiService.js'
 
 export default {
 name: 'list-of-offices',
 
-    // created(){
-    //     apiservice.getAllDoctors().then(
-    //         (response) => {
-    //                 this.doctors = response.data
-    //         }
-    //     )
+    created(){
+        apiservice.getAllDoctors().then(
+            (response) => {
+                    this.doctors = response.data
+            }
+        )
 
-    // },
+    },
         
-    // data(){
-    //     return{
-    //         doctors:[],
-    //     }
-    // }
+    data(){
+        return{
+            doctors:[],
+        }
+    }
 
 }
 </script>

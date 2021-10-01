@@ -11,7 +11,7 @@ export default {
     },
 
   getAllDoctors(){
-      return axios.get('/allDoctors')
+      return axios.get('/getAllDoctors')
     },
 
   getAllOffices(){
@@ -67,6 +67,8 @@ export default {
   getUserIDPrincipal(){
     return axios.get('/getUserIDPrincipal')
   },
+
+  
   
 
 }

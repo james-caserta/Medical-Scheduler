@@ -13,4 +13,6 @@ public interface AccountDao {
     Account createAccount(Account account);
 
     Account getAccountByUserId(int id);
+
+    List<Account> getAllDoctors();
 }
