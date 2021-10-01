@@ -1,6 +1,6 @@
 <template>
   <div class="container-doctor-bio">
-      <span id="doctorbio">{{doctor.summary}}</span>
+      <span id="doctorbio">Biography <br> <br>{{doctor.summary}}</span>
   </div>
 </template>
 
