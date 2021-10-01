@@ -16,15 +16,43 @@ export const doctors = [{
     color: '#7b49d3'
   }];
   
-  export const priorities = [{
-    text: 'DrSched Inc.',
+  export const offices = [{
+    text: 'Springfield Health Associates',
     id: 1,
     color: '#cc5c53'
   }, {
-    text: 'Yeehaw and Assoc.',
+    text: 'Authentic Medicine LLC',
     id: 2,
     color: '#ff9747'
   }];
   
-  export const data = [];
+  export const data = [{
+    text: 'Available',
+    startDate: new Date('2021-10-01T17:00:00.000Z'),
+    endDate: new Date('2021-10-01T18:00:00.000Z'),
+    assigneeId: '',
+    priorityId: '',
+  }, {
+    text: 'Available',
+    startDate: new Date('2021-10-01T16:00:00.000Z'),
+    endDate: new Date('2021-10-01T17:00:00.000Z'),
+    assigneeId: '',
+    priorityId: '',
+  },
+  {
+    text: 'Available',
+    startDate: new Date('2021-10-01T19:00:00.000Z'),
+    endDate: new Date('2021-10-01T20:00:00.000Z'),
+    assigneeId: '',
+    priorityId: '',
+  },
+  {
+    text: 'Available',
+    startDate: new Date('2021-10-01T21:00:00.000Z'),
+    endDate: new Date('2021-10-01T22:00:00.000Z'),
+    assigneeId: '',
+    priorityId: '',
+  }, 
+
+  ];
   

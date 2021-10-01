@@ -1,7 +1,7 @@
 <template>
     <div id="agendabuttons">
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Book Appointment</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" v-on:click="goAgenda">Book Appointment</button>
 
     </div>
 </template>
@@ -44,6 +44,11 @@ font-weight: 600;
 <script>
 
 export default {
+
+  methods: {
+
+  goAgenda(){this.$router.push("/agenda");}
+},
 
 }
 </script>

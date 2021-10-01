@@ -5,7 +5,7 @@
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Update Office Info</button>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Check Agenda</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" v-on:click="goAgenda">Check Agenda</button>
 
     </div>
 </template>
@@ -50,8 +50,8 @@ import ApiService from '../services/ApiService.js'
 
 export default {
 
-  created() {
-    ApiService.getIsDoctor().then(response  => {this.isUserDoctor = response.data})
+created() {
+  ApiService.getIsDoctor().then(response  => {this.isUserDoctor = response.data})
 
   },
 
@@ -62,6 +62,11 @@ data(){
     isUserDoctor: false
   }
     
-}
+},
+
+methods: {
+
+  goAgenda(){this.$router.push("/agenda");}
+},
 }
 </script>
