@@ -5,15 +5,8 @@
              <div class="title"><span id="logo">DrSched</span></div>
              <div class ="cards">
         
-            <div class="office-card">
-            <OfficesCard/>
-            </div>
-
-        <div class="doctor-card">
-            <div id="doctor-card-content">
-                <DoctorsCard/>
-            </div>
-        </div>
+        <OfficeInfo/>
+            
     </div>
     </div>
     
@@ -23,15 +16,13 @@
 </template>
 
 <script>
-import DoctorsCard from '../components/ListOfDoctors.vue'
-import OfficesCard from '../components/Offices.vue'
+import OfficeInfo from '../components/OfficeInfo.vue'
 
 export default {
     name: 'offices',
        
     components: {
-        DoctorsCard,
-        OfficesCard
+        OfficeInfo,
     
     }
 
@@ -50,7 +41,6 @@ export default {
       margin-right: 1rem;
       height: 20%;
       justify-content: flex-start;
-      align-items: left;
     }
 
     #logo {
@@ -66,6 +56,7 @@ export default {
 .office{
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100vh;
   background-image: url("../assets/MainBackground.png");
   background-size: cover;
@@ -77,9 +68,11 @@ export default {
 
 .cards{
   display: flex;
-  height: 100%;
+  width: 50%;
+  height: 70%;
   border-radius: 25px;
   align-items: flex-start;
+  background-color: #F5F1F1;
     
 }
 

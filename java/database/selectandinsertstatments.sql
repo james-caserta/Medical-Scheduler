@@ -19,7 +19,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE account (
-    account_id int  NOT NULL,
+    account_id serial,
     first_name varchar(50)  NOT NULL,
     last_name varchar(50)  NOT NULL,
     email varchar(50)  NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE account (
 );
 
 CREATE TABLE doctor (
-    doctor_id int  NOT NULL,
+    doctor_id serial,
     summary varchar(500)  NOT NULL,
     user_type varchar(10)  NOT NULL,
     account_id int NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE doctor (
 
 -- Table: patient
 CREATE TABLE patient (
-    patient_id int  NOT NULL,
+    patient_id serial,
     user_type varchar(10)  NOT NULL,
     account_id int NOT NULL,
     CONSTRAINT account_fk FOREIGN KEY(account_id) REFERENCES account(account_id),
@@ -54,6 +54,8 @@ CREATE TABLE office (
     city varchar(100)  NOT NULL,
     state varchar(100)  NOT NULL,
     zip varchar(50)  NOT NULL,
+    phone_number varchar(50) NOT NULL,
+    consultation_fee varchar(50) NOT NULL,
     CONSTRAINT doctor_fk FOREIGN KEY(doctor_id) REFERENCES doctor(doctor_id),
     CONSTRAINT office_pk PRIMARY KEY (office_id)
 );
@@ -87,12 +89,12 @@ CREATE TABLE appointment (
 -- UPDATE HASH TO A KNOWN password!!!!
 INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userJC','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
 INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userAT','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
-INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userAP','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
+INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userAP','$2a$10$FIOsekFsbsjQAX1LU/Aqs.l/7/IWTsAVSRmVnwPpqlX8Qe.lpLaj6','ROLE_USER', true);
 INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('userYK','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', false);
 INSERT INTO users (username,password_hash,role, is_doctor) VALUES ('dad2','$2a$10$WVGvp9WcNDRJoKdqFLL5Ne6uByFDrVAw2jHKj3ll96NqR411wJVsy','ROLE_USER', true);
 
 
-INSERT INTO account(account_id,first_name,last_name,email,user_id) VALUES(1,'James','Caserta','JC@gmail.com',1);
+INSERT INTO account(first_name,last_name,email,user_id) VALUES('James','Caserta','JC@gmail.com',1);
 INSERT INTO account(account_id,first_name,last_name,email,user_id) VALUES(2,'Abdulla','Treek','AT@gmail.com',2);
 INSERT INTO account(account_id,first_name,last_name,email,user_id) VALUES(3,'AJ','Page','AP@gmail.com',3);
 INSERT INTO account(account_id,first_name,last_name,email,user_id) VALUES(4,'Yousef','Khudair','YK@gmail.com',4);
@@ -103,11 +105,11 @@ INSERT INTO patient(patient_id,user_type, account_id) VALUES(4,'patient',4);
 
 --Creates Doctors
 INSERT INTO doctor(doctor_id, summary, user_type, account_id) VALUES(2,'I am a doctor','doctor',2);
-INSERT INTO doctor(doctor_id, summary, user_type, account_id) VALUES(3,'I am a doctor','doctor',3);
+INSERT INTO doctor(doctor_id, summary, user_type, account_id) VALUES(3,'I am Dr. Page','doctor',3);
 
 --Creates Offices
-INSERT INTO office(office_id, doctor_id, street_address, city, state, zip) VALUES(1,2, '123 Seaview Ave', 'BK', 'NY', 10301);
-INSERT INTO office(office_id, doctor_id, street_address, city, state, zip) VALUES(2,3, '123 Wall St', 'LA', 'CA', 90210);
+INSERT INTO office(office_id, doctor_id, street_address, city, state, zip, phone_number, consultation_fee) VALUES(1,2, '123 Seaview Ave', 'BK', 'NY', 10301, 5555552400, 20);
+INSERT INTO office(office_id, doctor_id, street_address, city, state, zip, phone_number, consultation_fee) VALUES(2,3, '123 Wall St', 'LA', 'CA', 90210, 5555552400, 20);
 
 --Creates Office Review
 
